@@ -4,8 +4,7 @@ A web application that integrates Google Earth Engine for agricultural climate a
 
 ## Prerequisites
 
-- Node.js (v16 or higher)
-- npm (comes with Node.js)
+- React
 - Git
 - A Google Earth Engine account
 - Firebase account (for analytics)
@@ -71,7 +70,7 @@ A web application that integrates Google Earth Engine for agricultural climate a
      - Click "Save"
 
 4. **Access the Deployed Site**
-   Your site will be available at: `https://lokeshvarma-konduru.github.io/Agroclimate-test_2/`
+   Your site will be available at: `https://DATL-Chandel.github.io/Agroclimate/`
 
 ## Project Structure
 
