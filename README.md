@@ -13,8 +13,8 @@ A web application that integrates Google Earth Engine for agricultural climate a
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/LokeshVarma-Konduru/Agroclimate-test_2.git
-   cd Agroclimate-test_2
+   git clone https://github.com/DATL-Chandel/Agroclimate.git
+   cd Agroclimate
    ```
 
 2. **Install Dependencies**
