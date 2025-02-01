@@ -5,7 +5,13 @@ import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 const Tracker = () => {
     const [uniqueUserId, setUniqueUserId] = useState(null);
-    const today = new Date().toISOString().split("T")[0];
+    
+    // Function to get current local date in YYYY-MM-DD format
+    const getCurrentLocalDate = () => {
+        const now = new Date();
+        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    };
+    
     const currentVisitId = Date.now().toString(36);
     let isVisitActive = false;
 
@@ -62,6 +68,9 @@ const Tracker = () => {
                 // Get location data
                 const locationData = await getUserLocation();
 
+                // Get current local date
+                const today = getCurrentLocalDate();
+
                 // Reference to unique users in Firebase
                 const userRef = ref(database, `unique-users/${today}/${visitorId}`);
                 const userSnapshot = await get(userRef);
@@ -82,7 +91,7 @@ const Tracker = () => {
                     });
                 } else {
                     // Check if this is a new browser session
-                    const sessionRef = ref(database, `active-sessions/${today}/${visitorId}`);
+                    const sessionRef = ref(database, `active-sessions/${getCurrentLocalDate()}/${visitorId}`);
                     const sessionSnapshot = await get(sessionRef);
                     
                     if (!sessionSnapshot.exists()) {
@@ -112,7 +121,7 @@ const Tracker = () => {
                 }
 
                 // Reference to current visit
-                const visitRef = ref(database, `visits/${today}/${currentVisitId}`);
+                const visitRef = ref(database, `visits/${getCurrentLocalDate()}/${currentVisitId}`);
 
                 // Function to start a visit
                 const startVisit = async () => {
@@ -161,7 +170,7 @@ const Tracker = () => {
                 });
 
                 // Listen for unique users count
-                onValue(ref(database, `unique-users/${today}`), (snapshot) => {
+                onValue(ref(database, `unique-users/${getCurrentLocalDate()}`), (snapshot) => {
                     const data = snapshot.val();
                     const uniqueCount = data ? Object.keys(data).length : 0;
                     console.log(`Total Unique Users Today: ${uniqueCount}`);
