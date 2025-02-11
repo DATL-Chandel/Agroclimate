@@ -1,21 +1,23 @@
-import Tracker from "./components/Tracker.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomeViewer from "./components/HomeViewer";
+import NDVIViewer from "./components/NDVIViewer";
+import Documentation from "./components/Documentation";
+import Tracker from "./components/Tracker";
+import NavButton from "./components/NavButton";
 
 function App() {
     return (
-        <div style={{ margin: 0, padding: 0, width: "100vw", height: "100vh", overflow: "hidden" }}>
-            <Tracker />
-            <iframe
-                id="geeApp"
-                src={import.meta.env.VITE_GEE_URL}
-                style={{
-                    width: "100%",
-                    height: "100vh",
-                    border: "none",
-                    display: "block"
-                }}
-                title="Agroclimate Viewer"
-            />
-        </div>
+        <Router basename="/Agroclimate">
+            <div style={{ position: 'relative' }}>
+                <Tracker />
+                <NavButton />
+                <Routes>
+                    <Route path="/" element={<HomeViewer />} />
+                    <Route path="/ndvi" element={<NDVIViewer />} />
+                    <Route path="/docs" element={<Documentation />} />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 
