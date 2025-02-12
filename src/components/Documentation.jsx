@@ -18,7 +18,8 @@ const Documentation = () => {
         accent: '#3498db',
         background: '#f8f9fa',
         text: '#2c3e50',
-        border: '#e9ecef'
+        border: '#e9ecef',
+        link: '#3498db'
     };
 
     const styles = {
@@ -118,6 +119,14 @@ const Documentation = () => {
             marginRight: isMobile ? '8px' : '12px',
             color: colors.accent,
         },
+        paragraph: {
+            fontSize: isMobile ? '12px' : '14px',
+            lineHeight: '1.6',
+            color: colors.text,
+            maxWidth: '800px',
+            margin: '0 auto',
+            marginBottom: isMobile ? '15px' : '20px',
+        }
     };
 
     const SubsectionTitle = ({ icon, children }) => (
@@ -172,7 +181,7 @@ const Documentation = () => {
                             alignItems: 'center'
                         }}>
                             <img 
-                                src="./logo.png"
+                                src="/Agroclimate/logo.png"
                                 alt="Agroclimate Logo"
                                 style={{
                                     maxWidth: '100%',
@@ -232,9 +241,9 @@ const Documentation = () => {
                     <div style={styles.subsection}>
                         <SubsectionTitle icon={
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                                <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                <path d="M9 12l2 2 4-4"/>
-                            </svg>
+                            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
                         }>
                             2. Vegetation Index (VI) Analysis
                         </SubsectionTitle>
@@ -251,9 +260,9 @@ const Documentation = () => {
                     <div style={styles.subsection}>
                         <SubsectionTitle icon={
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                                <path d="M3 3v18h18"/>
-                                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
-                            </svg>
+                            <path d="M3 3v18h18"/>
+                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                        </svg>
                         }>
                             3. NDVI Mean Temporal Plot
                         </SubsectionTitle>
@@ -463,7 +472,7 @@ const Documentation = () => {
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
                                         NOAA Global Forecast System (GFS) weather forecast data. Provides global weather 
-                                        forecasts at 0.25-degree resolution for various atmospheric parameters.
+                                        forecasts for 16 days.
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
                                         <a href="https://developers.google.com/earth-engine/datasets/catalog/NOAA_GFS0P25" 
@@ -577,6 +586,39 @@ const Documentation = () => {
                                         </a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            SoilGrids
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            "projects/soilgrids-isric"
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        Global gridded soil information system providing soil property maps and predictions. 
+                                        Includes key soil properties like organic carbon, bulk density, pH, soil texture fractions and more.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <a href="https://www.isric.org/explore/soilgrids" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -585,120 +627,259 @@ const Documentation = () => {
                 <div style={styles.section}>
                     <h2 style={styles.sectionTitle}>5. Product Demo</h2>
                     <div style={{
-                        background: 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)',
-                        borderRadius: '20px',
-                        padding: '40px',
-                        color: 'white',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        marginTop: '20px',
-                        boxShadow: '0 10px 30px rgba(52, 152, 219, 0.2)'
+                        display: 'flex',
+                        flexDirection: isMobile ? 'column' : 'row',
+                        gap: '20px',
+                        marginTop: '20px'
                     }}>
-                        {/* Background Pattern */}
+                        {/* Main Tool Demo */}
                         <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            opacity: 0.1,
-                            background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
-                            zIndex: 1
-                        }} />
-
-                        <div style={{
+                            flex: '1',
+                            background: 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)',
+                            borderRadius: '20px',
+                            padding: '40px',
+                            color: 'white',
                             position: 'relative',
-                            zIndex: 2,
+                            overflow: 'hidden',
+                            boxShadow: '0 10px 30px rgba(52, 152, 219, 0.2)',
                             display: 'flex',
-                            alignItems: 'center',
-                            gap: '30px',
-                            flexWrap: 'wrap'
+                            flexDirection: 'column',
+                            minHeight: isMobile ? 'auto' : '600px'
                         }}>
-                            {/* YouTube Icon Section */}
                             <div style={{
-                                flex: '0 0 auto',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '80px',
-                                height: '80px',
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                borderRadius: '50%',
-                                backdropFilter: 'blur(5px)'
-                            }}>
-                                <svg 
-                                    width="40" 
-                                    height="40" 
-                                    viewBox="0 0 24 24" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    strokeWidth="2" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round"
-                                >
-                                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
-                                </svg>
-                            </div>
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                opacity: 0.1,
+                                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
+                                zIndex: 1
+                            }} />
 
-                            {/* Content Section */}
                             <div style={{
-                                flex: '1',
-                                minWidth: '280px'
+                                position: 'relative',
+                                zIndex: 2,
+                                flex: 1,
+                                display: 'flex',
+                                flexDirection: 'column'
                             }}>
                                 <h3 style={{
                                     margin: '0 0 15px 0',
-                                    fontSize: '24px',
+                                    fontSize: '28px',
                                     fontWeight: '600',
                                     letterSpacing: '0.5px'
                                 }}>
-                                    Watch the Demo
+                                    Main Tool Demo
                                 </h3>
                                 <p style={{
-                                    margin: '0 0 20px 0',
+                                    margin: '0 0 30px 0',
                                     fontSize: '16px',
                                     opacity: 0.9,
                                     lineHeight: '1.6'
                                 }}>
-                                    Get a quick walkthrough of the Agroclimate Viewer & Planner's key features. Learn how to analyze crop data, monitor weather patterns, and make data-driven decisions for your agricultural needs.
+                                    Get a comprehensive walkthrough of all features in the Agroclimate Viewer & Planner App. Learn how to analyze crop data, monitor weather patterns, and make data-driven decisions.
                                 </p>
                                 <div style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: '10px',
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                    padding: '12px 24px',
-                                    borderRadius: '30px',
-                                    backdropFilter: 'blur(5px)',
-                                    opacity: 0.6,
-                                    cursor: 'not-allowed',
-                                    userSelect: 'none'
+                                    flex: 1,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '20px'
                                 }}>
-                                    <svg 
-                                        width="20" 
-                                        height="20" 
-                                        viewBox="0 0 24 24" 
-                                        fill="none" 
-                                        stroke="currentColor" 
-                                        strokeWidth="2" 
-                                        strokeLinecap="round" 
-                                        strokeLinejoin="round"
-                                    >
-                                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
-                                        <line x1="7" y1="2" x2="7" y2="22"/>
-                                        <line x1="17" y1="2" x2="17" y2="22"/>
-                                        <line x1="2" y1="12" x2="22" y2="12"/>
-                                        <line x1="2" y1="7" x2="7" y2="7"/>
-                                        <line x1="2" y1="17" x2="7" y2="17"/>
-                                        <line x1="17" y1="17" x2="22" y2="17"/>
-                                        <line x1="17" y1="7" x2="22" y2="7"/>
-                                    </svg>
-                                    <span style={{
-                                        fontSize: '16px',
-                                        fontWeight: '500'
+                                    <div style={{
+                                        position: 'relative',
+                                        width: '100%',
+                                        flex: 1,
+                                        minHeight: '300px',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        borderRadius: '12px',
+                                        overflow: 'hidden'
                                     }}>
-                                        Demo Video Coming Soon
-                                    </span>
+                                        <iframe
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                border: 'none'
+                                            }}
+                                            src="https://www.youtube.com/embed/nZ7mCx14ME4"
+                                            title="Main Tool Demo Video"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                    <a 
+                                        href="https://youtu.be/nZ7mCx14ME4"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                            background: 'rgba(255, 255, 255, 0.1)',
+                                            padding: '12px 24px',
+                                            borderRadius: '30px',
+                                            backdropFilter: 'blur(5px)',
+                                            color: 'white',
+                                            textDecoration: 'none',
+                                            transition: 'all 0.3s ease',
+                                            cursor: 'pointer'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+                                        }}
+                                    >
+                                        <svg 
+                                            width="20" 
+                                            height="20" 
+                                            viewBox="0 0 24 24" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            strokeWidth="2" 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round"
+                                        >
+                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+                                        </svg>
+                                        <span style={{
+                                            fontSize: '16px',
+                                            fontWeight: '500'
+                                        }}>
+                                            Watch on YouTube
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* NDVI Tool Demo */}
+                        <div style={{
+                            flex: '1',
+                            background: 'linear-gradient(135deg, #1a5f3c 0%, #2ecc71 100%)',
+                            borderRadius: '20px',
+                            padding: '40px',
+                            color: 'white',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            boxShadow: '0 10px 30px rgba(46, 204, 113, 0.2)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            minHeight: isMobile ? 'auto' : '600px'
+                        }}>
+                            <div style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                opacity: 0.1,
+                                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
+                                zIndex: 1
+                            }} />
+
+                            <div style={{
+                                position: 'relative',
+                                zIndex: 2,
+                                flex: 1,
+                                display: 'flex',
+                                flexDirection: 'column'
+                            }}>
+                                <h3 style={{
+                                    margin: '0 0 15px 0',
+                                    fontSize: '28px',
+                                    fontWeight: '600',
+                                    letterSpacing: '0.5px'
+                                }}>
+                                    NDVI Tool Demo
+                                </h3>
+                                <p style={{
+                                    margin: '0 0 30px 0',
+                                    fontSize: '16px',
+                                    opacity: 0.9,
+                                    lineHeight: '1.6'
+                                }}>
+                                    Learn how to use our specialized NDVI tool for monitoring vegetation health, analyzing crop vigor, and identifying areas of potential stress in your fields.
+                                </p>
+                                <div style={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '20px'
+                                }}>
+                                    <div style={{
+                                        position: 'relative',
+                                        width: '100%',
+                                        flex: 1,
+                                        minHeight: '300px',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        borderRadius: '12px',
+                                        overflow: 'hidden'
+                                    }}>
+                                        <iframe
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                border: 'none'
+                                            }}
+                                            src="https://www.youtube.com/embed/pB3WCnZKYj8"
+                                            title="NDVI Tool Demo Video"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                    <a 
+                                        href="https://youtu.be/pB3WCnZKYj8"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                            background: 'rgba(255, 255, 255, 0.1)',
+                                            padding: '12px 24px',
+                                            borderRadius: '30px',
+                                            backdropFilter: 'blur(5px)',
+                                            color: 'white',
+                                            textDecoration: 'none',
+                                            transition: 'all 0.3s ease',
+                                            cursor: 'pointer'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+                                        }}
+                                    >
+                                        <svg 
+                                            width="20" 
+                                            height="20" 
+                                            viewBox="0 0 24 24" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            strokeWidth="2" 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round"
+                                        >
+                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+                                        </svg>
+                                        <span style={{
+                                            fontSize: '16px',
+                                            fontWeight: '500'
+                                        }}>
+                                            Watch on YouTube
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -707,10 +888,10 @@ const Documentation = () => {
 
                 <footer style={styles.footer}>
                     <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
-                        Developed by: Digital Agriculture Technologies and Data Management Lab, Virginia Tech
+                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
                     </p>
                     <p style={{...styles.paragraph, color: colors.secondary}}>
-                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, and Virginia Tech's College of Engineering and Agriculture
+                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research & Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
                     </p>
                 </footer>
             </div>

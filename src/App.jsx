@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import HomeViewer from "./components/HomeViewer";
 import NDVIViewer from "./components/NDVIViewer";
 import Documentation from "./components/Documentation";
@@ -7,7 +7,7 @@ import NavButton from "./components/NavButton";
 
 function App() {
     return (
-        <Router basename="/Agroclimate">
+        <Router>
             <div style={{ position: 'relative' }}>
                 <Tracker />
                 <NavButton />

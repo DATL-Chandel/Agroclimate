@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://DATL-Chandel.github.io/Agroclimate/",
+  "homepage": "https://DATL-Chandel.github.io/Agroclimate",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
