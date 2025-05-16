@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import MainDocumentation from './docs/MainDocumentation';
+import NDVIDocumentation from './docs/NDVIDocumentation';
+import SprayDocumentation from './docs/SprayDocumentation';
+import GDDDocumentation from './docs/GDDDocumentation';
+import CropRiskDocumentation from './docs/CropRiskDocumentation';
 
 const Documentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [activeTab, setActiveTab] = useState('main');
 
     useEffect(() => {
         const handleResize = () => {
@@ -31,7 +37,7 @@ const Documentation = () => {
             bottom: 0,
             backgroundColor: colors.background,
             overflowY: 'auto',
-            padding: isMobile ? '10px' : '20px',
+            padding: isMobile ? '15px 10px' : '20px',
             scrollBehavior: 'smooth',
         },
         contentWrapper: {
@@ -40,860 +46,156 @@ const Documentation = () => {
             backgroundColor: 'white',
             borderRadius: isMobile ? '8px' : '12px',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            padding: isMobile ? '15px' : '40px',
+            padding: isMobile ? '20px 10px' : '40px',
         },
-        header: {
-            textAlign: 'center',
-            marginBottom: isMobile ? '20px' : '40px',
-            position: 'relative',
-            padding: isMobile ? '10px 0' : '20px 0',
-        },
-        title: {
-            fontSize: isMobile ? '24px' : '32px',
-            color: colors.primary,
-            marginBottom: isMobile ? '10px' : '20px',
-            fontWeight: '600',
-            lineHeight: '1.3',
-        },
-        section: {
-            marginBottom: isMobile ? '25px' : '40px',
-        },
-        sectionTitle: {
-            fontSize: isMobile ? '20px' : '24px',
-            color: colors.primary,
-            marginBottom: isMobile ? '15px' : '20px',
-            fontWeight: '600',
-        },
-        subsection: {
-            marginBottom: isMobile ? '20px' : '30px',
-            padding: isMobile ? '15px' : '20px',
-            backgroundColor: colors.background,
-            borderRadius: '8px',
-        },
-        subsectionTitle: {
-            fontSize: isMobile ? '16px' : '20px',
-            color: colors.secondary,
-            marginBottom: isMobile ? '10px' : '15px',
-            fontWeight: '500',
-        },
-        list: {
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-        },
-        listItem: {
-            marginBottom: isMobile ? '8px' : '12px',
-            fontSize: isMobile ? '14px' : '16px',
-            lineHeight: '1.6',
-            color: colors.text,
-            paddingLeft: '20px',
-            position: 'relative',
-            '&::before': {
-                content: '"•"',
-                position: 'absolute',
-                left: '0',
-                color: colors.accent,
-            },
-        },
-        bold: {
-            fontWeight: '600',
-            color: colors.primary,
-        },
-        footer: {
-            marginTop: isMobile ? '30px' : '50px',
-            textAlign: 'center',
-            color: colors.secondary,
-            fontSize: isMobile ? '12px' : '14px',
-        },
-        table: {
-            width: '100%',
-            overflowX: 'auto',
-            display: 'block',
-            WebkitOverflowScrolling: 'touch',
-            marginBottom: isMobile ? '15px' : '20px',
-            fontSize: isMobile ? '13px' : '14px',
-        },
-        subsectionIcon: {
-            minWidth: isMobile ? '20px' : '24px',
-            height: isMobile ? '20px' : '24px',
-            marginRight: isMobile ? '8px' : '12px',
-            color: colors.accent,
-        },
-        paragraph: {
-            fontSize: isMobile ? '12px' : '14px',
-            lineHeight: '1.6',
-            color: colors.text,
-            maxWidth: '800px',
-            margin: '0 auto',
-            marginBottom: isMobile ? '15px' : '20px',
-        }
-    };
-
-    const SubsectionTitle = ({ icon, children }) => (
-        <h3 style={{
-            ...styles.subsectionTitle,
+        tabContainer: {
             display: 'flex',
-            alignItems: 'center',
-        }}>
-            <span style={styles.subsectionIcon}>{icon}</span>
-            <span style={{
-                flex: 1,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: isMobile ? 'normal' : 'nowrap',
-                lineHeight: isMobile ? '1.3' : '1.5',
-            }}>{children}</span>
-        </h3>
-    );
+            justifyContent: 'center',
+            marginBottom: isMobile ? '25px' : '30px',
+            flexWrap: isMobile ? 'wrap' : 'nowrap',
+            gap: isMobile ? '8px' : '10px',
+            marginTop: isMobile ? '10px' : '0',
+        },
+        tab: {
+            padding: isMobile ? '10px 8px' : '10px 20px',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontWeight: '500',
+            fontSize: isMobile ? '13px' : '16px',
+            transition: 'all 0.3s ease',
+            textAlign: 'center',
+            flex: isMobile ? '1 0 45%' : 'initial',
+            marginBottom: isMobile ? '5px' : '0',
+        },
+        activeTab: {
+            backgroundColor: colors.primary,
+            color: 'white',
+        },
+        inactiveTab: {
+            backgroundColor: colors.background,
+            color: colors.primary,
+            border: `1px solid ${colors.border}`,
+        },
+    };
 
     return (
         <div style={styles.container}>
             <div style={styles.contentWrapper}>
-                <header style={styles.header}>
-                    <h1 style={styles.title}>Agroclimate Viewer & Planner App Documentation</h1>
-                    <p style={{
-                        fontSize: isMobile ? '14px' : '16px',
-                        lineHeight: '1.6',
-                        color: colors.text,
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        marginBottom: isMobile ? '15px' : '20px',
-                    }}>
-                        Welcome to the comprehensive guide for the Agroclimate Viewer & Planner App. 
-                        This documentation will help you understand and utilize all the features effectively.
-                    </p>
-                </header>
-
-                <div style={styles.section}>
-                    <h2 style={styles.sectionTitle}>1. Overview</h2>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '30px',
-                        flexWrap: 'wrap',
-                        marginTop: '20px'
-                    }}>
-                        <div style={{
-                            flex: '0 0 300px',
-                            maxWidth: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <img 
-                                src="/Agroclimate/logo.png"
-                                alt="Agroclimate Logo"
-                                style={{
-                                    maxWidth: '100%',
-                                    height: 'auto',
-                                    borderRadius: '8px',
-                                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-                                }}
-                            />
-                        </div>
-                        <div style={{
-                            flex: '1 1 500px',
-                            fontSize: isMobile ? '14px' : '16px',
-                            lineHeight: '1.6',
-                            color: '#333'
-                        }}>
-                            The Agroclimate Viewer & Planner App is an interactive web-based tool designed to help users monitor, forecast, and analyze agroclimatic conditions for their croplands. By leveraging Google Earth Engine (GEE), the application provides insights through satellite imagery, weather forecasts, soil data, and climate patterns. Users can draw field boundaries, select specific parameters, and generate visualizations to aid in informed agricultural decision-making.
-                        </div>
+                <div style={styles.tabContainer}>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'main' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('main')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'main') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'main') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        Main Tool
+                    </div>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'ndvi' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('ndvi')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'ndvi') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'ndvi') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        NDVI Viewer
+                    </div>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'spray' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('spray')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'spray') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'spray') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        Spray Planner
+                    </div>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'gdd' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('gdd')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'gdd') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'gdd') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        Crop Growth Tracker
+                    </div>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'cropRisk' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('cropRisk')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'cropRisk') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'cropRisk') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        Crop Risk Analysis
                     </div>
                 </div>
 
-                <div style={styles.section}>
-                    <h2 style={styles.sectionTitle}>2. Key Features</h2>
-                    <ul style={styles.list}>
-                        <li style={styles.listItem}><span style={styles.bold}>Field Selection & Data Management:</span> Users can specify the number of fields to analyze (up to 5 fields per session).</li>
-                        <li style={styles.listItem}><span style={styles.bold}>Vegetation Index (VI) Analysis:</span> Evaluate NDVI for crop health monitoring.</li>
-                        <li style={styles.listItem}><span style={styles.bold}>NDVI Mean Temporal Plot:</span> Evaluate average NDVI trends over time for selected regions.</li>
-                        <li style={styles.listItem}><span style={styles.bold}>Climatic Data Trends:</span> Observe temperature, soil moisture, and evapotranspiration trends.</li>
-                        <li style={styles.listItem}><span style={styles.bold}>Rainfall Data Analysis:</span> Visualize historical precipitation data for cropland planning.</li>
-                        <li style={styles.listItem}><span style={styles.bold}>Weather Forecasting:</span> Access 16-day weather predictions for selected locations.</li>
-                        <li style={styles.listItem}><span style={styles.bold}>Soil Parameter Analysis:</span> Analyze soil composition, pH, and other characteristics at different depths.</li>
-                        <li style={styles.listItem}><span style={styles.bold}>Growing Degree Days (GDD) Calculation:</span> Track crop growth stages using temperature-based heat accumulation.</li>
-                    </ul>
-                </div>
-
-                <div style={styles.section}>
-                    <h2 style={styles.sectionTitle}>3. Functional Components</h2>
-                    
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                                <path d="M3 3h18v18H3z"/>
-                                <path d="M8 12h8"/>
-                                <path d="M12 8v8"/>
-                            </svg>
-                        }>
-                            1. Field Selection & Data Management
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}>Users can select the number of fields to analyze (up to 5 fields per session).</li>
-                            <li style={styles.listItem}>The tool allows drawing and adjusting field boundaries on an interactive map.</li>
-                            <li style={styles.listItem}>Users can define the start and end dates for data analysis (up to 10 months).</li>
-                            <li style={styles.listItem}>The system validates field boundaries and selected dates to ensure proper data retrieval.</li>
-                            <li style={styles.listItem}>After setting parameters, users can load data for analysis.</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            <path d="M9 12l2 2 4-4"/>
-                        </svg>
-                        }>
-                            2. Vegetation Index (VI) Analysis
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}>Provides NDVI-based vegetation monitoring using Sentinel-2 satellite data.</li>
-                            <li style={styles.listItem}>Users can select NDVI values for specific fields over a selected time range.</li>
-                            <li style={styles.listItem}>The system calculates and visualizes NDVI trends in both graphical and map formats.</li>
-                            <li style={styles.listItem}>NDVI helps determine vegetation health, crop vigor, and areas of potential stress.</li>
-                            <li style={styles.listItem}>The visualization includes a color-coded map indicating NDVI intensity levels.</li>
-                            <li style={styles.listItem}>NDVI data is automatically updated with the latest satellite observations.</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M3 3v18h18"/>
-                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
-                        </svg>
-                        }>
-                            3. NDVI Mean Temporal Plot
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}>Displays the average NDVI values over time for selected fields.</li>
-                            <li style={styles.listItem}>Helps assess long-term trends in vegetation health and seasonal changes.</li>
-                            <li style={styles.listItem}>Enables users to compare NDVI fluctuations across different growing seasons.</li>
-                            <li style={styles.listItem}>The plot is useful for detecting potential stress areas and growth patterns.</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M12 2v2"/>
-                            <path d="M12 20v2"/>
-                            <path d="M2 12h2"/>
-                            <path d="M20 12h2"/>
-                            <circle cx="12" cy="12" r="5"/>
-                        </svg>
-                        }>
-                            4. Climatic Data Trends
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}><span style={styles.bold}>Frequency Selection:</span> Users can choose to visualize data at daily, weekly, or monthly intervals.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Surface Soil Moisture:</span> Measures moisture availability in the topsoil layer, influencing seed germination and early plant growth. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Rootzone Soil Moisture:</span> Indicates moisture levels in deeper soil layers, impacting crop water uptake. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Surface Temperature:</span> Measures the temperature at the land surface, affecting plant heat stress. Units: Fahrenheit.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Soil Temperature:</span> Indicates temperature variations at different soil depths, influencing microbial activity and root development. Units: Fahrenheit.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Evapotranspiration:</span> Represents water loss due to soil evaporation and plant transpiration, crucial for irrigation planning. Units: Inches.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Precipitation:</span> Tracks historical and seasonal rainfall trends, affecting soil moisture and crop yields. Units: Inches.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Specific Humidity:</span> Measures the water vapor content in the atmosphere, influencing plant transpiration rates. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Wind Speed:</span> Analyzes air movement across croplands, affecting evapotranspiration and crop lodging risks. Units: Miles per hour.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Air Temperature:</span> Tracks daily, seasonal, and long-term temperature fluctuations, impacting plant growth cycles. Units: Fahrenheit.</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 1 1 2.5 8.242"/>
-                            <path d="M16 14v6"/>
-                            <path d="M8 14v6"/>
-                            <path d="M12 16v6"/>
-                        </svg>
-                        }>
-                            5. Rainfall Data Analysis
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}>Visualizes historical precipitation data over a selected time period.</li>
-                            <li style={styles.listItem}>Helps in assessing drought conditions and water availability for crops.</li>
-                            <li style={styles.listItem}>Provides seasonal and monthly rainfall trends for agricultural planning.</li>
-                            <li style={styles.listItem}>Units: Inches.</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M6.083 13a6 6 0 1 1 11.834 0h-2.834l-3 9-3-9h-3z"/>
-                            <path d="M5 13a9 9 0 0 1 6-6.75"/>
-                            <path d="M19 13a9 9 0 0 0-6-6.75"/>
-                        </svg>
-                        }>
-                            6. Weather Forecasting
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}><span style={styles.bold}>Air Temperature:</span> Provides expected daily temperature changes, essential for predicting heat stress and frost conditions. Units: Fahrenheit.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Specific Humidity:</span> Measures the water vapor content in the air, affecting transpiration and moisture retention. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Relative Humidity:</span> Expressed as a percentage, indicating how saturated the air is with moisture. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Precipitation:</span> Forecasts expected rainfall, useful for irrigation scheduling and flood risk assessment. Units: Inches.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Wind Speed:</span> Predicts wind conditions, crucial for pesticide spraying and crop lodging risk assessment. Units: Miles per hour.</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M2 22h20"/>
-                            <path d="M7 10l5-6 5 6"/>
-                            <path d="M12 4v16"/>
-                        </svg>
-                        }>
-                            7. Soil Parameter Analysis
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}><span style={styles.bold}>Sand Content:</span> Indicates the proportion of sand particles in the soil, affecting drainage and aeration. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Silt Content:</span> Represents medium-sized soil particles that retain moisture while providing good drainage. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Clay Content:</span> Measures the smallest soil particles, which help with nutrient retention but can cause compaction. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Bulk Density:</span> Defines soil compaction, influencing root penetration and water movement. Units: Pounds per cubic foot.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Cation Exchange Capacity:</span> Shows the soil’s ability to hold and exchange nutrients, affecting fertility. Units: Centimoles per kilogram (cmol/kg).</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Nitrogen Content:</span> Measures the amount of nitrogen available for plant uptake, essential for crop growth. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Organic Carbon Content:</span> Reflects the amount of organic matter in the soil, improving fertility and structure. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Volumetric Fraction of Coarse Fragments:</span> Represents the proportion of large soil particles that impact soil aeration and water retention. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Organic Carbon Stocks:</span> Indicates the amount of organic carbon stored in the soil, essential for soil health and carbon sequestration. Units: Inches.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Soil pH:</span> Determines soil acidity or alkalinity, influencing nutrient availability. Units: pH scale (0–14).</li>
-                        </ul>
-                    </div>
-
-                    <div style={styles.subsection}>
-                        <SubsectionTitle icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                        }>
-                            8. Growing Degree Days (GDD) Calculation
-                        </SubsectionTitle>
-                        <ul style={styles.list}>
-                            <li style={styles.listItem}>Helps track cumulative heat accumulation required for crop growth and development.</li>
-                            <li style={styles.listItem}>Used to predict key growth stages such as germination, flowering, and maturity.</li>
-                            <li style={styles.listItem}>Assists in determining optimal planting and harvesting times.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Crop Selections:</span> Corn, Soybeans, Peanut, Cotton, Rice, Wheat, Barley, Sunflower, Potato, Sorghum, Lettuce.</li>
-                            <li style={styles.listItem}>Fahrenheit based on crop-specific base temperature.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div style={styles.section}>
-                    <h2 style={styles.sectionTitle}>4. Data Sources</h2>
-                    <div style={{
-                        overflowX: 'auto',
-                        marginTop: '20px'
-                    }}>
-                        <table style={{
-                            width: '100%',
-                            borderCollapse: 'collapse',
-                            backgroundColor: 'white',
-                            fontSize: isMobile ? '13px' : '14px',
-                            lineHeight: '1.6',
-                            border: '1px solid #ddd'
-                        }}>
-                            <thead>
-                                <tr style={{
-                                    backgroundColor: '#2c3e50',
-                                    color: 'white',
-                                }}>
-                                    <th style={{
-                                        padding: '15px',
-                                        textAlign: 'left',
-                                        borderBottom: '2px solid #ddd',
-                                        width: '25%'
-                                    }}>Dataset Name</th>
-                                    <th style={{
-                                        padding: '15px',
-                                        textAlign: 'left',
-                                        borderBottom: '2px solid #ddd',
-                                        width: '55%'
-                                    }}>Description</th>
-                                    <th style={{
-                                        padding: '15px',
-                                        textAlign: 'left',
-                                        borderBottom: '2px solid #ddd',
-                                        width: '20%'
-                                    }}>Dataset Link</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            Sentinel-2
-                                        </span>
-                                        <code style={{ 
-                                            color: '#666',
-                                            fontSize: '12px',
-                                            backgroundColor: '#f1f1f1',
-                                            padding: '4px 6px',
-                                            borderRadius: '4px',
-                                            display: 'inline-block'
-                                        }}>
-                                            "COPERNICUS/S2"
-                                        </code>
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        Sentinel-2 MSI Level-1C data for vegetation monitoring. Provides high-resolution optical imagery 
-                                        for land monitoring, emergency management, and security services.
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
-                                               color: '#3498db',
-                                               textDecoration: 'none',
-                                               fontWeight: 'bold'
-                                           }}>
-                                            View Dataset →
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            NOAA GFS
-                                        </span>
-                                        <code style={{ 
-                                            color: '#666',
-                                            fontSize: '12px',
-                                            backgroundColor: '#f1f1f1',
-                                            padding: '4px 6px',
-                                            borderRadius: '4px',
-                                            display: 'inline-block'
-                                        }}>
-                                            "NOAA/GFS0P25"
-                                        </code>
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        NOAA Global Forecast System (GFS) weather forecast data. Provides global weather 
-                                        forecasts for 16 days.
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NOAA_GFS0P25" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
-                                               color: '#3498db',
-                                               textDecoration: 'none',
-                                               fontWeight: 'bold'
-                                           }}>
-                                            View Dataset →
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            CHIRPS
-                                        </span>
-                                        <code style={{ 
-                                            color: '#666',
-                                            fontSize: '12px',
-                                            backgroundColor: '#f1f1f1',
-                                            padding: '4px 6px',
-                                            borderRadius: '4px',
-                                            display: 'inline-block'
-                                        }}>
-                                            'UCSB-CHG/CHIRPS/DAILY'
-                                        </code>
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        Climate Hazards Group InfraRed Precipitation with Station Data. Provides daily 
-                                        precipitation estimates from rain gauge and satellite observations.
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/UCSB-CHG_CHIRPS_DAILY" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
-                                               color: '#3498db',
-                                               textDecoration: 'none',
-                                               fontWeight: 'bold'
-                                           }}>
-                                            View Dataset →
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            NASA SMAP
-                                        </span>
-                                        <code style={{ 
-                                            color: '#666',
-                                            fontSize: '12px',
-                                            backgroundColor: '#f1f1f1',
-                                            padding: '4px 6px',
-                                            borderRadius: '4px',
-                                            display: 'inline-block'
-                                        }}>
-                                            'NASA/SMAP/SPL4SMGP/007'
-                                        </code>
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        NASA SMAP Level-4 Global 3-hourly Surface and Root Zone Soil Moisture. Provides 
-                                        global soil moisture data at various depths.
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_007" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
-                                               color: '#3498db',
-                                               textDecoration: 'none',
-                                               fontWeight: 'bold'
-                                           }}>
-                                            View Dataset →
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            USDA NASS CDL
-                                        </span>
-                                        <code style={{ 
-                                            color: '#666',
-                                            fontSize: '12px',
-                                            backgroundColor: '#f1f1f1',
-                                            padding: '4px 6px',
-                                            borderRadius: '4px',
-                                            display: 'inline-block'
-                                        }}>
-                                            "USDA/NASS/CDL"
-                                        </code>
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        USDA National Agricultural Statistics Service Cropland Data Layer. Provides crop-specific 
-                                        land cover data for the continental United States.
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/USDA_NASS_CDL" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
-                                               color: '#3498db',
-                                               textDecoration: 'none',
-                                               fontWeight: 'bold'
-                                           }}>
-                                            View Dataset →
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            SoilGrids
-                                        </span>
-                                        <code style={{ 
-                                            color: '#666',
-                                            fontSize: '12px',
-                                            backgroundColor: '#f1f1f1',
-                                            padding: '4px 6px',
-                                            borderRadius: '4px',
-                                            display: 'inline-block'
-                                        }}>
-                                            "projects/soilgrids-isric"
-                                        </code>
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        Global gridded soil information system providing soil property maps and predictions. 
-                                        Includes key soil properties like organic carbon, bulk density, pH, soil texture fractions and more.
-                                    </td>
-                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <a href="https://www.isric.org/explore/soilgrids" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
-                                               color: '#3498db',
-                                               textDecoration: 'none',
-                                               fontWeight: 'bold'
-                                           }}>
-                                            View Dataset →
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div style={styles.section}>
-                    <h2 style={styles.sectionTitle}>5. Product Demo</h2>
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: isMobile ? 'column' : 'row',
-                        gap: '20px',
-                        marginTop: '20px'
-                    }}>
-                        {/* Main Tool Demo */}
-                        <div style={{
-                            flex: '1',
-                            background: 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)',
-                            borderRadius: '20px',
-                            padding: '40px',
-                            color: 'white',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            boxShadow: '0 10px 30px rgba(52, 152, 219, 0.2)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            minHeight: isMobile ? 'auto' : '600px'
-                        }}>
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                opacity: 0.1,
-                                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
-                                zIndex: 1
-                            }} />
-
-                            <div style={{
-                                position: 'relative',
-                                zIndex: 2,
-                                flex: 1,
-                                display: 'flex',
-                                flexDirection: 'column'
-                            }}>
-                                <h3 style={{
-                                    margin: '0 0 15px 0',
-                                    fontSize: '28px',
-                                    fontWeight: '600',
-                                    letterSpacing: '0.5px'
-                                }}>
-                                    Main Tool Demo
-                                </h3>
-                                <p style={{
-                                    margin: '0 0 30px 0',
-                                    fontSize: '16px',
-                                    opacity: 0.9,
-                                    lineHeight: '1.6'
-                                }}>
-                                    Get a comprehensive walkthrough of all features in the Agroclimate Viewer & Planner App. Learn how to analyze crop data, monitor weather patterns, and make data-driven decisions.
-                                </p>
-                                <div style={{
-                                    flex: 1,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '20px'
-                                }}>
-                                    <div style={{
-                                        position: 'relative',
-                                        width: '100%',
-                                        flex: 1,
-                                        minHeight: '300px',
-                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                                        borderRadius: '12px',
-                                        overflow: 'hidden'
-                                    }}>
-                                        <iframe
-                                            style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                border: 'none'
-                                            }}
-                                            src="https://www.youtube.com/embed/nZ7mCx14ME4"
-                                            title="Main Tool Demo Video"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        />
-                                    </div>
-                                    <a 
-                                        href="https://youtu.be/nZ7mCx14ME4"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: '10px',
-                                            background: 'rgba(255, 255, 255, 0.1)',
-                                            padding: '12px 24px',
-                                            borderRadius: '30px',
-                                            backdropFilter: 'blur(5px)',
-                                            color: 'white',
-                                            textDecoration: 'none',
-                                            transition: 'all 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-                                        }}
-                                    >
-                                        <svg 
-                                            width="20" 
-                                            height="20" 
-                                            viewBox="0 0 24 24" 
-                                            fill="none" 
-                                            stroke="currentColor" 
-                                            strokeWidth="2" 
-                                            strokeLinecap="round" 
-                                            strokeLinejoin="round"
-                                        >
-                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
-                                        </svg>
-                                        <span style={{
-                                            fontSize: '16px',
-                                            fontWeight: '500'
-                                        }}>
-                                            Watch on YouTube
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* NDVI Tool Demo */}
-                        <div style={{
-                            flex: '1',
-                            background: 'linear-gradient(135deg, #1a5f3c 0%, #2ecc71 100%)',
-                            borderRadius: '20px',
-                            padding: '40px',
-                            color: 'white',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            boxShadow: '0 10px 30px rgba(46, 204, 113, 0.2)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            minHeight: isMobile ? 'auto' : '600px'
-                        }}>
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                opacity: 0.1,
-                                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
-                                zIndex: 1
-                            }} />
-
-                            <div style={{
-                                position: 'relative',
-                                zIndex: 2,
-                                flex: 1,
-                                display: 'flex',
-                                flexDirection: 'column'
-                            }}>
-                                <h3 style={{
-                                    margin: '0 0 15px 0',
-                                    fontSize: '28px',
-                                    fontWeight: '600',
-                                    letterSpacing: '0.5px'
-                                }}>
-                                    NDVI Tool Demo
-                                </h3>
-                                <p style={{
-                                    margin: '0 0 30px 0',
-                                    fontSize: '16px',
-                                    opacity: 0.9,
-                                    lineHeight: '1.6'
-                                }}>
-                                    Learn how to use our specialized NDVI tool for monitoring vegetation health, analyzing crop vigor, and identifying areas of potential stress in your fields.
-                                </p>
-                                <div style={{
-                                    flex: 1,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '20px'
-                                }}>
-                                    <div style={{
-                                        position: 'relative',
-                                        width: '100%',
-                                        flex: 1,
-                                        minHeight: '300px',
-                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                                        borderRadius: '12px',
-                                        overflow: 'hidden'
-                                    }}>
-                                        <iframe
-                                            style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                border: 'none'
-                                            }}
-                                            src="https://www.youtube.com/embed/pB3WCnZKYj8"
-                                            title="NDVI Tool Demo Video"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        />
-                                    </div>
-                                    <a 
-                                        href="https://youtu.be/pB3WCnZKYj8"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: '10px',
-                                            background: 'rgba(255, 255, 255, 0.1)',
-                                            padding: '12px 24px',
-                                            borderRadius: '30px',
-                                            backdropFilter: 'blur(5px)',
-                                            color: 'white',
-                                            textDecoration: 'none',
-                                            transition: 'all 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-                                        }}
-                                    >
-                                        <svg 
-                                            width="20" 
-                                            height="20" 
-                                            viewBox="0 0 24 24" 
-                                            fill="none" 
-                                            stroke="currentColor" 
-                                            strokeWidth="2" 
-                                            strokeLinecap="round" 
-                                            strokeLinejoin="round"
-                                        >
-                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
-                                        </svg>
-                                        <span style={{
-                                            fontSize: '16px',
-                                            fontWeight: '500'
-                                        }}>
-                                            Watch on YouTube
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <footer style={styles.footer}>
-                    <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
-                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
-                    </p>
-                    <p style={{...styles.paragraph, color: colors.secondary}}>
-                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research & Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
-                    </p>
-                </footer>
+                {activeTab === 'main' && (
+                    <MainDocumentation />
+                )}
+                
+                {activeTab === 'ndvi' && (
+                    <NDVIDocumentation />
+                )}
+                
+                {activeTab === 'spray' && (
+                    <SprayDocumentation />
+                )}
+                {activeTab === 'gdd' && (
+                    <GDDDocumentation />
+                )}
+                {activeTab === 'cropRisk' && (
+                    <CropRiskDocumentation />
+                )}
             </div>
         </div>
     );
