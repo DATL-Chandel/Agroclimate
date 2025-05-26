@@ -3,6 +3,11 @@ import SorghumContent from './SorghumContent';
 import SoybeanContent from './SoybeanContent';
 import StrawberryContent from './StrawberryContent';
 import WheatContent from './WheatContent';
+import AppleContent from './AppleContent';
+import GrapeContent from './GrapeContent';
+import TomatoContent from './TomatoContent';
+import WatermelonContent from './WatermelonContent';
+import BlueberryContent from './BlueberryContent';
 
 const GDDDocumentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -312,7 +317,7 @@ const GDDDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '15px'
                             }}>
-                                For selected crops (e.g., Corn, Cotton, Peanut, Soybean, Sorghum, Wheat, Strawberries), the tool displays a <span style={styles.bold}>predefined table</span> containing:
+                                For selected crops (e.g., Corn, Cotton, Peanut, Soybean, Sorghum, Wheat, Strawberries, Apple, Grape, Tomato, Watermelon, Blueberry), the tool displays a <span style={styles.bold}>predefined table</span> containing:
                             </p>
                             <ul style={styles.list}>
                                 <li style={styles.listItem}><span style={styles.bold}>Stage name</span> (e.g., "Emergence", "Silking", "Harvest Maturity")</li>
@@ -460,6 +465,11 @@ const GDDDocumentation = () => {
                                 <option value="sorghum">Sorghum</option>
                                 <option value="wheat">Wheat</option>
                                 <option value="strawberry">Strawberry</option>
+                                <option value="apple">Apple</option>
+                                <option value="grape">Grape</option>
+                                <option value="tomato">Tomato</option>
+                                <option value="watermelon">Watermelon</option>
+                                <option value="blueberry">Blueberry</option>
                             </select>
                         </div>
                         
@@ -1464,7 +1474,7 @@ const GDDDocumentation = () => {
                         </div>
                         }
                         
-                        // {/* Peanut Growth Stages */}
+                        {/* Peanut Growth Stages */}
                         {selectedCrop === 'peanut' && <div style={{
                             backgroundColor: colors.background,
                             borderRadius: '8px',
@@ -1885,6 +1895,16 @@ const GDDDocumentation = () => {
                         {selectedCrop === 'strawberry' && <StrawberryContent isMobile={isMobile} colors={colors} styles={styles} />}
                         {/* Wheat Growth Stages */}
                         {selectedCrop === 'wheat' && <WheatContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Apple Growth Stages */}
+                        {selectedCrop === 'apple' && <AppleContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Grape Growth Stages */}
+                        {selectedCrop === 'grape' && <GrapeContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Tomato Growth Stages */}
+                        {selectedCrop === 'tomato' && <TomatoContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Watermelon Growth Stages */}
+                        {selectedCrop === 'watermelon' && <WatermelonContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Blueberry Growth Stages */}
+                        {selectedCrop === 'blueberry' && <BlueberryContent isMobile={isMobile} colors={colors} styles={styles} />}
                     </div>
                 </div>
 
