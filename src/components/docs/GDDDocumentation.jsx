@@ -8,6 +8,16 @@ import GrapeContent from './GrapeContent';
 import TomatoContent from './TomatoContent';
 import WatermelonContent from './WatermelonContent';
 import BlueberryContent from './BlueberryContent';
+import SweetCornContent from './SweetCornContent';
+import BroccoliContent from './BroccoliContent';
+import TobaccoContent from './TobaccoContent';
+import PumpkinContent from './PumpkinContent';
+import GreenBeanContent from './GreenBeanContent';
+import AlmondContent from './AlmondContent';
+import BarleyContent from './BarleyContent';
+import AlfalfaContent from './AlfalfaContent';
+import CabbageContent from './CabbageContent';
+import CanolaContent from './CanolaContent';
 
 const GDDDocumentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -458,22 +468,58 @@ const GDDDocumentation = () => {
                                     cursor: 'pointer'
                                 }}
                             >
+                                <option value="alfalfa">Alfalfa</option>
+                                <option value="almond">Almond</option>
+                                <option value="apple">Apple</option>
+                                <option value="barley">Barley</option>
+                                <option value="blueberry">Blueberry</option>
+                                <option value="broccoli">Broccoli</option>
+                                <option value="cabbage">Cabbage</option>
+                                <option value="canola">Canola</option>
                                 <option value="corn">Corn</option>
                                 <option value="cotton">Cotton</option>
-                                <option value="peanut">Peanut</option>
-                                <option value="soybean">Soybean</option>
-                                <option value="sorghum">Sorghum</option>
-                                <option value="wheat">Wheat</option>
-                                <option value="strawberry">Strawberry</option>
-                                <option value="apple">Apple</option>
                                 <option value="grape">Grape</option>
+                                <option value="greenbean">Green Bean</option>
+                                <option value="peanut">Peanut</option>
+                                <option value="pumpkin">Pumpkin</option>
+                                <option value="sorghum">Sorghum</option>
+                                <option value="soybean">Soybean</option>
+                                <option value="strawberry">Strawberry</option>
+                                <option value="sweetcorn">Sweet Corn</option>
+                                <option value="tobacco">Tobacco</option>
                                 <option value="tomato">Tomato</option>
                                 <option value="watermelon">Watermelon</option>
-                                <option value="blueberry">Blueberry</option>
+                                <option value="wheat">Wheat</option>
                             </select>
                         </div>
                         
-                        {/* Crop Growth Stages - Conditionally render based on selected crop */}
+                        {/* Alfalfa Growth Stages */}
+                        {selectedCrop === 'alfalfa' && <AlfalfaContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Almond Growth Stages */}
+                        {selectedCrop === 'almond' && <AlmondContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Barley Growth Stages */}
+                        {selectedCrop === 'barley' && <BarleyContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Cabbage Growth Stages */}
+                        {selectedCrop === 'cabbage' && <CabbageContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Green Bean Growth Stages */}
+                        {selectedCrop === 'greenbean' && <GreenBeanContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Pumpkin Growth Stages */}
+                        {selectedCrop === 'pumpkin' && <PumpkinContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Tobacco Growth Stages */}
+                        {selectedCrop === 'tobacco' && <TobaccoContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Broccoli Growth Stages */}
+                        {selectedCrop === 'broccoli' && <BroccoliContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Sweet Corn Growth Stages */}
+                        {selectedCrop === 'sweetcorn' && <SweetCornContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
                         {/* Corn Growth Stages */}
                         {selectedCrop === 'corn' && <div style={{
                             backgroundColor: colors.background,
@@ -1241,83 +1287,6 @@ const GDDDocumentation = () => {
                                 gap: '8px'
                             }}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="12" y1="8" x2="12" y2="16"></line>
-                                    <line x1="8" y1="12" x2="16" y2="12"></line>
-                                </svg>
-                                Cotton Boll Opening: Intermediate Stages
-                            </h4>
-                            
-                            <div style={{
-                                backgroundColor: 'white',
-                                borderRadius: '8px',
-                                padding: '15px',
-                                marginBottom: '25px',
-                                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-                            }}>
-                                <table style={{
-                                    width: '100%',
-                                    borderCollapse: 'collapse',
-                                    fontSize: isMobile ? '13px' : '14px'
-                                }}>
-                                    <thead>
-                                        <tr>
-                                            <th style={{padding: '8px 12px', textAlign: 'left', borderBottom: '2px solid #e0e0e0', color: colors.primary}}>Stage</th>
-                                            <th style={{padding: '8px 12px', textAlign: 'left', borderBottom: '2px solid #e0e0e0', color: colors.primary}}>Approx. GDD (DD60s)</th>
-                                            <th style={{padding: '8px 12px', textAlign: 'left', borderBottom: '2px solid #e0e0e0', color: colors.primary}}>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', fontWeight: '500', color: colors.primary}}>First Open Boll</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>~1900</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>Initial bolls begin to crack open, revealing white lint.</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', fontWeight: '500', color: colors.primary}}>20% Open Bolls</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>~2000</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>About one-fifth of the bolls are open; irrigation may continue to support remaining boll maturation.</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', fontWeight: '500', color: colors.primary}}>40% Open Bolls</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>~2100</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>Nearly half of the bolls are open; early defoliation may be considered under certain conditions.</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', fontWeight: '500', color: colors.primary}}>60% Open Bolls</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>~2200</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>Standard threshold for applying defoliants; majority of bolls are mature.</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', fontWeight: '500', color: colors.primary}}>80% Open Bolls</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>~2300</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>Most bolls are open; harvest preparations intensify.</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', fontWeight: '500', color: colors.primary}}>90% Open Bolls</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>~2400</td>
-                                            <td style={{padding: '8px 12px', borderBottom: '1px solid #e0e0e0', color: colors.primary}}>Final bolls are opening; field is nearing full maturity.</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{padding: '8px 12px', fontWeight: '500', color: colors.primary}}>Harvest Ready</td>
-                                            <td style={{padding: '8px 12px', color: colors.primary}}>~2500</td>
-                                            <td style={{padding: '8px 12px', color: colors.primary}}>Optimal time for harvest; 90%+ of bolls are open, and defoliation has been completed.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <h4 style={{
-                                fontSize: isMobile ? '16px' : '18px',
-                                color: colors.secondary,
-                                marginBottom: '15px',
-                                marginTop: '30px',
-                                fontWeight: '600',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '8px'
-                            }}>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
                                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                                 </svg>
@@ -1905,6 +1874,16 @@ const GDDDocumentation = () => {
                         {selectedCrop === 'watermelon' && <WatermelonContent isMobile={isMobile} colors={colors} styles={styles} />}
                         {/* Blueberry Growth Stages */}
                         {selectedCrop === 'blueberry' && <BlueberryContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Green Bean Growth Stages */}
+                        {selectedCrop === 'greenbean' && <GreenBeanContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Almond Growth Stages */}
+                        {selectedCrop === 'almond' && <AlmondContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Barley Growth Stages */}
+                        {selectedCrop === 'barley' && <BarleyContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Cabbage Growth Stages */}
+                        {selectedCrop === 'cabbage' && <CabbageContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Canola Growth Stages */}
+                        {selectedCrop === 'canola' && <CanolaContent isMobile={isMobile} colors={colors} styles={styles} />}
                     </div>
                 </div>
 
@@ -2032,7 +2011,7 @@ const GDDDocumentation = () => {
                         margin: '20px 0',
                         textAlign: 'center'
                     }}>
-                        <div>
+                        {/* <div>
                             <h3 style={{
                                 fontSize: '24px',
                                 color: colors.primary,
@@ -2048,7 +2027,133 @@ const GDDDocumentation = () => {
                             }}>
                                 Video demonstrations of the GDD Tracker tool are currently being developed and will be available here shortly.
                             </p>
+                        </div> */}
+                        {/* Spray Planner (Mobile) */}
+                        <div style={{
+                            flex: '1',
+                            background: 'linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%)',
+                            borderRadius: '20px',
+                            padding: '40px',
+                            color: 'white',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            boxShadow: '0 10px 30px rgba(155, 89, 182, 0.2)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            minHeight: isMobile ? 'auto' : '600px'
+                        }}>
+                            <div style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                opacity: 0.1,
+                                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
+                                zIndex: 1
+                            }} />
+
+                            <div style={{
+                                position: 'relative',
+                                zIndex: 2,
+                                flex: 1,
+                                display: 'flex',
+                                flexDirection: 'column'
+                            }}>
+                                <h3 style={{
+                                    margin: '0 0 15px 0',
+                                    fontSize: '28px',
+                                    fontWeight: '600',
+                                    letterSpacing: '0.5px'
+                                }}>
+                                    Crop Growth Tracker Tool Demo
+                                </h3>
+                                <p style={{
+                                    margin: '0 0 30px 0',
+                                    fontSize: '16px',
+                                    opacity: 0.9,
+                                    lineHeight: '1.6'
+                                }}>
+                                    Get a comprehensive walkthrough of all features in the Crop Growth Tracker App . Learn to navigate and utilize all features efficiently and make data-driven decisionson smaller screens.
+                                </p>
+                                <div style={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '20px'
+                                }}>
+                                    <div style={{
+                                        position: 'relative',
+                                        width: '100%',
+                                        flex: 1,
+                                        minHeight: '300px',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        borderRadius: '12px',
+                                        overflow: 'hidden'
+                                    }}>
+                                        <iframe
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                border: 'none'
+                                            }}
+                                            src="https://www.youtube.com/embed/HU4G0rHSZ08?si=kXS9FdQVtGZU64Jb"
+                                            title="Crop Growth Tracker Video"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                    <a 
+                                        href="https://youtu.be/HU4G0rHSZ08?si=kXS9FdQVtGZU64Jb"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                            background: 'rgba(255, 255, 255, 0.1)',
+                                            padding: '12px 24px',
+                                            borderRadius: '30px',
+                                            backdropFilter: 'blur(5px)',
+                                            color: 'white',
+                                            textDecoration: 'none',
+                                            transition: 'all 0.3s ease',
+                                            cursor: 'pointer'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+                                        }}
+                                    >
+                                        <svg 
+                                            width="20" 
+                                            height="20" 
+                                            viewBox="0 0 24 24" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            strokeWidth="2" 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round"
+                                        >
+                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+                                        </svg>
+                                        <span style={{
+                                            fontSize: '16px',
+                                            fontWeight: '500'
+                                        }}>
+                                            Watch on YouTube
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
