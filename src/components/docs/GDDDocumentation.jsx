@@ -18,10 +18,97 @@ import BarleyContent from './BarleyContent';
 import AlfalfaContent from './AlfalfaContent';
 import CabbageContent from './CabbageContent';
 import CanolaContent from './CanolaContent';
+import CantaloupeContent from './CantaloupeContent';
+import CarrotContent from './CarrotContent';
+import CauliflowerContent from './CauliflowerContent';
+import CherryContent from './CherryContent';
+import CitrusContent from './CitrusContent';
+import CranberryContent from './CranberryContent';
+import DryBeanContent from './DryBeanContent';
+import HempContent from './HempContent';
+import LettuceContent from './LettuceContent';
+import OatsContent from './OatsContent';
+import OnionContent from './OnionContent';
+import PeachContent from './PeachContent';
+import PecanContent from './PecanContent';
+import PeasContent from './PeasContent';
+import PeppersContent from './PeppersContent';
+import PlumsContent from './PlumsContent';
+import PotatoContent from './PotatoContent';
+import RiceContent from './RiceContent';
+import SquashContent from './SquashContent';
+import SugarBeetContent from './SugarBeetContent';
+import SunflowerContent from './SunflowerContent';
+import SweetPotatoContent from './SweetPotatoContent';
 
 const GDDDocumentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [selectedCrop, setSelectedCrop] = useState('corn');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    // Crop options array
+    const cropOptions = [
+        { value: 'alfalfa', label: 'Alfalfa' },
+        { value: 'almond', label: 'Almond' },
+        { value: 'apple', label: 'Apple' },
+        { value: 'barley', label: 'Barley' },
+        { value: 'blueberry', label: 'Blueberry' },
+        { value: 'broccoli', label: 'Broccoli' },
+        { value: 'cabbage', label: 'Cabbage' },
+        { value: 'canola', label: 'Canola' },
+        { value: 'cantaloupe', label: 'Cantaloupe' },
+        { value: 'Carrot', label: 'Carrot' },
+        { value: 'Cauliflower', label: 'Cauliflower' },
+        { value: 'Cherry', label: 'Cherry' },
+        { value: 'Citrus', label: 'Citrus' },
+        { value: 'corn', label: 'Corn' },
+        { value: 'cotton', label: 'Cotton' },
+        { value: 'cranberry', label: 'Cranberry' },
+        { value: 'drybean', label: 'Dry Bean' },
+        { value: 'grape', label: 'Grape' },
+        { value: 'greenbean', label: 'Green Bean' },
+        { value: 'hemp', label: 'Hemp' },
+        { value: 'lettuce', label: 'Lettuce' },
+        { value: 'oats', label: 'Oats' },
+        { value: 'onion', label: 'Onion' },
+        { value: 'peach', label: 'Peach' },
+        { value: 'peanut', label: 'Peanut' },
+        { value: 'peas', label: 'Peas' },
+        { value: 'pecan', label: 'Pecan' },
+        { value: 'peppers', label: 'Peppers' },
+        { value: 'plums', label: 'Plums' },
+        { value: 'potato', label: 'Potato' },
+        { value: 'pumpkin', label: 'Pumpkin' },
+        { value: 'rice', label: 'Rice' },
+        { value: 'sorghum', label: 'Sorghum' },
+        { value: 'soybean', label: 'Soybean' },
+        { value: 'squash', label: 'Squash' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'sugarbeet', label: 'Sugar Beet' },
+        { value: 'sunflower', label: 'Sunflower' },
+        { value: 'sweetcorn', label: 'Sweet Corn' },
+        { value: 'sweetpotato', label: 'Sweet Potato' },
+        { value: 'tobacco', label: 'Tobacco' },
+        { value: 'tomato', label: 'Tomato' },
+        { value: 'watermelon', label: 'Watermelon' },
+        { value: 'wheat', label: 'Wheat' }
+    ];
+
+    // Filter crops based on search term
+    const filteredCrops = cropOptions.filter(crop =>
+        crop.label.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Get selected crop label
+    const selectedCropLabel = cropOptions.find(crop => crop.value === selectedCrop)?.label || '';
+
+    // Handle crop selection
+    const handleCropSelect = (cropValue, cropLabel) => {
+        setSelectedCrop(cropValue);
+        setSearchTerm('');
+        setIsDropdownOpen(false);
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -30,6 +117,18 @@ const GDDDocumentation = () => {
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest('.crop-dropdown')) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     const colors = {
@@ -168,6 +267,12 @@ const GDDDocumentation = () => {
 
     return (
         <>
+            <style>{`
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(-10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `}</style>
             <header style={styles.header}>
 
                     <h1 style={styles.title}>Crop Growth Tracking</h1>
@@ -453,44 +558,139 @@ const GDDDocumentation = () => {
                             }}>
                                 Select Crop:
                             </label>
-                            <select 
-                                id="cropSelect" 
-                                value={selectedCrop}
-                                onChange={(e) => setSelectedCrop(e.target.value)}
-                                style={{
-                                    padding: '8px 12px',
-                                    borderRadius: '6px',
-                                    border: `1px solid ${colors.border}`,
-                                    backgroundColor: 'white',
-                                    fontSize: isMobile ? '14px' : '16px',
-                                    color: colors.text,
-                                    width: isMobile ? '100%' : '200px',
-                                    cursor: 'pointer'
-                                }}
+                            <div 
+                                style={{ position: 'relative', width: isMobile ? '100%' : '250px' }}
+                                className="crop-dropdown"
                             >
-                                <option value="alfalfa">Alfalfa</option>
-                                <option value="almond">Almond</option>
-                                <option value="apple">Apple</option>
-                                <option value="barley">Barley</option>
-                                <option value="blueberry">Blueberry</option>
-                                <option value="broccoli">Broccoli</option>
-                                <option value="cabbage">Cabbage</option>
-                                <option value="canola">Canola</option>
-                                <option value="corn">Corn</option>
-                                <option value="cotton">Cotton</option>
-                                <option value="grape">Grape</option>
-                                <option value="greenbean">Green Bean</option>
-                                <option value="peanut">Peanut</option>
-                                <option value="pumpkin">Pumpkin</option>
-                                <option value="sorghum">Sorghum</option>
-                                <option value="soybean">Soybean</option>
-                                <option value="strawberry">Strawberry</option>
-                                <option value="sweetcorn">Sweet Corn</option>
-                                <option value="tobacco">Tobacco</option>
-                                <option value="tomato">Tomato</option>
-                                <option value="watermelon">Watermelon</option>
-                                <option value="wheat">Wheat</option>
-                            </select>
+                                <input
+                                    type="text"
+                                    placeholder={selectedCropLabel || "Search crops..."}
+                                    value={searchTerm}
+                                    onChange={(e) => {
+                                        setSearchTerm(e.target.value);
+                                        setIsDropdownOpen(true);
+                                    }}
+                                    style={{
+                                        width: '100%',
+                                        padding: '10px 40px 10px 16px',
+                                        borderRadius: '8px',
+                                        border: `2px solid ${colors.border}`,
+                                        backgroundColor: 'white',
+                                        fontSize: isMobile ? '14px' : '16px',
+                                        color: colors.text,
+                                        cursor: 'pointer',
+                                        outline: 'none',
+                                        transition: 'border-color 0.2s ease',
+                                        boxSizing: 'border-box'
+                                    }}
+                                    onFocus={(e) => {
+                                        setIsDropdownOpen(true);
+                                        e.target.style.borderColor = colors.accent;
+                                    }}
+                                    onBlur={(e) => {
+                                        e.target.style.borderColor = colors.border;
+                                    }}
+                                />
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    style={{
+                                        position: 'absolute',
+                                        right: '12px',
+                                        top: '50%',
+                                        transform: isDropdownOpen ? 'translateY(-50%) rotate(180deg)' : 'translateY(-50%)',
+                                        color: colors.secondary,
+                                        pointerEvents: 'none',
+                                        transition: 'transform 0.2s ease'
+                                    }}
+                                >
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                                
+                                {isDropdownOpen && (
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 'calc(100% + 4px)',
+                                        left: 0,
+                                        right: 0,
+                                        backgroundColor: 'white',
+                                        border: `2px solid ${colors.border}`,
+                                        borderRadius: '8px',
+                                        maxHeight: '250px',
+                                        overflowY: 'auto',
+                                        zIndex: 9999,
+                                        boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)',
+                                        animation: 'fadeIn 0.2s ease'
+                                    }}>
+                                        {filteredCrops.length > 0 ? (
+                                            filteredCrops.map((crop, index) => (
+                                                <div
+                                                    key={crop.value}
+                                                    onClick={() => handleCropSelect(crop.value, crop.label)}
+                                                    style={{
+                                                        padding: '12px 16px',
+                                                        cursor: 'pointer',
+                                                        borderBottom: index < filteredCrops.length - 1 ? `1px solid ${colors.border}` : 'none',
+                                                        backgroundColor: selectedCrop === crop.value ? '#e3f2fd' : 'white',
+                                                        fontSize: isMobile ? '14px' : '16px',
+                                                        color: colors.text,
+                                                        transition: 'background-color 0.2s ease'
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        if (selectedCrop !== crop.value) {
+                                                            e.target.style.backgroundColor = '#f5f5f5';
+                                                        }
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        if (selectedCrop !== crop.value) {
+                                                            e.target.style.backgroundColor = 'white';
+                                                        } else {
+                                                            e.target.style.backgroundColor = '#e3f2fd';
+                                                        }
+                                                    }}
+                                                >
+                                                    {crop.label}
+                                                    {selectedCrop === crop.value && (
+                                                        <svg 
+                                                            width="16" 
+                                                            height="16" 
+                                                            viewBox="0 0 24 24" 
+                                                            fill="none" 
+                                                            stroke="currentColor" 
+                                                            strokeWidth="2" 
+                                                            strokeLinecap="round" 
+                                                            strokeLinejoin="round"
+                                                            style={{ 
+                                                                float: 'right', 
+                                                                color: colors.accent,
+                                                                marginTop: '2px'
+                                                            }}
+                                                        >
+                                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                                        </svg>
+                                                    )}
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <div style={{
+                                                padding: '16px',
+                                                color: colors.secondary,
+                                                fontSize: isMobile ? '14px' : '16px',
+                                                fontStyle: 'italic',
+                                                textAlign: 'center'
+                                            }}>
+                                                No crops found matching "{searchTerm}"
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                         
                         {/* Alfalfa Growth Stages */}
@@ -507,6 +707,60 @@ const GDDDocumentation = () => {
                         
                         {/* Green Bean Growth Stages */}
                         {selectedCrop === 'greenbean' && <GreenBeanContent isMobile={isMobile} colors={colors} styles={styles} />}
+
+                        {/* Citrus Growth Stages */}
+                        {selectedCrop === 'Citrus' && <CitrusContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Cranberry Growth Stages */}
+                        {selectedCrop === 'cranberry' && <CranberryContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Dry Bean Growth Stages */}
+                        {selectedCrop === 'drybean' && <DryBeanContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Hemp Growth Stages */}
+                        {selectedCrop === 'hemp' && <HempContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Lettuce Growth Stages */}
+                        {selectedCrop === 'lettuce' && <LettuceContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Oats Growth Stages */}
+                        {selectedCrop === 'oats' && <OatsContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Onion Growth Stages */}
+                        {selectedCrop === 'onion' && <OnionContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Peach Growth Stages */}
+                        {selectedCrop === 'peach' && <PeachContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Pecan Growth Stages */}
+                        {selectedCrop === 'pecan' && <PecanContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Peas Growth Stages */}
+                        {selectedCrop === 'peas' && <PeasContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Peppers Growth Stages */}
+                        {selectedCrop === 'peppers' && <PeppersContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Plums Growth Stages */}
+                        {selectedCrop === 'plums' && <PlumsContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Potato Growth Stages */}
+                        {selectedCrop === 'potato' && <PotatoContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Rice Growth Stages */}
+                        {selectedCrop === 'rice' && <RiceContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Squash Growth Stages */}
+                        {selectedCrop === 'squash' && <SquashContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Sugar Beet Growth Stages */}
+                        {selectedCrop === 'sugarbeet' && <SugarBeetContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Sunflower Growth Stages */}
+                        {selectedCrop === 'sunflower' && <SunflowerContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        
+                        {/* Sweet Potato Growth Stages */}
+                        {selectedCrop === 'sweetpotato' && <SweetPotatoContent isMobile={isMobile} colors={colors} styles={styles} />}
                         
                         {/* Pumpkin Growth Stages */}
                         {selectedCrop === 'pumpkin' && <PumpkinContent isMobile={isMobile} colors={colors} styles={styles} />}
@@ -1033,7 +1287,7 @@ const GDDDocumentation = () => {
                             padding: '20px',
                             marginBottom: '30px',
                             display: 'block'
-                            }}>
+                        }}>
                             <h3 style={{
                                 fontSize: isMobile ? '18px' : '20px',
                                 color: colors.primary,
@@ -1633,7 +1887,7 @@ const GDDDocumentation = () => {
                                         <li style={styles.listItem}>Yellow flowers begin to appear</li>
                                         <li style={styles.listItem}>Management: Monitor for foliar diseases, maintain soil moisture</li>
                                     </ul>
-                                </div>
+                            </div>
                                 
                                 <div>
                                     <h5 style={{
@@ -1884,12 +2138,22 @@ const GDDDocumentation = () => {
                         {selectedCrop === 'cabbage' && <CabbageContent isMobile={isMobile} colors={colors} styles={styles} />}
                         {/* Canola Growth Stages */}
                         {selectedCrop === 'canola' && <CanolaContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {/* Cantaloupe Growth Stages */}
+                        {selectedCrop === 'cantaloupe' && <CantaloupeContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'Carrot' && <CarrotContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'Cauliflower' && <CauliflowerContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'Cherry' && <CherryContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'Citrus' && <CitrusContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'cranberry' && <CranberryContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'drybean' && <DryBeanContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'hemp' && <HempContent isMobile={isMobile} colors={colors} styles={styles} />}
+                        {selectedCrop === 'sweetpotato' && <SweetPotatoContent isMobile={isMobile} colors={colors} styles={styles} />}
                     </div>
                 </div>
 
                 <div style={styles.section}>
                     <h2 style={styles.sectionTitle}>5. Data Sources</h2>
-                    <div style={{
+                            <div style={{
                         overflowX: 'auto',
                         marginTop: '20px'
                     }}>
@@ -1898,7 +2162,7 @@ const GDDDocumentation = () => {
                             borderCollapse: 'collapse',
                             backgroundColor: 'white',
                             fontSize: isMobile ? '13px' : '14px',
-                            lineHeight: '1.6',
+                                    lineHeight: '1.6',
                             border: '1px solid #ddd'
                         }}>
                             <thead>
@@ -1907,7 +2171,7 @@ const GDDDocumentation = () => {
                                     color: 'white',
                                 }}>
                                     <th style={{
-                                        padding: '15px',
+                                padding: '15px',
                                         textAlign: 'left',
                                         borderBottom: '2px solid #ddd',
                                         width: '25%'
@@ -1937,7 +2201,7 @@ const GDDDocumentation = () => {
                                             fontSize: '12px',
                                             backgroundColor: '#f1f1f1',
                                             padding: '4px 6px',
-                                            borderRadius: '4px',
+                                                borderRadius: '4px',
                                             display: 'inline-block'
                                         }}>
                                             "NOAA/GFS0P25"
@@ -1950,11 +2214,11 @@ const GDDDocumentation = () => {
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
                                         <a href="https://developers.google.com/earth-engine/datasets/catalog/NOAA_GFS0P25" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        style={{
                                                color: '#3498db',
-                                               textDecoration: 'none',
+                                            textDecoration: 'none',
                                                fontWeight: 'bold'
                                            }}>
                                             View Dataset →
@@ -1983,11 +2247,11 @@ const GDDDocumentation = () => {
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
                                         <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_007" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer"
-                                           style={{ 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        style={{
                                                color: '#3498db',
-                                               textDecoration: 'none',
+                                            textDecoration: 'none',
                                                fontWeight: 'bold'
                                            }}>
                                             View Dataset →
@@ -1996,21 +2260,21 @@ const GDDDocumentation = () => {
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
+                                </div>
+                            </div>
 
                 <div style={styles.section}>
                     <h2 style={styles.sectionTitle}>6. Product Demo</h2>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
+                            <div style={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
                         padding: '60px 20px',
                         backgroundColor: colors.background,
                         borderRadius: '12px',
                         margin: '20px 0',
-                        textAlign: 'center'
-                    }}>
+                                                textAlign: 'center'
+                                            }}>
                         {/* <div>
                             <h3 style={{
                                 fontSize: '24px',
@@ -2019,7 +2283,7 @@ const GDDDocumentation = () => {
                             }}>
                                 Coming Soon
                             </h3>
-                            <p style={{
+                                <p style={{
                                 fontSize: '16px',
                                 color: colors.text,
                                 maxWidth: '600px',
@@ -2029,7 +2293,7 @@ const GDDDocumentation = () => {
                             </p>
                         </div> */}
                         {/* Spray Planner (Mobile) */}
-                        <div style={{
+                            <div style={{
                             flex: '1',
                             background: 'linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%)',
                             borderRadius: '20px',
@@ -2038,12 +2302,12 @@ const GDDDocumentation = () => {
                             position: 'relative',
                             overflow: 'hidden',
                             boxShadow: '0 10px 30px rgba(155, 89, 182, 0.2)',
-                            display: 'flex',
-                            flexDirection: 'column',
+                                            display: 'flex',
+                                            flexDirection: 'column',
                             minHeight: isMobile ? 'auto' : '600px'
                         }}>
-                            <div style={{
-                                position: 'absolute',
+                                                <div style={{
+                                                    position: 'absolute',
                                 top: 0,
                                 left: 0,
                                 right: 0,
@@ -2052,22 +2316,22 @@ const GDDDocumentation = () => {
                                 background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
                                 zIndex: 1
                             }} />
-
+                            
                             <div style={{
                                 position: 'relative',
                                 zIndex: 2,
                                 flex: 1,
                                 display: 'flex',
                                 flexDirection: 'column'
-                            }}>
-                                <h3 style={{
+                        }}>
+                            <h3 style={{
                                     margin: '0 0 15px 0',
                                     fontSize: '28px',
-                                    fontWeight: '600',
+                                fontWeight: '600',
                                     letterSpacing: '0.5px'
                                 }}>
                                     Crop Growth Tracker Tool Demo
-                                </h3>
+                            </h3>
                                 <p style={{
                                     margin: '0 0 30px 0',
                                     fontSize: '16px',
@@ -2076,15 +2340,15 @@ const GDDDocumentation = () => {
                                 }}>
                                     Get a comprehensive walkthrough of all features in the Crop Growth Tracker App . Learn to navigate and utilize all features efficiently and make data-driven decisionson smaller screens.
                                 </p>
-                                <div style={{
+                            <div style={{
                                     flex: 1,
-                                    display: 'flex',
-                                    flexDirection: 'column',
+                                            display: 'flex',
+                                            flexDirection: 'column',
                                     gap: '20px'
-                                }}>
-                                    <div style={{
+                                        }}>
+                                            <div style={{
                                         position: 'relative',
-                                        width: '100%',
+                                                width: '100%',
                                         flex: 1,
                                         minHeight: '300px',
                                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -2093,7 +2357,7 @@ const GDDDocumentation = () => {
                                     }}>
                                         <iframe
                                             style={{
-                                                position: 'absolute',
+                                                    position: 'absolute',
                                                 top: 0,
                                                 left: 0,
                                                 width: '100%',
@@ -2105,11 +2369,11 @@ const GDDDocumentation = () => {
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
-                                    </div>
+                                </div>
                                     <a 
                                         href="https://youtu.be/HU4G0rHSZ08?si=kXS9FdQVtGZU64Jb"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
                                         style={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
@@ -2148,15 +2412,15 @@ const GDDDocumentation = () => {
                                             fontWeight: '500'
                                         }}>
                                             Watch on YouTube
-                                        </span>
+                                            </span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-                </div>
-
+                                </div>
+                            </div>
+                            
                 <footer style={styles.footer}>
                     <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
                         Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
