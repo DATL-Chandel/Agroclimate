@@ -262,7 +262,7 @@ const CropRiskDocumentation = () => {
                         <div style={styles.section}>
                             <h2 style={styles.sectionTitle}>2. Key Features</h2>
                             <ul style={styles.list}>
-                                <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive analysis for 8 major crops including Corn, Cotton, Soybean, Sorghum, Wheat, Strawberry, and Peanut.</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive analysis for crops including Corn, Cotton, Soybean, Sorghum, Wheat, Strawberry, and Peanut.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Comprehensive Risk Assessment:</span> Detailed analysis of water stress, heat stress, and biotic stress factors affecting crop health.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>16-Day Weather Forecasting:</span> Advanced weather predictions using NOAA GFS data for planning and decision-making.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Irrigation Scheduler:</span> Precise water balance calculations and irrigation recommendations based on crop-specific water requirements.</li>
@@ -2146,7 +2146,7 @@ const CropRiskDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '15px'
                             }}>
-                                The tool supports comprehensive risk analysis and irrigation scheduling for 8 major agricultural crops, each with specific parameters and thresholds.
+                                The tool supports comprehensive risk analysis and irrigation scheduling for crops, each with specific parameters and thresholds.
                             </p>
                             
                             <div style={{
