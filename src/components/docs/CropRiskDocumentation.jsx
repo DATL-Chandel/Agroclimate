@@ -190,7 +190,7 @@ const CropRiskDocumentation = () => {
                     <div style={{
                         ...styles.tab,
                         ...(activeTab === 'ndvi' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('ndvi')}>NDVI Viewer</div>
+                    }} onClick={() => setActiveTab('ndvi')}>NDVI & LST Viewer</div>
                     <div style={{
                         ...styles.tab,
                         ...(activeTab === 'spray' ? styles.activeTab : styles.inactiveTab)

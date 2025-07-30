@@ -297,6 +297,7 @@ const MainDocumentation = () => {
                             <li style={styles.listItem}><span style={styles.bold}>Specific Humidity:</span> Measures the water vapor content in the atmosphere, influencing plant transpiration rates. Units: Percentage.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Wind Speed:</span> Analyzes air movement across croplands, affecting evapotranspiration and crop lodging risks. Units: Miles per hour.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Air Temperature:</span> Tracks daily, seasonal, and long-term temperature fluctuations, impacting plant growth cycles. Units: Fahrenheit.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Cloud Cover:</span>Analyzes atmospheric cloud patterns over selected periods with hourly, daily, weekly, or monthly intervals. Hourly frequency available for detailed analysis (recommended duration less than 7 days). Units: Percentage.</li>
                         </ul>
                     </div>
 
@@ -335,6 +336,7 @@ const MainDocumentation = () => {
                             <li style={styles.listItem}><span style={styles.bold}>Relative Humidity:</span> Expressed as a percentage, indicating how saturated the air is with moisture. Units: Percentage.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Precipitation:</span> Forecasts expected rainfall, useful for irrigation scheduling and flood risk assessment. Units: Inches.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Wind Speed:</span> Predicts wind conditions, crucial for pesticide spraying and crop lodging risk assessment. Units: Miles per hour.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Cloud Cover:</span> Forecasts cloud coverage percentage, useful for solar radiation and field work planning. Units: Percentage.</li>
                             <li style={styles.listItem}>The forecast data is sourced from NOAA's Global Forecast System (GFS) at 0.25-degree resolution, providing up to 16 days of weather predictions.</li>
                         </ul>
                     </div>
@@ -413,6 +415,7 @@ const MainDocumentation = () => {
                             <li style={{marginBottom: '10px'}}>Use the Field selector to switch between different fields.</li>
                             <li style={{marginBottom: '10px'}}>Use the Date selector to view recommendations for specific days.</li>
                             <li style={{marginBottom: '10px'}}>Review the hourly breakdown table with color-coded recommendations.</li>
+                            
                         </ol>
 
                         <h4 style={{

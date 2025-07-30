@@ -118,7 +118,7 @@ const Documentation = () => {
                             }
                         }}
                     >
-                        NDVI Viewer
+                        NDVI & LST Viewer
                     </div>
                     <div 
                         style={{

@@ -42,7 +42,7 @@ const NDVIViewer = () => {
             <iframe
                 src={ndviUrl}
                 style={iframeStyle}
-                title="NDVI Viewer"
+                title="NDVI & LST Viewer"
             />
         </div>
     );

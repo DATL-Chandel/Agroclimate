@@ -150,7 +150,7 @@ const NDVIDocumentation = () => {
         <>
             <header style={styles.header}>
 
-                    <h1 style={styles.title}>NDVI Viewer Documentation</h1>
+                    <h1 style={styles.title}>NDVI & LST Analysis Tool Documentation</h1>
                     <p style={{
                         fontSize: isMobile ? '14px' : '16px',
                         lineHeight: '1.6',
@@ -159,7 +159,7 @@ const NDVIDocumentation = () => {
                         margin: '0 auto',
                         marginBottom: isMobile ? '15px' : '20px',
                     }}>
-                        Welcome to the comprehensive guide for the NDVI Viewer. This documentation will help you understand and utilize all the features effectively.
+                        Welcome to the comprehensive guide for the NDVI & LST Viewer. This documentation will help you understand and utilize all the features effectively.
                     </p>
                 </header>
 
@@ -196,7 +196,7 @@ const NDVIDocumentation = () => {
                             lineHeight: '1.6',
                             color: '#333'
                         }}>
-                            The NDVI Viewer is a specialized tool for visualizing and analyzing Normalized Difference Vegetation Index (NDVI) data. It provides farmers, agronomists, and researchers with the ability to monitor crop health, track vegetation changes over time, and make informed decisions based on satellite imagery. This tool leverages Google Earth Engine's vast repository of satellite imagery to deliver up-to-date NDVI data for agricultural fields.
+                            The NDVI & LST Analysis Tool is a comprehensive platform for visualizing and analyzing both Normalized Difference Vegetation Index (NDVI) and Land Surface Temperature (LST) data. It provides farmers, agronomists, and researchers with the ability to monitor crop health, track vegetation changes over time, assess thermal conditions, and make informed decisions based on satellite imagery. This tool leverages Google Earth Engine's vast repository of satellite imagery to deliver up-to-date NDVI and LST data for agricultural fields.
                         </div>
                     </div>
                 </div>
@@ -207,6 +207,9 @@ const NDVIDocumentation = () => {
                         <li style={styles.listItem}><span style={styles.bold}>Field Selection & Data Management:</span> Users can specify the number of fields to analyze (up to 5 fields per session).</li>
                         <li style={styles.listItem}><span style={styles.bold}>Vegetation Index (VI) Analysis:</span> Evaluate NDVI maps and trends over time for crop health monitoring.</li>
                         <li style={styles.listItem}><span style={styles.bold}>NDVI Mean Temporal Plot:</span> Evaluate average NDVI trends over time for selected regions.</li>
+                        <li style={styles.listItem}><span style={styles.bold}>LST Analysis:</span> Land Surface Temperature monitoring using Landsat satellite data.</li>
+                        <li style={styles.listItem}><span style={styles.bold}>LST Mean Temporal Plot:</span> Evaluate average LST trends over time for selected regions.</li>
+                        <li style={styles.listItem}><span style={styles.bold}>Download Features:</span> Export NDVI and LST data as TIFF files for individual fields.</li>
                     </ul>
                 </div>
 
@@ -254,17 +257,73 @@ const NDVIDocumentation = () => {
                     <div style={styles.subsection}>
                         <SubsectionTitle icon={
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                            <path d="M3 3v18h18"/>
-                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
-                        </svg>
+                                <path d="M12 2v10l8-8-8 8"/>
+                                <path d="M18.36 6.64a9 9 0 11-12.73 0"/>
+                            </svg>
                         }>
-                            3. NDVI Mean Temporal Plot
+                            3. LST Analysis
+                        </SubsectionTitle>
+                        <ul style={styles.list}>
+                            <li style={styles.listItem}>Provides Land Surface Temperature monitoring using Landsat 7/8/9 satellite data.</li>
+                            <li style={styles.listItem}>Users can select LST values for specific fields over a selected time range.</li>
+                            <li style={styles.listItem}>The system calculates and visualizes LST trends in both graphical and map formats.</li>
+                            <li style={styles.listItem}>LST helps determine field temperature patterns and thermal stress conditions.</li>
+                            <li style={styles.listItem}>Temperature data displayed in Fahrenheit with dynamic color-coded visualization.</li>
+                            <li style={styles.listItem}>Multi-satellite support with automatic selection of best available data.</li>
+                        </ul>
+                    </div>
+
+                    <div style={styles.subsection}>
+                        <SubsectionTitle icon={
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
+                                <path d="M3 3v18h18"/>
+                                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                            </svg>
+                        }>
+                            4. NDVI Mean Temporal Plot
                         </SubsectionTitle>
                         <ul style={styles.list}>
                             <li style={styles.listItem}>Displays the average NDVI values over time for selected fields.</li>
                             <li style={styles.listItem}>Helps assess long-term trends in vegetation health and seasonal changes.</li>
                             <li style={styles.listItem}>Enables users to compare NDVI fluctuations across different growing seasons.</li>
                             <li style={styles.listItem}>The plot is useful for detecting potential stress areas and growth patterns.</li>
+                        </ul>
+                    </div>
+
+                    <div style={styles.subsection}>
+                        <SubsectionTitle icon={
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
+                                <path d="M3 3v18h18"/>
+                                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                            </svg>
+                        }>
+                            5. LST Mean Temporal Plot
+                        </SubsectionTitle>
+                        <ul style={styles.list}>
+                            <li style={styles.listItem}>Displays average LST values over time for selected fields.</li>
+                            <li style={styles.listItem}>Helps assess temperature trends and seasonal thermal patterns.</li>
+                            <li style={styles.listItem}>Enables users to compare temperature fluctuations across different periods.</li>
+                            <li style={styles.listItem}>Useful for detecting heat stress periods and optimal planting/harvesting times.</li>
+                        </ul>
+                    </div>
+
+                    <div style={styles.subsection}>
+                        <SubsectionTitle icon={
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                <path d="M7 10l5 5 5-5"/>
+                                <path d="M12 15V3"/>
+                            </svg>
+                        }>
+                            6. Download Features
+                        </SubsectionTitle>
+                        <ul style={styles.list}>
+                            <li style={styles.listItem}>Export NDVI and LST data in multiple formats for each drawn field.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>TIFF Raw:</span> Georeferenced raw data values for analysis and processing.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>TIFF Color:</span> Color-coded visualization with applied color palette for visual interpretation.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>PNG Image:</span> High-quality image format for presentations and reports.</li>
+                            <li style={styles.listItem}>Files include proper coordinate system and metadata for GIS compatibility.</li>
+                            <li style={styles.listItem}>High-resolution satellite background imagery included in downloads.</li>
                         </ul>
                     </div>
                 </div>
@@ -331,6 +390,102 @@ const NDVIDocumentation = () => {
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                         <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            Landsat 7
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            "LANDSAT/LE07/C02/T1_L2"
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333', backgroundColor: '#f8f9fa' }}>
+                                        Landsat 7 Collection 2 Level 2 surface reflectance and temperature data. Used for Land Surface Temperature (LST) analysis and thermal monitoring.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LE07_C02_T1_L2" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            Landsat 8
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            "LANDSAT/LC08/C02/T1_L2"
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        Landsat 8 Collection 2 Level 2 surface reflectance and temperature data. Primary source for LST analysis with enhanced thermal infrared capabilities.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C02_T1_L2" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            Landsat 9
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            "LANDSAT/LC09/C02/T1_L2"
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333', backgroundColor: '#f8f9fa' }}>
+                                        Landsat 9 Collection 2 Level 2 surface reflectance and temperature data. Latest generation Landsat satellite for comprehensive LST monitoring.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC09_C02_T1_L2" 
                                            target="_blank" 
                                            rel="noopener noreferrer"
                                            style={{ 
