@@ -2238,7 +2238,7 @@ const GDDDocumentation = () => {
                                             borderRadius: '4px',
                                             display: 'inline-block'
                                         }}>
-                                            'NASA/SMAP/SPL4SMGP/007'
+                                            'NASA/SMAP/SPL4SMGP/008'
                                         </code>
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
@@ -2246,7 +2246,7 @@ const GDDDocumentation = () => {
                                         global soil moisture data at various depths.
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_007" 
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008" 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
                                         style={{

@@ -521,7 +521,7 @@ const CropRiskDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '0',
                                 marginLeft: '15px'
-                            }}>NASA SMAP Data (Earth Engine): <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_007" style={{color: colors.link}}>https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_007</a></p>
+                            }}>NASA SMAP Data (Earth Engine): <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008" style={{color: colors.link}}>https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008</a></p>
                         </div>
                     </div>
 
@@ -2278,7 +2278,7 @@ const CropRiskDocumentation = () => {
                                                     borderRadius: '4px',
                                                     display: 'inline-block'
                                                 }}>
-                                                    "NASA/SMAP/SPL4SMGP/007"
+                                                    "NASA/SMAP/SPL4SMGP/008"
                                                 </code>
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
@@ -2286,7 +2286,7 @@ const CropRiskDocumentation = () => {
                                                 initialization values for water balance calculations and irrigation modeling.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_007" 
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008" 
                                                    target="_blank" 
                                                    rel="noopener noreferrer"
                                                    style={{ 
