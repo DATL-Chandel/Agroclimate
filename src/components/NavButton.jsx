@@ -249,7 +249,9 @@ const NavButton = () => {
                             <path d="M22 14l-4-4"></path>
                             <path d="M18 18l4-4"></path>
                         </svg>
-                        Crop Risk Forecaster
+                        <span style={{ display: 'inline-block', lineHeight: 1.2 }}>
+                            Crop Risk Forecaster<br/>&<br/>Irrigation Scheduler
+                        </span>
                     </div>
                     <div 
                         style={linkStyle}
