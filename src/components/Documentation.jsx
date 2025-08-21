@@ -4,6 +4,7 @@ import NDVIDocumentation from './docs/NDVIDocumentation';
 import SprayDocumentation from './docs/SprayDocumentation';
 import GDDDocumentation from './docs/GDDDocumentation';
 import CropRiskDocumentation from './docs/CropRiskDocumentation';
+import IrrigationSchedulerDocumentation from './docs/IrrigationSchedulerDocumentation';
 
 const Documentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -175,7 +176,26 @@ const Documentation = () => {
                             }
                         }}
                     >
-                        Crop Risk Analysis
+                        Crop Risk Forecaster
+                    </div>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'irrigation' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('irrigation')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'irrigation') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'irrigation') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        Irrigation Scheduler
                     </div>
                 </div>
 
@@ -195,6 +215,9 @@ const Documentation = () => {
                 )}
                 {activeTab === 'cropRisk' && (
                     <CropRiskDocumentation />
+                )}
+                {activeTab === 'irrigation' && (
+                    <IrrigationSchedulerDocumentation />
                 )}
             </div>
         </div>

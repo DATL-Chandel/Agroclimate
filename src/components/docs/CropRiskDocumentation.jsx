@@ -3,6 +3,7 @@ import MainDocumentation from './MainDocumentation';
 import NDVIDocumentation from './NDVIDocumentation';
 import SprayDocumentation from './SprayDocumentation';
 import GDDDocumentation from './GDDDocumentation';
+import IrrigationSchedulerDocumentation from './IrrigationSchedulerDocumentation';
 
 const CropRiskDocumentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -202,13 +203,17 @@ const CropRiskDocumentation = () => {
                     <div style={{
                         ...styles.tab,
                         ...(activeTab === 'cropRisk' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('cropRisk')}>Crop Risk Analysis</div>
+                    }} onClick={() => setActiveTab('cropRisk')}>Crop Risk Forecaster</div>
+                    <div style={{
+                        ...styles.tab,
+                        ...(activeTab === 'irrigation' ? styles.activeTab : styles.inactiveTab)
+                    }} onClick={() => setActiveTab('irrigation')}>Irrigation Scheduler</div>
                 </div>
 
                 {activeTab === 'cropRisk' && (
                     <>
                         <header style={styles.header}>
-                            <h1 style={styles.title}>Crop Risk Forecaster & Irrigation Scheduler Documentation</h1>
+                            <h1 style={styles.title}>Crop Risk Forecaster Documentation</h1>
                             <p style={{
                                 fontSize: isMobile ? '14px' : '16px',
                                 lineHeight: '1.6',
@@ -217,8 +222,8 @@ const CropRiskDocumentation = () => {
                                 margin: '0 auto',
                                 marginBottom: isMobile ? '15px' : '20px',
                             }}>
-                                Welcome to the comprehensive guide for the Crop Risk Forecaster & Irrigation Scheduler. 
-                                This documentation will help you understand and utilize all features for effective crop risk management and irrigation planning.
+                                Welcome to the comprehensive guide for the Crop Risk Forecaster. 
+                                This documentation will help you understand and utilize all features for effective crop risk management and decision-making.
                             </p>
                         </header>
                         <div style={styles.section}>
@@ -254,7 +259,7 @@ const CropRiskDocumentation = () => {
                                     lineHeight: '1.6',
                                     color: '#333'
                                 }}>
-                                    The Crop Risk Forecaster & Irrigation Scheduler is a comprehensive agricultural decision-support tool that combines advanced crop risk analysis with precise irrigation scheduling capabilities. Using satellite data, weather forecasts, and crop-specific models, it provides farmers with actionable insights on water stress, heat stress, and disease risks while delivering detailed irrigation recommendations with 16-day weather forecasts and precise deficit calculations.
+                                    The Crop Risk Forecaster is a comprehensive agricultural decision-support tool that provides advanced crop risk analysis using satellite data, weather forecasts, and crop-specific models. It delivers actionable insights on water stress, heat stress, and disease risks to help farmers make informed decisions about crop management and protection strategies.
                                 </div>
                             </div>
                         </div>
@@ -264,9 +269,9 @@ const CropRiskDocumentation = () => {
                             <ul style={styles.list}>
                                 <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive analysis for crops including Corn, Cotton, Soybean, Sorghum, Wheat, Strawberry, and Peanut.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Comprehensive Risk Assessment:</span> Detailed analysis of water stress, heat stress, and biotic stress factors affecting crop health.</li>
-                                <li style={styles.listItem}><span style={styles.bold}>16-Day Weather Forecasting:</span> Advanced weather predictions using NOAA GFS data for planning and decision-making.</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Irrigation Scheduler:</span> Precise water balance calculations and irrigation recommendations based on crop-specific water requirements.</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Field-Specific Analysis:</span> Customizable field boundaries with detailed water balance charts and deficit calculations.</li>
+                                <li style={styles.listItem}><span style={styles.bold}>16-Day Weather Forecasting:</span> Advanced weather predictions using NOAA GFS data for risk assessment and decision-making.</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Field-Specific Analysis:</span> Customizable field boundaries with detailed risk assessment and stress factor analysis.</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Scientific Validation:</span> Risk thresholds and assessment methods based on peer-reviewed research and agricultural extension guidelines.</li>
                             </ul>
                         </div>
 
@@ -2084,51 +2089,7 @@ const CropRiskDocumentation = () => {
                             </div>
                         </div>
 
-                        <div style={styles.subsection}>
-                            <SubsectionTitle icon={
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7 7-7z"/>
-                                </svg>
-                            }>
-                                2. Irrigation Scheduler
-                            </SubsectionTitle>
-                            <p style={{
-                                fontSize: isMobile ? '14px' : '16px',
-                                lineHeight: '1.6',
-                                color: colors.text,
-                                marginBottom: '15px'
-                            }}>
-                                The Irrigation Scheduler component provides precision irrigation management with detailed water balance calculations and scheduling recommendations.
-                            </p>
 
-                            <h4 style={{
-                                fontSize: isMobile ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: colors.primary,
-                                marginBottom: '10px',
-                                marginTop: '20px'
-                            }}>16-Day Forecast Table:</h4>
-                            <ul style={styles.list}>
-                                <li style={styles.listItem}><span style={styles.bold}>Weather Parameters:</span> Daily temperature, precipitation, humidity, and wind speed forecasts</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Irrigation Recommendations:</span> Daily irrigation suggestions based on crop water requirements and weather conditions</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Deficit Calculations:</span> Precise water deficit calculations to 0.01 inches accuracy</li>
-                                <li style={styles.listItem}><span style={styles.bold}>NOAA GFS Integration:</span> High-resolution weather data from NOAA Global Forecast System</li>
-                            </ul>
-
-                            <h4 style={{
-                                fontSize: isMobile ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: colors.primary,
-                                marginBottom: '10px',
-                                marginTop: '20px'
-                            }}>Field Water Balance Chart:</h4>
-                            <ul style={styles.list}>
-                                <li style={styles.listItem}><span style={styles.bold}>Precipitation Tracking:</span> Visual representation of rainfall patterns and irrigation events</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Soil Moisture Monitoring:</span> Real-time soil moisture levels with SMAP satellite data initialization</li>
-                                <li style={styles.listItem}><span style={styles.bold}>AWC Visualization:</span> Available Water Capacity displayed with field capacity and wilting point markers</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Water Deficit Tracking:</span> Continuous monitoring of water deficit levels with color-coded risk indicators</li>
-                            </ul>
-                        </div>
 
                         <div style={styles.subsection}>
                             <SubsectionTitle icon={
@@ -2138,7 +2099,7 @@ const CropRiskDocumentation = () => {
                                     <path d="M12 8v8"/>
                                 </svg>
                             }>
-                                3. Supported Crops
+                                2. Supported Crops
                             </SubsectionTitle>
                             <p style={{
                                 fontSize: isMobile ? '14px' : '16px',
@@ -2283,10 +2244,10 @@ const CropRiskDocumentation = () => {
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
                                                 NASA SMAP Level-4 Global Surface and Root Zone Soil Moisture data providing 
-                                                initialization values for water balance calculations and irrigation modeling.
+                                                initialization values for water stress risk assessment and soil moisture monitoring.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008" 
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP/008" 
                                                    target="_blank" 
                                                    rel="noopener noreferrer"
                                                    style={{ 
@@ -2316,7 +2277,7 @@ const CropRiskDocumentation = () => {
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
                                                 Sentinel-2 satellite imagery for crop monitoring, vegetation indices, and 
-                                                field boundary analysis supporting risk assessment calculations.
+                                                field boundary analysis supporting comprehensive risk assessment.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                                 <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2" 
@@ -2349,10 +2310,44 @@ const CropRiskDocumentation = () => {
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
                                                 Global soil property data including texture, organic matter, and hydraulic properties 
-                                                for water balance modeling and Available Water Capacity calculations.
+                                                for water stress risk assessment and Available Water Capacity calculations.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
                                                 <a href="https://www.isric.org/explore/soilgrids" 
+                                                   target="_blank" 
+                                                   rel="noopener noreferrer"
+                                                   style={{ 
+                                                       color: '#3498db',
+                                                       textDecoration: 'none',
+                                                       fontWeight: 'bold'
+                                                   }}>
+                                                    View Dataset →
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                                <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                                    ECMWF ERA5-Land
+                                                </span>
+                                                <code style={{ 
+                                                    color: '#666',
+                                                    fontSize: '12px',
+                                                    backgroundColor: '#f1f1f1',
+                                                    padding: '4px 6px',
+                                                    borderRadius: '4px',
+                                                    display: 'inline-block'
+                                                }}>
+                                                    "ECMWF/ERA5_LAND/DAILY_AGGR"
+                                                </code>
+                                            </td>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                                High-resolution climate reanalysis data providing daily aggregates of temperature, precipitation, 
+                                                evapotranspiration, soil moisture, and vegetation parameters from 1950 to present for enhanced 
+                                                crop risk assessment and climate analysis.
+                                            </td>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR" 
                                                    target="_blank" 
                                                    rel="noopener noreferrer"
                                                    style={{ 
@@ -2368,18 +2363,9 @@ const CropRiskDocumentation = () => {
                                 </table>
                             </div>
                         </div>
-
-                        <footer style={styles.footer}>
-                            <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
-                                Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
-                            </p>
-                            <p style={{...styles.paragraph, color: colors.secondary}}>
-                                Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research & Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
-                            </p>
-                        </footer>
                     </div>
                 </div>
-                    </>
+                </>
                 )}
                 
                 {activeTab === 'main' && (
@@ -2397,6 +2383,19 @@ const CropRiskDocumentation = () => {
                 {activeTab === 'gdd' && (
                     <GDDDocumentation />
                 )}
+                
+                {activeTab === 'irrigation' && (
+                    <IrrigationSchedulerDocumentation />
+                )}
+                
+                <footer style={styles.footer}>
+                    <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
+                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
+                    </p>
+                    <p style={{...styles.paragraph, color: colors.secondary}}>
+                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research & Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
+                    </p>
+                </footer>
             </div>
         </div>
     );

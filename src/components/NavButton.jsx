@@ -249,9 +249,21 @@ const NavButton = () => {
                             <path d="M22 14l-4-4"></path>
                             <path d="M18 18l4-4"></path>
                         </svg>
-                        <span style={{ display: 'inline-block', lineHeight: 1.2 }}>
-                            Crop Risk Forecaster<br/>&<br/>Irrigation Scheduler
-                        </span>
+                        Crop Risk Forecaster
+                    </div>
+                    <div 
+                        style={linkStyle}
+                        onClick={(e) => handleClick('/irrigation-scheduler', e)}
+                        onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                        onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                    >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Irrigation Scheduler
                     </div>
                     <div 
                         style={linkStyle}
