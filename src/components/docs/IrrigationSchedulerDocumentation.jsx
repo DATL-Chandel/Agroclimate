@@ -354,14 +354,14 @@ const IrrigationSchedulerDocumentation = () => {
                                     color: colors.primary,
                                     margin: '0 0 10px 0'
                                 }}>
-                                    SW<sub>t</sub> = SW<sub>t-1</sub> + P + I - ETc - D
+                                    SW<sub>t</sub> = SW<sub>t-1</sub> + P + I - ETc
                                 </p>
                                 <p style={{
                                     fontSize: isMobile ? '12px' : '14px',
                                     color: colors.secondary,
                                     margin: '0'
                                 }}>
-                                    Where: SW = Soil Water, P = Precipitation, I = Irrigation, ETc = Crop ET, D = Deep Drainage
+                                    Where: SW = Soil Water, P = Precipitation, I = Irrigation, ETc = Crop ET
                                 </p>
                             </div>
                             
@@ -370,7 +370,6 @@ const IrrigationSchedulerDocumentation = () => {
                                 <li style={styles.listItem}><span style={styles.bold}>Precipitation (P):</span> Rainfall from NOAA GFS forecasts</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Irrigation (I):</span> Applied irrigation water (if any)</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Crop ET (ETc):</span> Daily crop water consumption</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Deep Drainage (D):</span> Water moving below root zone</li>
                             </ul>
                         </div>
                     </div>

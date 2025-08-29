@@ -3,8 +3,9 @@ import { database, analytics } from "../firebase.jsx";
 import { ref, set, get, update, remove, onValue, serverTimestamp } from "firebase/database";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
-const Tracker = () => {
+const Tracker = ({ onShowExitSurvey }) => {
     const [uniqueUserId, setUniqueUserId] = useState(null);
+    const [locationData, setLocationData] = useState(null);
     
     const getCurrentLocalDate = () => {
         const now = new Date();
@@ -116,6 +117,7 @@ const Tracker = () => {
                 };
 
                 const locationData = await getUserLocation();
+                setLocationData(locationData);
                 const currentDate = getCurrentLocalDate();
                 
                 // Handle unique users and visits count
@@ -181,37 +183,216 @@ const Tracker = () => {
                 isVisitActive = true;
                 console.log("Started permanent visit tracking");
 
-                // Handle tab visibility changes
-                const handleVisibilityChange = async () => {
-                    if (document.visibilityState === "visible") {
-                        if (!isVisitActive) {
-                            isVisitActive = true;
-                            await set(visitRef, {
-                                userId: visitorId,
-                                timestamp: serverTimestamp(),
-                                active: true,
-                                location: locationData
+
+                // Simple visibility handler - use timestamp as session ID
+                window.sessionCreationInProgress = false;
+                
+                const handleVisibilityChangeWithTracking = async () => {
+                    console.log('Visibility event:', document.hidden ? 'HIDDEN' : 'VISIBLE', 'isTabActive:', isTabActive);
+                    
+                    if (document.hidden && isTabActive) {
+                        // User left - end session immediately
+                        console.log('🔚 USER LEFT - Ending session');
+                        const now = Date.now();
+                        totalActiveTime += (now - activeTimeStart);
+                        console.log('Session ended. Total time:', Math.round(totalActiveTime / 1000), 'seconds');
+                        
+                        if (timeTrackingRef) {
+                            await update(timeTrackingRef, {
+                                sessionEnd: serverTimestamp(),
+                                totalTime: now - sessionStartTime,
+                                activeTime: totalActiveTime,
+                                active: false
                             });
                         }
-                    } else {
-                        if (isVisitActive) {
-                            isVisitActive = false;
-                            await remove(visitRef);
+                        
+                        isTabActive = false;
+                        
+                    } else if (!document.hidden && !isTabActive) {
+                        // User returned - check global flag first
+                        if (window.sessionCreationInProgress) {
+                            console.log('⚠️ BLOCKED - Session creation already in progress');
+                            return;
+                        }
+                        
+                        window.sessionCreationInProgress = true;
+                        console.log('🆕 USER RETURNED - Starting session creation');
+                        
+                        try {
+                            // Create unique session ID
+                            const now = Date.now();
+                            const newSessionId = now + '_' + Math.random().toString(36).substr(2, 5);
+                            
+                            timeTrackingSessionId = newSessionId;
+                            sessionStorage.setItem('timeTrackingSessionId', timeTrackingSessionId);
+                            
+                            sessionStartTime = now;
+                            sessionStorage.setItem('sessionStartTime', sessionStartTime.toString());
+                            
+                            totalActiveTime = 0;
+                            activeTimeStart = now;
+                            isTabActive = true;
+                            
+                            // Create Firebase ref and save
+                            timeTrackingRef = ref(database, `time-tracking/${visitorId}/${timeTrackingSessionId}`);
+                            await set(timeTrackingRef, {
+                                sessionId: timeTrackingSessionId,
+                                userId: visitorId,
+                                sessionStart: serverTimestamp(),
+                                totalTime: 0,
+                                activeTime: 0,
+                                active: true
+                            });
+                            
+                            console.log('✅ Session created successfully:', timeTrackingSessionId);
+                            
+                        } catch (error) {
+                            console.error('Session creation failed:', error);
+                        } finally {
+                            window.sessionCreationInProgress = false;
                         }
                     }
                 };
 
-                document.addEventListener("visibilitychange", handleVisibilityChange);
+                document.addEventListener("visibilitychange", handleVisibilityChangeWithTracking);
 
-                // Handle page unload/close
-                const handleBeforeUnload = async () => {
-                    if (isVisitActive) {
-                        await remove(visitRef);
+                // Get or create session ID (persistent per browser tab)
+                let timeTrackingSessionId = sessionStorage.getItem('timeTrackingSessionId');
+                if (!timeTrackingSessionId) {
+                    timeTrackingSessionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+                    sessionStorage.setItem('timeTrackingSessionId', timeTrackingSessionId);
+                    console.log('Created NEW session:', timeTrackingSessionId);
+                } else {
+                    console.log('Using EXISTING session:', timeTrackingSessionId);
+                }
+
+                // Get or initialize session start time
+                let sessionStartTime = parseInt(sessionStorage.getItem('sessionStartTime'));
+                if (!sessionStartTime) {
+                    sessionStartTime = Date.now();
+                    sessionStorage.setItem('sessionStartTime', sessionStartTime.toString());
+                    console.log('Session start time initialized:', new Date(sessionStartTime));
+                } else {
+                    console.log('Using existing session start time:', new Date(sessionStartTime));
+                }
+
+                // Get existing active time or start fresh
+                let totalActiveTime = parseInt(sessionStorage.getItem('totalActiveTime')) || 0;
+                let activeTimeStart = Date.now();
+                let isTabActive = !document.hidden;
+                let timeTrackingRef = null;
+                let tabHiddenTime = null; // Track when tab was hidden
+
+                // Initialize time tracking in Firebase
+                const initTimeTracking = async () => {
+                    timeTrackingRef = ref(database, `time-tracking/${visitorId}/${timeTrackingSessionId}`);
+                    const deviceType = window.innerWidth <= 768 ? 'mobile' : 'desktop';
+                    
+                    try {
+                        // Check if session already exists
+                        const existingSession = await get(timeTrackingRef);
+                        
+                        if (existingSession.exists()) {
+                            // Update existing session
+                            await update(timeTrackingRef, {
+                                lastUpdate: serverTimestamp(),
+                                active: true
+                            });
+                            console.log('Resumed existing time tracking session');
+                        } else {
+                            // Create new session
+                            await set(timeTrackingRef, {
+                                userId: visitorId,
+                                sessionId: timeTrackingSessionId,
+                                sessionStart: serverTimestamp(),
+                                totalTime: 0,
+                                activeTime: totalActiveTime,
+                                location: locationData,
+                                deviceType: deviceType,
+                                active: true
+                            });
+                            console.log('Created new time tracking session');
+                        }
+                    } catch (error) {
+                        console.error('Error initializing time tracking:', error);
                     }
-                    await remove(sessionRef);
                 };
 
-                window.addEventListener('beforeunload', handleBeforeUnload);
+                // Update active time calculation
+                const updateActiveTime = () => {
+                    if (isTabActive) {
+                        const now = Date.now();
+                        totalActiveTime += (now - activeTimeStart);
+                        activeTimeStart = now;
+                    }
+                };
+
+                // Save current time data to Firebase and sessionStorage
+                const saveTimeData = async () => {
+                    if (!timeTrackingRef) return;
+                    
+                    updateActiveTime();
+                    
+                    // Save active time to sessionStorage for persistence
+                    sessionStorage.setItem('totalActiveTime', totalActiveTime.toString());
+                    
+                    const now = Date.now();
+                    const totalTime = now - sessionStartTime;
+                    const engagementRate = totalTime > 0 ? totalActiveTime / totalTime : 0;
+                    
+                    try {
+                        await update(timeTrackingRef, {
+                            totalTime: totalTime,
+                            activeTime: totalActiveTime,
+                            engagementRate: Math.round(engagementRate * 100) / 100,
+                            lastUpdate: serverTimestamp()
+                        });
+                    } catch (error) {
+                        console.error('Error saving time data:', error);
+                    }
+                };
+
+                // Initialize time tracking
+                await initTimeTracking();
+
+                // Show survey modal after page load delay
+                const showSurveyAfterDelay = () => {
+                    console.log('=== Survey Timer Fired ===');
+                    console.log('onShowExitSurvey callback:', onShowExitSurvey);
+                    console.log('visitorId:', visitorId);
+                    console.log('locationData:', locationData);
+                    console.log('currentVisitId:', currentVisitId);
+                    
+                    // Check if already completed in this session
+                    const surveyCompleted = sessionStorage.getItem('exitSurveyCompleted');
+                    const surveySkipped = sessionStorage.getItem('exitSurveySkipped');
+                    
+                    console.log('surveyCompleted:', surveyCompleted);
+                    console.log('surveySkipped:', surveySkipped);
+                    
+                    if (surveyCompleted || surveySkipped) {
+                        console.log('Survey already completed/skipped in this session');
+                        return;
+                    }
+
+                    console.log('All conditions met - calling onShowExitSurvey');
+                    
+                    // Show the survey modal
+                    if (onShowExitSurvey) {
+                        onShowExitSurvey({
+                            uniqueUserId: visitorId,
+                            locationData: locationData,
+                            currentVisitId: currentVisitId
+                        });
+                        console.log('onShowExitSurvey called successfully');
+                    } else {
+                        console.error('onShowExitSurvey callback is missing!');
+                    }
+                };
+
+                // Show survey after 5 seconds for easier testing
+                console.log('Setting up survey timer for 5 seconds...');
+                setTimeout(showSurveyAfterDelay, 5000);
 
                 // Track analytics
                 analytics.logEvent('page_view', {
@@ -220,7 +401,14 @@ const Tracker = () => {
                     user_id: visitorId
                 });
 
-                let sessionStartTime = Date.now();
+                // Periodic time data saving (every 30 seconds)
+                const timeTrackingInterval = setInterval(async () => {
+                    await saveTimeData();
+                    const totalSeconds = Math.round((Date.now() - sessionStartTime) / 1000);
+                    const activeSeconds = Math.round(totalActiveTime / 1000);
+                    console.log(`Time tracking update - Total: ${totalSeconds}s, Active: ${activeSeconds}s`);
+                }, 30000);
+
                 const engagementInterval = setInterval(() => {
                     const sessionDuration = Math.floor((Date.now() - sessionStartTime) / 1000);
                     analytics.logEvent('user_engagement', {
@@ -230,12 +418,67 @@ const Tracker = () => {
                     });
                 }, 60000);
 
+                // Handle session end - save final time data
+                const handleSessionEnd = async () => {
+                    console.log('Session ending - saving final time data');
+                    updateActiveTime(); // Final active time update
+                    
+                    const now = Date.now();
+                    const totalTime = now - sessionStartTime;
+                    const engagementRate = totalTime > 0 ? totalActiveTime / totalTime : 0;
+                    
+                    try {
+                        await update(timeTrackingRef, {
+                            sessionEnd: serverTimestamp(),
+                            totalTime: totalTime,
+                            activeTime: totalActiveTime,
+                            engagementRate: Math.round(engagementRate * 100) / 100,
+                            active: false
+                        });
+                        
+                        console.log('Final time data saved:', {
+                            totalMinutes: Math.round(totalTime / 60000),
+                            activeMinutes: Math.round(totalActiveTime / 60000),
+                            engagement: Math.round(engagementRate * 100) + '%'
+                        });
+                    } catch (error) {
+                        console.error('Error saving final time data:', error);
+                    }
+                };
+
+                // Start new session (simplified - no need to end previous session)
+                const startNewSession = async () => {
+                    // Create new session ID and reset data
+                    timeTrackingSessionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+                    sessionStorage.setItem('timeTrackingSessionId', timeTrackingSessionId);
+                    
+                    sessionStartTime = Date.now();
+                    sessionStorage.setItem('sessionStartTime', sessionStartTime.toString());
+                    
+                    totalActiveTime = 0;
+                    sessionStorage.setItem('totalActiveTime', '0');
+                    
+                    console.log('🆕 Started NEW session:', timeTrackingSessionId);
+                    
+                    // Initialize new session in Firebase
+                    await initTimeTracking();
+                };
+
+                // Add beforeunload for session end
+                window.addEventListener('beforeunload', handleSessionEnd);
+                window.addEventListener('pagehide', handleSessionEnd);
+
                 // Clean up function
                 return () => {
                     clearInterval(engagementInterval);
+                    clearInterval(timeTrackingInterval);
                     clearInterval(heartbeatInterval);
-                    document.removeEventListener("visibilitychange", handleVisibilityChange);
-                    window.removeEventListener('beforeunload', handleBeforeUnload);
+                    document.removeEventListener("visibilitychange", handleVisibilityChangeWithTracking);
+                    window.removeEventListener('beforeunload', handleSessionEnd);
+                    window.removeEventListener('pagehide', handleSessionEnd);
+                    
+                    // Save final time data before cleanup
+                    handleSessionEnd();
                     
                     // Clean up any active visits/sessions
                     if (isVisitActive && visitRef) {
