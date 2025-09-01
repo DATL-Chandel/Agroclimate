@@ -19,7 +19,15 @@ const Tracker = ({ onShowExitSurvey }) => {
         return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     };
     
-    const currentVisitId = Date.now().toString(36);
+    // Get or create visit ID (persistent during reloads, new when reopening after close)
+    let currentVisitId = sessionStorage.getItem('currentVisitId');
+    if (!currentVisitId) {
+        currentVisitId = Date.now().toString(36);
+        sessionStorage.setItem('currentVisitId', currentVisitId);
+        console.log('Created NEW visit ID:', currentVisitId);
+    } else {
+        console.log('Reusing existing visit ID (reload):', currentVisitId);
+    }
     let isVisitActive = false;
     let sessionRef = null;
     let visitRef = null;
@@ -192,7 +200,7 @@ const Tracker = ({ onShowExitSurvey }) => {
                     
                     if (document.hidden && isTabActive) {
                         // User left - end session immediately
-                        console.log('🔚 USER LEFT - Ending session');
+                        console.log('🔚 USER LEFT - Ending session AND removing from active visits');
                         const now = Date.now();
                         totalActiveTime += (now - activeTimeStart);
                         console.log('Session ended. Total time:', Math.round(totalActiveTime / 1000), 'seconds');
@@ -205,6 +213,20 @@ const Tracker = ({ onShowExitSurvey }) => {
                                 active: false
                             });
                         }
+                        
+                        // Remove from active visits AND active sessions immediately
+                        if (isVisitActive && visitRef) {
+                            await remove(visitRef);
+                            isVisitActive = false;
+                            console.log('✅ Removed from active visits in real-time');
+                        }
+                        
+                        if (sessionRef) {
+                            await remove(sessionRef);
+                            console.log('✅ Removed from active sessions - next visit will increment count');
+                        }
+                        
+                        // DON'T clear visitId on tab switch - keep same visit for return
                         
                         isTabActive = false;
                         
@@ -219,6 +241,40 @@ const Tracker = ({ onShowExitSurvey }) => {
                         console.log('🆕 USER RETURNED - Starting session creation');
                         
                         try {
+                            // Check if we need to increment visit count
+                            const userRef = ref(database, `unique-users/${currentDate}/${visitorId}`);
+                            const userSnapshot = await get(userRef);
+                            
+                            let currentVisits = 0;
+                            if (userSnapshot.exists()) {
+                                currentVisits = userSnapshot.val().visits || 0;
+                            }
+                            
+                            // Check for existing session (should be removed when tab left)
+                            sessionRef = ref(database, `active-sessions/${currentDate}/${visitorId}`);
+                            const sessionSnapshot = await get(sessionRef);
+                            
+                            if (!sessionSnapshot.exists()) {
+                                console.log("No active session found - incrementing visit count on return");
+                                await set(sessionRef, {
+                                    startTime: serverTimestamp(),
+                                    lastActive: serverTimestamp()
+                                });
+
+                                await set(userRef, {
+                                    lastSeen: serverTimestamp(),
+                                    visits: currentVisits + 1,
+                                    location: locationData
+                                });
+                                
+                                console.log('✅ Visit count incremented on tab return');
+                            } else {
+                                console.log("Active session still exists - updating timestamp only");
+                                await update(sessionRef, {
+                                    lastActive: serverTimestamp()
+                                });
+                            }
+                            
                             // Create unique session ID
                             const now = Date.now();
                             const newSessionId = now + '_' + Math.random().toString(36).substr(2, 5);
@@ -245,6 +301,19 @@ const Tracker = ({ onShowExitSurvey }) => {
                             });
                             
                             console.log('✅ Session created successfully:', timeTrackingSessionId);
+                            
+                            // Create new active visit when returning
+                            if (!isVisitActive) {
+                                visitRef = ref(database, `visits/${currentDate}/${currentVisitId}`);
+                                await set(visitRef, {
+                                    userId: visitorId,
+                                    timestamp: serverTimestamp(),
+                                    active: true,
+                                    location: locationData
+                                });
+                                isVisitActive = true;
+                                console.log('✅ Added back to active visits');
+                            }
                             
                         } catch (error) {
                             console.error('Session creation failed:', error);
@@ -420,7 +489,7 @@ const Tracker = ({ onShowExitSurvey }) => {
 
                 // Handle session end - save final time data
                 const handleSessionEnd = async () => {
-                    console.log('Session ending - saving final time data');
+                    console.log('Session ending - saving final time data AND removing from active visits');
                     updateActiveTime(); // Final active time update
                     
                     const now = Date.now();
@@ -435,6 +504,17 @@ const Tracker = ({ onShowExitSurvey }) => {
                             engagementRate: Math.round(engagementRate * 100) / 100,
                             active: false
                         });
+                        
+                        // Remove from active visits on page close/reload
+                        if (isVisitActive && visitRef) {
+                            await remove(visitRef);
+                            isVisitActive = false;
+                            console.log('✅ Removed from active visits on page close/reload');
+                        }
+                        
+                        // Clear visit ID only on page close (not reload) - for new visit when reopening
+                        sessionStorage.removeItem('currentVisitId');
+                        console.log('🗑️ Cleared visit ID - next reopen will create new visit');
                         
                         console.log('Final time data saved:', {
                             totalMinutes: Math.round(totalTime / 60000),
