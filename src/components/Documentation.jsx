@@ -7,12 +7,12 @@ import CropRiskDocumentation from './docs/CropRiskDocumentation';
 import IrrigationSchedulerDocumentation from './docs/IrrigationSchedulerDocumentation';
 
 const Documentation = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const [activeTab, setActiveTab] = useState('main');
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);

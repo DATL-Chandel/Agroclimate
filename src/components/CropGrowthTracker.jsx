@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const CropGrowthTracker = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const cropTrackingUrl = isMobile ? import.meta.env.VITE_GEE_URL_CROP_GROWTH_TRACKING_MOBILE : import.meta.env.VITE_GEE_URL_CROP_GROWTH_TRACKING;
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);

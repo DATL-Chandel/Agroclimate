@@ -3,12 +3,12 @@ import { database } from '../firebase';
 import { ref, set, serverTimestamp } from 'firebase/database';
 
 const ExitSurveyModal = ({ show, onClose, uniqueUserId, locationData, currentVisitId }) => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);

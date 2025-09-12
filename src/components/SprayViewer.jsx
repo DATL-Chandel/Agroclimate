@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const SprayViewer = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const sprayUrl = isMobile ? import.meta.env.VITE_GEE_URL_SPRAYING_MOBILE : import.meta.env.VITE_GEE_URL_SPRAYING;
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);

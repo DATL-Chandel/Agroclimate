@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const CropRiskForecast = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const riskForecastUrl = isMobile ? import.meta.env.VITE_GEE_URL_CROP_RISK_FORECAST_ANALYSIS_MOBILE : import.meta.env.VITE_GEE_URL_CROP_RISK_FORECAST_ANALYSIS;
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);

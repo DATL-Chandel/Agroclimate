@@ -42,7 +42,7 @@ import SunflowerContent from './SunflowerContent';
 import SweetPotatoContent from './SweetPotatoContent';
 
 const GDDDocumentation = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const [selectedCrop, setSelectedCrop] = useState('corn');
     const [searchTerm, setSearchTerm] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -112,7 +112,7 @@ const GDDDocumentation = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);

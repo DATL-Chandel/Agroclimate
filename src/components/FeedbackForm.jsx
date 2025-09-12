@@ -5,7 +5,7 @@ import { ref, push } from 'firebase/database';
 
 const FeedbackForm = () => {
     const navigate = useNavigate();
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
     const initialFormData = {
         helpfulRating: '',
         willUseAgain: '',
@@ -23,7 +23,7 @@ const FeedbackForm = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 480);
         };
 
         window.addEventListener('resize', handleResize);
