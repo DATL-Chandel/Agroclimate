@@ -1707,6 +1707,18 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 65–77°F, RH &lt;70%</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Frogeye Leaf Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 60–75°F, precip &gt;0.5"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Phytophthora Root Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 70–85°F, precip &gt;1.0"</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -2039,7 +2051,7 @@ const CropRiskDocumentation = () => {
                                         paddingLeft: '20px'
                                     }}>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Corn:</span> Gray Leaf Spot, Northern Corn Leaf Blight, and Southern Rust thrive under high humidity (&gt;90%) and moderate temperatures.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Soybean:</span> Bacterial Blight, Brown Stem Rot, Sudden Death Syndrome, and Powdery Mildew are major concerns with varying environmental triggers.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Soybean:</span> Bacterial Blight, Brown Stem Rot, Sudden Death Syndrome, Powdery Mildew, Frogeye Leaf Spot, Downy Mildew, and Phytophthora Root Rot are major concerns with varying environmental triggers.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Peanut:</span> Early/Late Leaf Spot, White Mold, Aflatoxin, and Sclerotinia Blight require extended leaf wetness and specific temperature ranges.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Cotton:</span> Bacterial Blight, Target Spot, and Boll Rot Complex are promoted by high humidity and warm temperatures.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sorghum:</span> Anthracnose, Rust, Smut, Leaf Blight, and Downy Mildew thrive under humid conditions with specific temperature ranges.</li>
@@ -2072,6 +2084,9 @@ const CropRiskDocumentation = () => {
                                         <p style={{marginBottom: '8px'}}>3. University of Minnesota Extension: Tar Spot in Corn: <a href="https://extension.umn.edu/diseases/tar-spot-corn" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/diseases/tar-spot-corn</a></p>
                                         <p style={{marginBottom: '8px'}}>4. University of Minnesota Extension: Soybean Disease Management: <a href="https://extension.umn.edu/soybean/soybean-disease-management" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/soybean/soybean-disease-management</a></p>
                                         <p style={{marginBottom: '8px'}}>5. USDA: Soybean Rust: <a href="https://www.ars.usda.gov/oc/br/soybeanrust/" style={{color: colors.link, textDecoration: 'underline'}}>https://www.ars.usda.gov/oc/br/soybeanrust/</a></p>
+                                        <p style={{marginBottom: '8px'}}>5a. North Dakota State University: Soybean Disease Reports (2025): <a href="https://www.ndsu.edu/agriculture/extension/publications/2025-extension-soybean-pathology-field-research-reports" style={{color: colors.link, textDecoration: 'underline'}}>https://www.ndsu.edu/agriculture/extension/publications/2025-extension-soybean-pathology-field-research-reports</a></p>
+                                        <p style={{marginBottom: '8px'}}>5b. University of Minnesota Extension: Sudden Death Syndrome: <a href="https://extension.umn.edu/soybean-pest-management/sudden-death-syndrome-soybean" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/soybean-pest-management/sudden-death-syndrome-soybean</a></p>
+                                        <p style={{marginBottom: '8px'}}>5c. University of Minnesota Extension: Soybean Seed and Seedling Diseases: <a href="https://extension.umn.edu/soybean-pest-management/soybean-seed-and-seedling-diseases" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/soybean-pest-management/soybean-seed-and-seedling-diseases</a></p>
                                         <p style={{marginBottom: '8px'}}>6. NC State Extension Publications: Peanut Leaf Spots: <a href="https://content.ces.ncsu.edu/early-leaf-spot-of-peanut-1" style={{color: colors.link, textDecoration: 'underline'}}>https://content.ces.ncsu.edu/early-leaf-spot-of-peanut-1</a></p>
                                         <p style={{marginBottom: '8px'}}>7. University of Georgia Peanut Production Guide: <a href="https://extension.uga.edu/publications/detail.html?number=B1146" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.uga.edu/publications/detail.html?number=B1146</a></p>
                                         <p style={{marginBottom: '8px'}}>8. University of Georgia Extension: Plow Points - White Mold: <a href="https://site.extension.uga.edu/plowpoints/2022/07/white-mold/" style={{color: colors.link, textDecoration: 'underline'}}>https://site.extension.uga.edu/plowpoints/2022/07/white-mold/</a></p>

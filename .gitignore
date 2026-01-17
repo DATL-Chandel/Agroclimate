@@ -31,3 +31,7 @@ dist-ssr
 
 node_modules/
 .DS_Store
+
+# Knowledge base and documentation files (not for deployment)
+Tool_codes/
+Paper.docx
