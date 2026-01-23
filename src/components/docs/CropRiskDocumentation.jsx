@@ -267,7 +267,7 @@ const CropRiskDocumentation = () => {
                         <div style={styles.section}>
                             <h2 style={styles.sectionTitle}>2. Key Features</h2>
                             <ul style={styles.list}>
-                                <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive analysis for crops including Corn, Cotton, Soybean, Sorghum, Wheat, Strawberry, and Peanut.</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive analysis for 13 crops including Corn, Cotton, Soybean, Sorghum, Wheat, Strawberry, Peanut, Apple, Sweet Corn, Tomatoes, Grapes, Watermelon, and Blueberries.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Comprehensive Risk Assessment:</span> Detailed analysis of water stress, heat stress, and biotic stress factors affecting crop health.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>16-Day Weather Forecasting:</span> Advanced weather predictions using NOAA GFS data for risk assessment and decision-making.</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Field-Specific Analysis:</span> Customizable field boundaries with detailed risk assessment and stress factor analysis.</li>
@@ -1656,6 +1656,10 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Southern Rust</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt; 90%, Temp 77–82°F, &gt;8h high humidity</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Common Rust</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 60–77°F, &gt;6h high humidity</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1774,6 +1778,14 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Sclerotinia Blight</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥95%, Temp 65–70°F, precip &gt;0.5"</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Tomato Spotted Wilt Virus</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥80°F, RH ≥70%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Rhizoctonia Limb Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 75–90°F, precip &gt;0.5"</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1820,6 +1832,18 @@ const CropRiskDocumentation = () => {
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Boll Rot Complex</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;80%, Temp &gt;75°F, precip &gt;1.0"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Fusarium Wilt</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 77–86°F, soil moisture &gt;80%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Alternaria Leaf Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Verticillium Wilt</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥75°F, soil moisture &lt;50%</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -1876,6 +1900,18 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 68–77°F, precip &gt;0.5"</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Grain Mold</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–90°F, precip &gt;0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Charcoal Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥85°F, RH &gt;60%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Bacterial Leaf Streak</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1931,6 +1967,18 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Fusarium Head Blight</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 59–86°F, precip &gt;0.5"</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Septoria Leaf Blotch</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 60–75°F, precip &gt;0.5"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Tan Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 65–80°F, precip &gt;0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Stagonospora Nodorum</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 70–85°F, precip &gt;0.5"</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1981,6 +2029,352 @@ const CropRiskDocumentation = () => {
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 68–86°F, precip &gt;0.5"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Angular Leaf Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Leaf Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 65–80°F, precip &gt;0.5"</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '6px',
+                                        padding: '15px',
+                                        marginBottom: '15px',
+                                        border: '1px solid #e0e0e0'
+                                    }}>
+                                        <h6 style={{
+                                            fontSize: isMobile ? '14px' : '15px',
+                                            fontWeight: '600',
+                                            color: '#2c3e50',
+                                            marginBottom: '10px'
+                                        }}>🍎 Apple</h6>
+                                        <div style={{
+                                            overflowX: 'auto',
+                                            marginBottom: '10px'
+                                        }}>
+                                            <table style={{
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                backgroundColor: 'white',
+                                                fontSize: isMobile ? '12px' : '13px'
+                                            }}>
+                                                <thead>
+                                                    <tr style={{backgroundColor: '#f8f9fa'}}>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>Disease</th>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>High Risk Criteria</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Apple Scab</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 55–75°F, precip &gt;0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Fire Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥75°F, RH &gt;80%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Cedar Apple Rust</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 60–75°F, precip &gt;0.5"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;75%, Temp 65–80°F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Black Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '6px',
+                                        padding: '15px',
+                                        marginBottom: '15px',
+                                        border: '1px solid #e0e0e0'
+                                    }}>
+                                        <h6 style={{
+                                            fontSize: isMobile ? '14px' : '15px',
+                                            fontWeight: '600',
+                                            color: '#2c3e50',
+                                            marginBottom: '10px'
+                                        }}>🌽 Sweet Corn</h6>
+                                        <div style={{
+                                            overflowX: 'auto',
+                                            marginBottom: '10px'
+                                        }}>
+                                            <table style={{
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                backgroundColor: 'white',
+                                                fontSize: isMobile ? '12px' : '13px'
+                                            }}>
+                                                <thead>
+                                                    <tr style={{backgroundColor: '#f8f9fa'}}>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>Disease</th>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>High Risk Criteria</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Common Rust</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 60–75°F, precip ≥0.1"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Northern Corn Leaf Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 65–80°F, precip ≥0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Gray Leaf Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–85°F, precip ≥0.1"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Southern Rust</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 77–82°F, precip ≥0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Stewart's Wilt</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–85°F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Bacterial Stalk Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 75–90°F, precip ≥0.5"</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '6px',
+                                        padding: '15px',
+                                        marginBottom: '15px',
+                                        border: '1px solid #e0e0e0'
+                                    }}>
+                                        <h6 style={{
+                                            fontSize: isMobile ? '14px' : '15px',
+                                            fontWeight: '600',
+                                            color: '#2c3e50',
+                                            marginBottom: '10px'
+                                        }}>🍅 Tomatoes</h6>
+                                        <div style={{
+                                            overflowX: 'auto',
+                                            marginBottom: '10px'
+                                        }}>
+                                            <table style={{
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                backgroundColor: 'white',
+                                                fontSize: isMobile ? '12px' : '13px'
+                                            }}>
+                                                <thead>
+                                                    <tr style={{backgroundColor: '#f8f9fa'}}>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>Disease</th>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>High Risk Criteria</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Early Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 75–85°F, &gt;12h high humidity</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Late Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–70°F, precip ≥0.1"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Septoria Leaf Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 68–77°F, precip ≥0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Bacterial Speck</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 64–75°F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Bacterial Spot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–85°F, precip ≥0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Fusarium Wilt</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥80°F, soil moisture &lt;50%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Verticillium Wilt</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥75°F, soil moisture &lt;50%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '6px',
+                                        padding: '15px',
+                                        marginBottom: '15px',
+                                        border: '1px solid #e0e0e0'
+                                    }}>
+                                        <h6 style={{
+                                            fontSize: isMobile ? '14px' : '15px',
+                                            fontWeight: '600',
+                                            color: '#2c3e50',
+                                            marginBottom: '10px'
+                                        }}>🍇 Grapes</h6>
+                                        <div style={{
+                                            overflowX: 'auto',
+                                            marginBottom: '10px'
+                                        }}>
+                                            <table style={{
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                backgroundColor: 'white',
+                                                fontSize: isMobile ? '12px' : '13px'
+                                            }}>
+                                                <thead>
+                                                    <tr style={{backgroundColor: '#f8f9fa'}}>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>Disease</th>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>High Risk Criteria</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 70–80°F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–75°F, precip ≥0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Botrytis Bunch Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–70°F, precip ≥0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Black Rot</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–85°F, precip ≥0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 75–85°F, precip ≥0.2"</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '6px',
+                                        padding: '15px',
+                                        marginBottom: '15px',
+                                        border: '1px solid #e0e0e0'
+                                    }}>
+                                        <h6 style={{
+                                            fontSize: isMobile ? '14px' : '15px',
+                                            fontWeight: '600',
+                                            color: '#2c3e50',
+                                            marginBottom: '10px'
+                                        }}>🍉 Watermelon</h6>
+                                        <div style={{
+                                            overflowX: 'auto',
+                                            marginBottom: '10px'
+                                        }}>
+                                            <table style={{
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                backgroundColor: 'white',
+                                                fontSize: isMobile ? '12px' : '13px'
+                                            }}>
+                                                <thead>
+                                                    <tr style={{backgroundColor: '#f8f9fa'}}>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>Disease</th>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>High Risk Criteria</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 75–85°F, precip ≥0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 65–75°F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Bacterial Fruit Blotch</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–85°F, precip ≥0.3"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Gummy Stem Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 70–85°F, precip ≥0.5"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥75%, Temp 60–75°F</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '6px',
+                                        padding: '15px',
+                                        marginBottom: '15px',
+                                        border: '1px solid #e0e0e0'
+                                    }}>
+                                        <h6 style={{
+                                            fontSize: isMobile ? '14px' : '15px',
+                                            fontWeight: '600',
+                                            color: '#2c3e50',
+                                            marginBottom: '10px'
+                                        }}>🫐 Blueberries</h6>
+                                        <div style={{
+                                            overflowX: 'auto',
+                                            marginBottom: '10px'
+                                        }}>
+                                            <table style={{
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                backgroundColor: 'white',
+                                                fontSize: isMobile ? '12px' : '13px'
+                                            }}>
+                                                <thead>
+                                                    <tr style={{backgroundColor: '#f8f9fa'}}>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>Disease</th>
+                                                        <th style={{padding: '8px', borderBottom: '1px solid #ddd', fontWeight: '700', textAlign: 'left', color: '#2c3e50', fontSize: isMobile ? '13px' : '14px'}}>High Risk Criteria</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Mummy Berry</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 61–68°F, RH ≥85%, precip ≥0.1"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 75–86°F, RH ≥90%, precip ≥0.2"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Botrytis Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 60–70°F, RH ≥85%, precip ≥0.1"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Phomopsis Twig Blight</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 68–77°F, RH ≥80%</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -2050,13 +2444,19 @@ const CropRiskDocumentation = () => {
                                         marginBottom: '0',
                                         paddingLeft: '20px'
                                     }}>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Corn:</span> Gray Leaf Spot, Northern Corn Leaf Blight, and Southern Rust thrive under high humidity (&gt;90%) and moderate temperatures.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Corn:</span> Gray Leaf Spot, Northern Corn Leaf Blight, Southern Rust, and Common Rust thrive under high humidity (&gt;90%) and moderate temperatures.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Soybean:</span> Bacterial Blight, Brown Stem Rot, Sudden Death Syndrome, Powdery Mildew, Frogeye Leaf Spot, Downy Mildew, and Phytophthora Root Rot are major concerns with varying environmental triggers.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Peanut:</span> Early/Late Leaf Spot, White Mold, Aflatoxin, and Sclerotinia Blight require extended leaf wetness and specific temperature ranges.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Cotton:</span> Bacterial Blight, Target Spot, and Boll Rot Complex are promoted by high humidity and warm temperatures.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sorghum:</span> Anthracnose, Rust, Smut, Leaf Blight, and Downy Mildew thrive under humid conditions with specific temperature ranges.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Wheat:</span> Stripe Rust, Leaf Rust, Stem Rust, Powdery Mildew, and Fusarium Head Blight are major concerns requiring specific humidity and temperature conditions.</li>
-                                        <li style={{marginBottom: '0'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Strawberry:</span> Botrytis Fruit Rot, Leaf Spot, Powdery Mildew, and Anthracnose thrive under high humidity and moderate temperatures.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Peanut:</span> Early/Late Leaf Spot, White Mold, Aflatoxin, Sclerotinia Blight, Tomato Spotted Wilt Virus, and Rhizoctonia Limb Rot require extended leaf wetness and specific temperature ranges.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Cotton:</span> Bacterial Blight, Target Spot, Boll Rot Complex, Fusarium Wilt, Alternaria Leaf Spot, and Verticillium Wilt are promoted by high humidity and warm temperatures.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sorghum:</span> Anthracnose, Rust, Smut, Leaf Blight, Downy Mildew, Grain Mold, Charcoal Rot, and Bacterial Leaf Streak thrive under humid conditions with specific temperature ranges.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Wheat:</span> Stripe Rust, Leaf Rust, Stem Rust, Powdery Mildew, Fusarium Head Blight, Septoria Leaf Blotch, Tan Spot, and Stagonospora Nodorum are major concerns requiring specific humidity and temperature conditions.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Strawberry:</span> Botrytis Fruit Rot, Leaf Spot, Powdery Mildew, Anthracnose, Angular Leaf Spot, and Leaf Blight thrive under high humidity and moderate temperatures.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Apple:</span> Apple Scab, Fire Blight, Cedar Apple Rust, Powdery Mildew, and Black Rot require specific temperature and moisture conditions for infection.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sweet Corn:</span> Common Rust, Northern Corn Leaf Blight, Gray Leaf Spot, Southern Rust, Stewart's Wilt, and Bacterial Stalk Rot thrive under high humidity and moderate to warm temperatures.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Tomatoes:</span> Early Blight, Late Blight, Septoria Leaf Spot, Bacterial Speck, Bacterial Spot, Fusarium Wilt, and Verticillium Wilt require high humidity and varied temperature ranges.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Grapes:</span> Powdery Mildew, Downy Mildew, Botrytis Bunch Rot, Black Rot, and Anthracnose thrive under humid conditions with specific temperature requirements.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Watermelon:</span> Anthracnose, Downy Mildew, Bacterial Fruit Blotch, Gummy Stem Blight, and Powdery Mildew require high humidity and warm temperatures.</li>
+                                        <li style={{marginBottom: '0'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Blueberries:</span> Mummy Berry, Anthracnose, Botrytis Blight, and Phomopsis Twig Blight require cool to moderate temperatures with high humidity.</li>
                                     </ul>
                                 </div>
 
@@ -2082,6 +2482,7 @@ const CropRiskDocumentation = () => {
                                         <p style={{marginBottom: '8px'}}>1. Purdue University Corn Disease Guide: <a href="https://www.extension.purdue.edu/extmedia/BP/BP-84-W.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://www.extension.purdue.edu/extmedia/BP/BP-84-W.pdf</a></p>
                                         <p style={{marginBottom: '8px'}}>2. University of Minnesota Extension: Corn Disease Management: <a href="https://extension.umn.edu/corn-pest-management/corn-diseases" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/corn-pest-management/corn-diseases</a></p>
                                         <p style={{marginBottom: '8px'}}>3. University of Minnesota Extension: Tar Spot in Corn: <a href="https://extension.umn.edu/diseases/tar-spot-corn" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/diseases/tar-spot-corn</a></p>
+                                        <p style={{marginBottom: '8px'}}>3a. Crop Protection Network: Common Rust of Corn: <a href="https://cropprotectionnetwork.org/publications/common-rust-of-corn" style={{color: colors.link, textDecoration: 'underline'}}>https://cropprotectionnetwork.org/publications/common-rust-of-corn</a></p>
                                         <p style={{marginBottom: '8px'}}>4. University of Minnesota Extension: Soybean Disease Management: <a href="https://extension.umn.edu/soybean/soybean-disease-management" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/soybean/soybean-disease-management</a></p>
                                         <p style={{marginBottom: '8px'}}>5. USDA: Soybean Rust: <a href="https://www.ars.usda.gov/oc/br/soybeanrust/" style={{color: colors.link, textDecoration: 'underline'}}>https://www.ars.usda.gov/oc/br/soybeanrust/</a></p>
                                         <p style={{marginBottom: '8px'}}>5a. North Dakota State University: Soybean Disease Reports (2025): <a href="https://www.ndsu.edu/agriculture/extension/publications/2025-extension-soybean-pathology-field-research-reports" style={{color: colors.link, textDecoration: 'underline'}}>https://www.ndsu.edu/agriculture/extension/publications/2025-extension-soybean-pathology-field-research-reports</a></p>
@@ -2091,14 +2492,28 @@ const CropRiskDocumentation = () => {
                                         <p style={{marginBottom: '8px'}}>7. University of Georgia Peanut Production Guide: <a href="https://extension.uga.edu/publications/detail.html?number=B1146" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.uga.edu/publications/detail.html?number=B1146</a></p>
                                         <p style={{marginBottom: '8px'}}>8. University of Georgia Extension: Plow Points - White Mold: <a href="https://site.extension.uga.edu/plowpoints/2022/07/white-mold/" style={{color: colors.link, textDecoration: 'underline'}}>https://site.extension.uga.edu/plowpoints/2022/07/white-mold/</a></p>
                                         <p style={{marginBottom: '8px'}}>9. University of Georgia, Peanut Rx Disease Risk Index: <a href="https://peanuts.caes.uga.edu/content/dam/caes-subsite/peanuts/docs/2020/2020-Peanut-Rx-Disease-Risk-Index.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://peanuts.caes.uga.edu/content/dam/caes-subsite/peanuts/docs/2020/2020-Peanut-Rx-Disease-Risk-Index.pdf</a></p>
+                                        <p style={{marginBottom: '8px'}}>9a. Oklahoma State Extension: Soilborne Blight Diseases of Peanut: <a href="https://extension.okstate.edu/fact-sheets/soilborne-blight-diseases-of-peanut.html" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.okstate.edu/fact-sheets/soilborne-blight-diseases-of-peanut.html</a></p>
+                                        <p style={{marginBottom: '8px'}}>9b. North Carolina State Extension: Tomato Spotted Wilt in Peanut: <a href="https://content.ces.ncsu.edu/tomato-spotted-wilt-in-peanut" style={{color: colors.link, textDecoration: 'underline'}}>https://content.ces.ncsu.edu/tomato-spotted-wilt-in-peanut</a></p>
                                         <p style={{marginBottom: '8px'}}>10. Clemson University: Management of Aflatoxins in Peanut: <a href="https://lgpress.clemson.edu/publication/management-of-aflatoxins-in-peanut/" style={{color: colors.link, textDecoration: 'underline'}}>https://lgpress.clemson.edu/publication/management-of-aflatoxins-in-peanut/</a></p>
                                         <p style={{marginBottom: '8px'}}>11. Cotton Disease Guide (Cotton Incorporated): <a href="https://www.cottoninc.com/research/plant-pathology/" style={{color: colors.link, textDecoration: 'underline'}}>https://www.cottoninc.com/research/plant-pathology/</a></p>
+                                        <p style={{marginBottom: '8px'}}>11a. Texas A&M AgriLife Extension: Cotton Diseases: <a href="https://agrilifeextension.tamu.edu/library/farming/cotton-diseases/" style={{color: colors.link, textDecoration: 'underline'}}>https://agrilifeextension.tamu.edu/library/farming/cotton-diseases/</a></p>
                                         <p style={{marginBottom: '8px'}}>12. Hillocks, R.J. (1992). Cotton Diseases. CAB International.</p>
                                         <p style={{marginBottom: '8px'}}>13. Sorghum Checkoff: Grain Mold: <a href="https://www.sorghumcheckoff.com/" style={{color: colors.link, textDecoration: 'underline'}}>https://www.sorghumcheckoff.com/</a></p>
+                                        <p style={{marginBottom: '8px'}}>13a. Texas A&M AgriLife Extension: Sorghum Charcoal Rot: <a href="https://agrilifeextension.tamu.edu/library/farming/sorghum-diseases/" style={{color: colors.link, textDecoration: 'underline'}}>https://agrilifeextension.tamu.edu/library/farming/sorghum-diseases/</a></p>
                                         <p style={{marginBottom: '8px'}}>14. Kansas State University: Sorghum Leaf Blight Disease: <a href="https://bookstore.ksre.ksu.edu/pubs/MF3045.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://bookstore.ksre.ksu.edu/pubs/MF3045.pdf</a></p>
                                         <p style={{marginBottom: '8px'}}>15. USDA Wheat Disease Manual: <a href="https://www.ars.usda.gov/ARSUserFiles/50620500/DiseaseManual.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://www.ars.usda.gov/ARSUserFiles/50620500/DiseaseManual.pdf</a></p>
+                                        <p style={{marginBottom: '8px'}}>15a. University of Minnesota Extension: Tan Spot of Wheat: <a href="https://extension.umn.edu/plant-diseases/tan-spot-wheat" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.umn.edu/plant-diseases/tan-spot-wheat</a></p>
+                                        <p style={{marginBottom: '8px'}}>15b. Crop Protection Network: Septoria Leaf Blotch: <a href="https://cropprotectionnetwork.org/publications/septoria-leaf-blotch-of-wheat" style={{color: colors.link, textDecoration: 'underline'}}>https://cropprotectionnetwork.org/publications/septoria-leaf-blotch-of-wheat</a></p>
                                         <p style={{marginBottom: '8px'}}>16. University of California Strawberry Disease: <a href="https://www.calstrawberry.com/en-us/Farmers/Production-Guidelines" style={{color: colors.link, textDecoration: 'underline'}}>https://www.calstrawberry.com/en-us/Farmers/Production-Guidelines</a></p>
-                                        <p style={{marginBottom: '0'}}>17. University of Vermont Strawberry Guide: <a href="https://www.uvm.edu/~entlab/StrawberryGuide.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://www.uvm.edu/~entlab/StrawberryGuide.pdf</a></p>
+                                        <p style={{marginBottom: '8px'}}>17. University of Vermont Strawberry Guide: <a href="https://www.uvm.edu/~entlab/StrawberryGuide.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://www.uvm.edu/~entlab/StrawberryGuide.pdf</a></p>
+                                        <p style={{marginBottom: '8px'}}>17a. NC State Extension: Angular Leaf Spot of Strawberry: <a href="https://content.ces.ncsu.edu/angular-leaf-spot-of-strawberry" style={{color: colors.link, textDecoration: 'underline'}}>https://content.ces.ncsu.edu/angular-leaf-spot-of-strawberry</a></p>
+                                        <p style={{marginBottom: '8px'}}>18. Cornell University: Apple Scab: <a href="https://www.fruit.cornell.edu/app/uploads/2018/01/Scab-Fact-Sheet_revised-1.18.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://www.fruit.cornell.edu/app/uploads/2018/01/Scab-Fact-Sheet_revised-1.18.pdf</a></p>
+                                        <p style={{marginBottom: '8px'}}>18a. Penn State Extension: Fire Blight of Apples and Pears: <a href="https://extension.psu.edu/fire-blight-of-apples-and-pears" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.psu.edu/fire-blight-of-apples-and-pears</a></p>
+                                        <p style={{marginBottom: '8px'}}>19. University of Illinois Extension: Stewart's Wilt of Corn: <a href="https://extension.illinois.edu/stewarts-disease-corn" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.illinois.edu/stewarts-disease-corn</a></p>
+                                        <p style={{marginBottom: '8px'}}>20. Cornell University: Tomato Diseases: <a href="https://vegetablemdonline.ppath.cornell.edu/DiagnosticKeys/TomLeaf/TomLeafKey.html" style={{color: colors.link, textDecoration: 'underline'}}>https://vegetablemdonline.ppath.cornell.edu/DiagnosticKeys/TomLeaf/TomLeafKey.html</a></p>
+                                        <p style={{marginBottom: '8px'}}>21. Penn State Extension: Grape Black Rot: <a href="https://extension.psu.edu/grape-black-rot" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.psu.edu/grape-black-rot</a></p>
+                                        <p style={{marginBottom: '8px'}}>22. University of Florida IFAS: Watermelon Diseases: <a href="https://edis.ifas.ufl.edu/publication/HS725" style={{color: colors.link, textDecoration: 'underline'}}>https://edis.ifas.ufl.edu/publication/HS725</a></p>
+                                        <p style={{marginBottom: '0'}}>23. Michigan State University Extension: Blueberry Mummy Berry: <a href="https://www.canr.msu.edu/blueberries/pest_management/diseases/mummy-berry" style={{color: colors.link, textDecoration: 'underline'}}>https://www.canr.msu.edu/blueberries/pest_management/diseases/mummy-berry</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -2138,7 +2553,13 @@ const CropRiskDocumentation = () => {
                                     { crop: 'Sorghum', icon: '🌾', color: '#D4A574' },
                                     { crop: 'Wheat', icon: '🌾', color: '#FFD54F' },
                                     { crop: 'Strawberry', icon: '🍓', color: '#F44336' },
-                                    { crop: 'Peanut', icon: '🥜', color: '#8D6E63' }
+                                    { crop: 'Peanut', icon: '🥜', color: '#8D6E63' },
+                                    { crop: 'Apple', icon: '🍎', color: '#FF5252' },
+                                    { crop: 'Sweet Corn', icon: '🌽', color: '#FFEB3B' },
+                                    { crop: 'Tomatoes', icon: '🍅', color: '#FF6B6B' },
+                                    { crop: 'Grapes', icon: '🍇', color: '#9C27B0' },
+                                    { crop: 'Watermelon', icon: '🍉', color: '#4CAF50' },
+                                    { crop: 'Blueberries', icon: '🫐', color: '#3F51B5' }
                                 ].map((item, index) => (
                                     <div key={index} style={{
                                         backgroundColor: 'white',
