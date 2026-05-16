@@ -5,6 +5,7 @@ import SprayDocumentation from './docs/SprayDocumentation';
 import GDDDocumentation from './docs/GDDDocumentation';
 import CropRiskDocumentation from './docs/CropRiskDocumentation';
 import IrrigationSchedulerDocumentation from './docs/IrrigationSchedulerDocumentation';
+import TillagePlantingDocumentation from './docs/TillagePlantingDocumentation';
 
 const Documentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
@@ -197,6 +198,25 @@ const Documentation = () => {
                     >
                         Irrigation Scheduler
                     </div>
+                    <div 
+                        style={{
+                            ...styles.tab,
+                            ...(activeTab === 'tillage' ? styles.activeTab : styles.inactiveTab)
+                        }}
+                        onClick={() => setActiveTab('tillage')}
+                        onMouseEnter={(e) => {
+                            if (activeTab !== 'tillage') {
+                                e.target.style.backgroundColor = 'rgba(44, 62, 80, 0.1)';
+                            }
+                        }}
+                        onMouseLeave={(e) => {
+                            if (activeTab !== 'tillage') {
+                                e.target.style.backgroundColor = colors.background;
+                            }
+                        }}
+                    >
+                        Tillage &amp; Planting
+                    </div>
                 </div>
 
                 {activeTab === 'main' && (
@@ -219,6 +239,42 @@ const Documentation = () => {
                 {activeTab === 'irrigation' && (
                     <IrrigationSchedulerDocumentation />
                 )}
+                {activeTab === 'tillage' && (
+                    <TillagePlantingDocumentation />
+                )}
+
+                <footer style={{
+                    marginTop: '50px',
+                    paddingTop: '25px',
+                    borderTop: '1px solid #e9ecef',
+                    textAlign: 'center',
+                }}>
+                    <p style={{ fontSize: '14px', fontWeight: '600', color: '#2c3e50', marginBottom: '6px' }}>
+                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech
+                    </p>
+                    <p style={{ fontSize: '13px', color: '#34495e', marginBottom: '6px' }}>
+                        PI: Dr. Abhilash Chandel (<a href="mailto:abhilashchandel@vt.edu" style={{ color: '#3498db' }}>abhilashchandel@vt.edu</a>)
+                    </p>
+                    <p style={{ fontSize: '13px', color: '#34495e', marginBottom: '16px' }}>
+                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research &amp; Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
+                    </p>
+                    <div style={{
+                        backgroundColor: '#f8f9fa',
+                        border: '1px solid #e9ecef',
+                        borderRadius: '6px',
+                        padding: '14px 20px',
+                        maxWidth: '800px',
+                        margin: '0 auto',
+                    }}>
+                        <p style={{ fontSize: '12px', fontWeight: '600', color: '#555', marginBottom: '6px' }}>Disclaimer</p>
+                        <p style={{ fontSize: '12px', color: '#666', fontStyle: 'italic', lineHeight: '1.6', margin: 0 }}>
+                            This tool is provided for educational and informational purposes only. While we strive to ensure accuracy,
+                            users should independently verify all data and consult qualified agricultural professionals before making
+                            management decisions. Virginia Tech, affiliated organizations, and project sponsors assume no liability
+                            for any decisions or outcomes resulting from the use of this application.
+                        </p>
+                    </div>
+                </footer>
             </div>
         </div>
     );

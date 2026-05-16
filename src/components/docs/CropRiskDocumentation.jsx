@@ -4,6 +4,7 @@ import NDVIDocumentation from './NDVIDocumentation';
 import SprayDocumentation from './SprayDocumentation';
 import GDDDocumentation from './GDDDocumentation';
 import IrrigationSchedulerDocumentation from './IrrigationSchedulerDocumentation';
+import TillagePlantingDocumentation from './TillagePlantingDocumentation';
 
 const CropRiskDocumentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
@@ -208,6 +209,10 @@ const CropRiskDocumentation = () => {
                         ...styles.tab,
                         ...(activeTab === 'irrigation' ? styles.activeTab : styles.inactiveTab)
                     }} onClick={() => setActiveTab('irrigation')}>Irrigation Scheduler</div>
+                    <div style={{
+                        ...styles.tab,
+                        ...(activeTab === 'tillage' ? styles.activeTab : styles.inactiveTab)
+                    }} onClick={() => setActiveTab('tillage')}>Tillage &amp; Planting</div>
                 </div>
 
                 {activeTab === 'cropRisk' && (
@@ -2823,14 +2828,37 @@ const CropRiskDocumentation = () => {
                 {activeTab === 'irrigation' && (
                     <IrrigationSchedulerDocumentation />
                 )}
+
+                {activeTab === 'tillage' && (
+                    <TillagePlantingDocumentation />
+                )}
                 
                 <footer style={styles.footer}>
-                    <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
-                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
+                    <p style={{ fontSize: '14px', fontWeight: '600', color: colors.primary, marginBottom: '6px', textAlign: 'center' }}>
+                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech
                     </p>
-                    <p style={{...styles.paragraph, color: colors.secondary}}>
-                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research & Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
+                    <p style={{ fontSize: '13px', color: colors.secondary, marginBottom: '6px', textAlign: 'center' }}>
+                        PI: Dr. Abhilash Chandel (<a href="mailto:abhilashchandel@vt.edu" style={{ color: colors.link }}>abhilashchandel@vt.edu</a>)
                     </p>
+                    <p style={{ fontSize: '13px', color: colors.secondary, marginBottom: '20px', textAlign: 'center' }}>
+                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research &amp; Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
+                    </p>
+                    <div style={{
+                        backgroundColor: '#f8f9fa',
+                        border: '1px solid #e9ecef',
+                        borderRadius: '6px',
+                        padding: '14px 20px',
+                        maxWidth: '800px',
+                        margin: '0 auto',
+                    }}>
+                        <p style={{ fontSize: '12px', fontWeight: '600', color: '#555', marginBottom: '6px', textAlign: 'center' }}>Disclaimer</p>
+                        <p style={{ fontSize: '12px', color: '#666', fontStyle: 'italic', lineHeight: '1.6', margin: 0, textAlign: 'center' }}>
+                            This tool is provided for educational and informational purposes only. While we strive to ensure accuracy,
+                            users should independently verify all data and consult qualified agricultural professionals before making
+                            management decisions. Virginia Tech, affiliated organizations, and project sponsors assume no liability
+                            for any decisions or outcomes resulting from the use of this application.
+                        </p>
+                    </div>
                 </footer>
             </div>
         </div>

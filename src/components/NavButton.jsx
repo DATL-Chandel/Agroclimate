@@ -267,6 +267,20 @@ const NavButton = () => {
                     </div>
                     <div 
                         style={linkStyle}
+                        onClick={(e) => handleClick('/tillage-planting', e)}
+                        onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                        onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                    >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 22V12"/>
+                            <path d="M5 12H2a10 10 0 0 0 20 0h-3"/>
+                            <path d="M12 12C12 7 8 3 8 3s0 4-3 6"/>
+                            <path d="M12 12C12 7 16 3 16 3s0 4 3 6"/>
+                        </svg>
+                        Tillage &amp; Planting
+                    </div>
+                    <div 
+                        style={linkStyle}
                         onClick={(e) => handleClick('/docs', e)}
                         onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
                         onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}

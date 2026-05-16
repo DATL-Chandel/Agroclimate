@@ -32,6 +32,7 @@ const Tracker = ({ onShowExitSurvey }) => {
             '/crop-tracking': 'crop-tracking',
             '/crop-risk': 'crop-risk',
             '/irrigation-scheduler': 'irrigation-scheduler',
+            '/tillage-planting': 'tillage-planting',
             '/docs': 'docs',
             '/feedback': 'feedback'
         };

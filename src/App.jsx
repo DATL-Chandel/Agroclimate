@@ -6,6 +6,7 @@ import SprayViewer from "./components/SprayViewer";
 import CropGrowthTracker from "./components/CropGrowthTracker";
 import CropRiskForecast from "./components/CropRiskForecast";
 import IrrigationSchedulerViewer from "./components/IrrigationSchedulerViewer";
+import TillagePlantingViewer from "./components/TillagePlantingViewer";
 import Documentation from "./components/Documentation";
 import Tracker from "./components/Tracker";
 import NavButton from "./components/NavButton";
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/crop-tracking" element={<CropGrowthTracker />} />
                     <Route path="/crop-risk" element={<CropRiskForecast />} />
                     <Route path="/irrigation-scheduler" element={<IrrigationSchedulerViewer />} />
+                    <Route path="/tillage-planting" element={<TillagePlantingViewer />} />
                     <Route path="/docs" element={<Documentation />} />
                     <Route path="/feedback" element={<FeedbackForm />} />
                 </Routes>
