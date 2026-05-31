@@ -35,3 +35,5 @@ node_modules/
 # Knowledge base and documentation files (not for deployment)
 Tool_codes/
 Paper.docx
+
+Papers/*
