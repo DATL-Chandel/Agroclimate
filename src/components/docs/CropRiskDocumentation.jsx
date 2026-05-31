@@ -2806,6 +2806,130 @@ const CropRiskDocumentation = () => {
                         </div>
                     </div>
                 </div>
+
+                <div style={styles.section}>
+                    <h2 style={styles.sectionTitle}>5. Product Demo</h2>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: isMobile ? 'column' : 'row',
+                        gap: '20px',
+                        marginTop: '20px',
+                        flexWrap: 'wrap'
+                    }}>
+                        <div style={{
+                            flex: '1',
+                            background: 'linear-gradient(135deg, #c0392b 0%, #e74c3c 100%)',
+                            borderRadius: '20px',
+                            padding: '40px',
+                            color: 'white',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            boxShadow: '0 10px 30px rgba(231, 76, 60, 0.2)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            minHeight: isMobile ? 'auto' : '600px'
+                        }}>
+                            <div style={{
+                                position: 'absolute',
+                                top: 0, left: 0, right: 0, bottom: 0,
+                                opacity: 0.1,
+                                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)',
+                                zIndex: 1
+                            }} />
+                            <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                <h3 style={{ margin: '0 0 15px 0', fontSize: '28px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                                    Crop Risk Forecaster Tool Demo
+                                </h3>
+                                <p style={{ margin: '0 0 30px 0', fontSize: '16px', opacity: 0.9, lineHeight: '1.6' }}>
+                                    Get a comprehensive walkthrough of all features in the Crop Risk Forecaster App. Learn how to assess weather-driven crop risk, interpret risk indices, and make timely management decisions.
+                                </p>
+                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                    <div style={{
+                                        position: 'relative', width: '100%', flex: 1,
+                                        minHeight: '300px', backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        borderRadius: '12px', overflow: 'hidden'
+                                    }}>
+                                        <iframe
+                                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                                            src="https://www.youtube.com/embed/7-ix_w_iFOA"
+                                            title="Crop Risk Forecaster Video"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                    <a
+                                        href="https://youtu.be/7-ix_w_iFOA"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+
+                                        style={{
+                                            display: 'inline-flex', alignItems: 'center', gap: '10px',
+                                            background: 'rgba(255, 255, 255, 0.1)', padding: '12px 24px',
+                                            borderRadius: '30px', backdropFilter: 'blur(5px)',
+                                            color: 'white', textDecoration: 'none',
+                                            transition: 'all 0.3s ease', cursor: 'pointer'
+                                        }}
+                                        onMouseEnter={(e) => { e.target.style.background = 'rgba(255, 255, 255, 0.2)'; }}
+                                        onMouseLeave={(e) => { e.target.style.background = 'rgba(255, 255, 255, 0.1)'; }}
+                                    >
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+                                        </svg>
+                                        <span style={{ fontSize: '16px', fontWeight: '500' }}>Watch on YouTube</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Crop Risk Forecaster Tool Demo (Mobile) */}
+                        <div style={{
+                            flex: '1',
+                            background: 'linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%)',
+                            borderRadius: '20px',
+                            padding: '40px',
+                            color: 'white',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            boxShadow: '0 10px 30px rgba(142, 68, 173, 0.2)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            minHeight: isMobile ? 'auto' : '600px'
+                        }}>
+                            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.1, background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%)', zIndex: 1 }} />
+                            <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                <h3 style={{ margin: '0 0 15px 0', fontSize: '28px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                                    Crop Risk Forecaster Tool Demo (Mobile)
+                                </h3>
+                                <p style={{ margin: '0 0 30px 0', fontSize: '16px', opacity: 0.9, lineHeight: '1.6' }}>
+                                    Use the Crop Risk Forecaster on your mobile device. Learn how to quickly assess crop risk on the go and make timely field management decisions from smaller screens.
+                                </p>
+                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                    <div style={{ position: 'relative', width: '100%', flex: 1, minHeight: '300px', backgroundColor: 'rgba(0,0,0,0.1)', borderRadius: '12px', overflow: 'hidden' }}>
+                                        <iframe
+                                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                                            src="https://www.youtube.com/embed/yeThZdTmAJA"
+                                            title="Crop Risk Forecaster Tool Demo Video (Mobile)"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                    <a href="https://youtu.be/yeThZdTmAJA" target="_blank" rel="noopener noreferrer"
+                                        style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.1)', padding: '12px 24px', borderRadius: '30px', backdropFilter: 'blur(5px)', color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', cursor: 'pointer' }}
+                                        onMouseEnter={(e) => { e.target.style.background = 'rgba(255,255,255,0.2)'; }}
+                                        onMouseLeave={(e) => { e.target.style.background = 'rgba(255,255,255,0.1)'; }}
+                                    >
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+                                        </svg>
+                                        <span style={{ fontSize: '16px', fontWeight: '500' }}>Watch on YouTube</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </>
                 )}
                 

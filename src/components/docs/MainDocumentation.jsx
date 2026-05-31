@@ -809,14 +809,14 @@ const MainDocumentation = () => {
                                                 height: '100%',
                                                 border: 'none'
                                             }}
-                                            src="https://www.youtube.com/embed/nZ7mCx14ME4"
+                                            src="https://www.youtube.com/embed/DENMwXmijSQ"
                                             title="Main Tool Demo Video"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
                                     </div>
                                     <a 
-                                        href="https://youtu.be/nZ7mCx14ME4"
+                                        href="https://youtu.be/DENMwXmijSQ"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -935,14 +935,14 @@ const MainDocumentation = () => {
                                                 height: '100%',
                                                 border: 'none'
                                             }}
-                                            src="https://www.youtube.com/embed/DZakqHr_jZQ"
+                                            src="https://www.youtube.com/embed/w05SnQ1AXqU"
                                             title="Main Tool Demo Video (Mobile)"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
                                     </div>
                                     <a 
-                                        href="https://youtu.be/DZakqHr_jZQ?si=y6hG-Vdpg-UX0MS3"
+                                        href="https://youtu.be/w05SnQ1AXqU"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{

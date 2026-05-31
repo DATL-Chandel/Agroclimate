@@ -505,14 +505,14 @@ const SprayDocumentation = () => {
                                                 height: '100%',
                                                 border: 'none'
                                             }}
-                                            src="https://www.youtube.com/embed/YKOP0w9fYs0?si=qfxM1AzMH2no7DV1"
+                                            src="https://www.youtube.com/embed/Gm2I4piM5N0"
                                             title="Spray Planner Video"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
                                     </div>
                                     <a 
-                                        href="https://youtu.be/YKOP0w9fYs0?si=L6CZp7k2tzEhCMDj"
+                                        href="https://youtu.be/Gm2I4piM5N0"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -559,7 +559,7 @@ const SprayDocumentation = () => {
                             </div>
                         </div>
       
-                        {/* NDVI Tool Demo (Mobile)
+                        {/* Spray Planner Tool Demo (Mobile) */}
                         <div style={{
                             flex: '1',
                             background: 'linear-gradient(135deg, #c0392b 0%, #e74c3c 100%)',
@@ -597,7 +597,7 @@ const SprayDocumentation = () => {
                                     fontWeight: '600',
                                     letterSpacing: '0.5px'
                                 }}>
-                                    NDVI Tool Demo (Mobile)
+                                    Spray Planner Tool Demo (Mobile)
                                 </h3>
                                 <p style={{
                                     margin: '0 0 30px 0',
@@ -605,7 +605,7 @@ const SprayDocumentation = () => {
                                     opacity: 0.9,
                                     lineHeight: '1.6'
                                 }}>
-                                    Master the NDVI tool on your mobile device. This guide shows how to effectively monitor crop health and analyze vegetation data while on the go.
+                                    Master the Spray Planner on your mobile device. Learn how to plan and optimize spray operations on the go using real-time weather forecasts on smaller screens.
                                 </p>
                                 <div style={{
                                     flex: 1,
@@ -631,14 +631,14 @@ const SprayDocumentation = () => {
                                                 height: '100%',
                                                 border: 'none'
                                             }}
-                                            src="https://youtube.com/embed/shorts/J8f8W9lJcgM?si=AJnvVV1ISaAcKSBL"
-                                            title="NDVI Tool Demo Video (Mobile)"
+                                            src="https://www.youtube.com/embed/bgBm-c7Qt2g"
+                                            title="Spray Planner Tool Demo Video (Mobile)"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
                                     </div>
                                     <a 
-                                        href="https://youtube.com/shorts/J8f8W9lJcgM?si=AJnvVV1ISaAcKSBL"
+                                        href="https://youtube.com/shorts/bgBm-c7Qt2g"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -683,7 +683,7 @@ const SprayDocumentation = () => {
                                     </a>
                                 </div>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
 

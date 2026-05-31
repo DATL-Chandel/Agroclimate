@@ -583,14 +583,14 @@ const NDVIDocumentation = () => {
                                                 height: '100%',
                                                 border: 'none'
                                             }}
-                                            src="https://www.youtube.com/embed/pB3WCnZKYj8"
+                                            src="https://www.youtube.com/embed/9bCo0e-_KLw"
                                             title="NDVI Tool Demo Video"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
                                     </div>
                                     <a 
-                                        href="https://youtu.be/pB3WCnZKYj8"
+                                        href="https://youtu.be/9bCo0e-_KLw"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -636,7 +636,7 @@ const NDVIDocumentation = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* NDVI Tool Demo (Mobile)
+                        {/* NDVI Tool Demo (Mobile) */}
                         <div style={{
                             flex: '1',
                             background: 'linear-gradient(135deg, #c0392b 0%, #e74c3c 100%)',
@@ -708,14 +708,14 @@ const NDVIDocumentation = () => {
                                                 height: '100%',
                                                 border: 'none'
                                             }}
-                                            src="https://youtube.com/embed/shorts/J8f8W9lJcgM?si=AJnvVV1ISaAcKSBL"
+                                            src="https://www.youtube.com/embed/2oWeFjff-dY"
                                             title="NDVI Tool Demo Video (Mobile)"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
                                     </div>
                                     <a 
-                                        href="https://youtube.com/shorts/J8f8W9lJcgM?si=AJnvVV1ISaAcKSBL"
+                                        href="https://youtu.be/2oWeFjff-dY"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -760,7 +760,7 @@ const NDVIDocumentation = () => {
                                     </a>
                                 </div>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
 
