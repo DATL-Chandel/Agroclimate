@@ -385,14 +385,18 @@ const GDDDocumentation = () => {
                             <li style={styles.listItem}><span style={styles.bold}>TMAX is capped at 86°F; TMIN is floored at TBASE</span>, which is specific to each crop.</li>
                             <li style={styles.listItem}>The temperature data is fetched from:
                                 <ul style={{...styles.list, marginLeft: '20px', marginTop: '5px'}}>
-                                    <li style={{...styles.listItem, marginBottom: '5px'}}><span style={styles.bold}>NASA SMAP</span> (historical temperature data)</li>
-                                    <li style={{...styles.listItem, marginBottom: '5px'}}><span style={styles.bold}>NOAA GFS</span> (forecasted temperature for up to 16 days ahead)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}><span style={styles.bold}>Daymet V4 (NASA/ORNL)</span> — USA historical temperature, 1 km resolution (1980–2025)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}><span style={styles.bold}>GRIDMET (Univ. of Idaho)</span> — USA near real-time temperature, ~4.6 km resolution (2026+)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}><span style={styles.bold}>ERA5-Land (ECMWF)</span> — Global historical temperature, ~11 km resolution (non-USA fields)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}><span style={styles.bold}>NOAA GFS</span> — Forecasted temperature for up to 16 days ahead (all locations)</li>
                                 </ul>
                             </li>
+                            <li style={styles.listItem}>The tool automatically selects the appropriate dataset based on <span style={styles.bold}>field location</span> (USA vs. global) and <span style={styles.bold}>date range</span> — no manual selection required.</li>
                             <li style={styles.listItem}>Users can select the crop (from a list of 45+) and define the <span style={styles.bold}>start and end dates</span>.</li>
                             <li style={styles.listItem}>The selected range may include <span style={styles.bold}>future forecast data</span>, enabling prediction.</li>
                             <li style={styles.listItem}>After loading, the tool displays a <span style={styles.bold}>cumulative GDD chart</span>, with one line per field.</li>
-                            <li style={styles.listItem}>If the selected date range includes future days, a red <span style={styles.bold}>Forecast Warning</span> is displayed.</li>
+                            <li style={styles.listItem}>If the selected date range includes future days, a <span style={styles.bold}>blue Forecast Note</span> is displayed indicating GFS forecast data is in use.</li>
+                            <li style={styles.listItem}>A <span style={styles.bold}>data source label</span> is shown below the chart (in italic gray) indicating which temperature dataset(s) were used for the selected period and location.</li>
                         </ul>
                     </div>
 
@@ -2209,8 +2213,8 @@ const GDDDocumentation = () => {
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
                                         NOAA Global Forecast System (GFS) weather forecast data. Provides global weather 
-                                        forecasts for 16 days with parameters including temperature, humidity, wind speed, and precipitation. 
-                                        Used for both general weather forecasting and specialized agricultural applications like the Field Spray Planner.
+                                        forecasts up to 16 days ahead with parameters including maximum and minimum temperature, humidity, wind speed, and precipitation. 
+                                        Used in the Crop Growth Tracker for future GDD calculations when the selected date range extends beyond today.
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
                                         <a href="https://developers.google.com/earth-engine/datasets/catalog/NOAA_GFS0P25" 
@@ -2228,7 +2232,7 @@ const GDDDocumentation = () => {
                                 <tr>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
                                         <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            NASA SMAP
+                                            Daymet V4 (NASA/ORNL)
                                         </span>
                                         <code style={{ 
                                             color: '#666',
@@ -2238,15 +2242,83 @@ const GDDDocumentation = () => {
                                             borderRadius: '4px',
                                             display: 'inline-block'
                                         }}>
-                                            'NASA/SMAP/SPL4SMGP/008'
+                                            'NASA/ORNL/DAYMET_V4'
                                         </code>
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        NASA SMAP Level-4 Global 3-hourly Surface and Root Zone Soil Moisture. Provides 
-                                        global soil moisture data at various depths.
+                                        Daily surface weather data for North America at 1 km resolution. Provides daily maximum and minimum 
+                                        temperature (°C), precipitation, and other variables. Used for USA historical GDD calculations (1980–2025).
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008" 
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_ORNL_DAYMET_V4" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        style={{
+                                               color: '#3498db',
+                                            textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            GRIDMET (Univ. of Idaho)
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            'IDAHO_EPSCOR/GRIDMET'
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        High-resolution (~4.6 km) daily meteorological dataset for the contiguous USA. Provides daily 
+                                        maximum and minimum temperature (K), precipitation, humidity, and wind. Near real-time with ~2 day lag. 
+                                        Used for USA GDD calculations from 2026 onwards.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        style={{
+                                               color: '#3498db',
+                                            textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            ERA5-Land Daily (ECMWF)
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            'ECMWF/ERA5_LAND/DAILY_AGGR'
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        Global daily aggregated land surface variables at ~11 km resolution from ECMWF reanalysis. 
+                                        Provides daily maximum and minimum 2m air temperature (K) from 1950 to present. 
+                                        Used for GDD calculations for fields outside the contiguous USA.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR" 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
                                         style={{
