@@ -292,11 +292,11 @@ const MainDocumentation = () => {
                             <li style={styles.listItem}><span style={styles.bold}>Rootzone Soil Moisture:</span> Indicates moisture levels in deeper soil layers, impacting crop water uptake. Units: Percentage.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Surface Temperature:</span> Measures the temperature at the land surface, affecting plant heat stress. Units: Fahrenheit.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Soil Temperature:</span> Indicates temperature variations at different soil depths, influencing microbial activity and root development. Units: Fahrenheit.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Evapotranspiration:</span> Represents water loss due to soil evaporation and plant transpiration, crucial for irrigation planning. Units: Inches.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Evapotranspiration:</span> Represents water loss due to soil evaporation and plant transpiration, crucial for irrigation planning. Units: mm/day. Sourced from GRIDMET (USA) or ERA5-Land (global).</li>
                             <li style={styles.listItem}><span style={styles.bold}>Precipitation:</span> Tracks historical and seasonal rainfall trends, affecting soil moisture and crop yields. Units: Inches.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Specific Humidity:</span> Measures the water vapor content in the atmosphere, influencing plant transpiration rates. Units: Percentage.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Wind Speed:</span> Analyzes air movement across croplands, affecting evapotranspiration and crop lodging risks. Units: Miles per hour.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>Air Temperature:</span> Tracks daily, seasonal, and long-term temperature fluctuations, impacting plant growth cycles. Units: Fahrenheit.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Wind Speed:</span> Analyzes air movement across croplands, affecting evapotranspiration and crop lodging risks. Units: Miles per hour. Sourced from GRIDMET (USA) or ERA5-Land (global).</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Air Temperature:</span> Tracks daily, seasonal, and long-term temperature fluctuations, impacting plant growth cycles. Units: Fahrenheit. Sourced from GRIDMET (USA) or ERA5-Land (global).</li>
                             <li style={styles.listItem}><span style={styles.bold}>Cloud Cover:</span>Analyzes atmospheric cloud patterns over selected periods with hourly, daily, weekly, or monthly intervals. Hourly frequency available for detailed analysis (recommended duration less than 7 days). Units: Percentage.</li>
                         </ul>
                     </div>
@@ -316,7 +316,14 @@ const MainDocumentation = () => {
                             <li style={styles.listItem}>Visualizes historical precipitation data over a selected time period.</li>
                             <li style={styles.listItem}>Helps in assessing drought conditions and water availability for crops.</li>
                             <li style={styles.listItem}>Provides seasonal and monthly rainfall trends for agricultural planning.</li>
-                            <li style={styles.listItem}>Units: Inches.</li>
+                            <li style={styles.listItem}>Units: Inches/day.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Data Sources (automatically selected):</span>
+                                <ul style={{...styles.list, marginLeft: '20px', marginTop: '5px'}}>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}>USA fields (1980–2025): Daymet V4 (1 km, NASA ORNL)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}>USA fields (2026–present): GRIDMET (4.6 km, Univ. of Idaho)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}>Global fields: CHIRPS Daily (5.6 km, UCSB-CHG)</li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
 
@@ -480,6 +487,15 @@ const MainDocumentation = () => {
                             <li style={styles.listItem}>Assists in determining optimal planting and harvesting times.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Crop Selections:</span> Corn, Soybeans, Peanut, Cotton, Rice, Wheat, Barley, Sunflower, Potato, Sorghum, Lettuce.</li>
                             <li style={styles.listItem}>Fahrenheit based on crop-specific base temperature.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>GDD Formula:</span> GDD = MAX(0, ((MIN(Tmax, 86°F) + MAX(Tmin, Tbase)) / 2) − Tbase). Uses daily maximum and minimum temperatures for agronomic accuracy.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>Temperature Data Sources (automatically selected by location &amp; date):</span>
+                                <ul style={{...styles.list, marginLeft: '20px', marginTop: '5px'}}>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}>USA fields (1980–2025): Daymet V4 (1 km daily Tmax/Tmin, NASA ORNL)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}>USA fields (2026–present): GRIDMET (4.6 km daily Tmax/Tmin, Univ. of Idaho)</li>
+                                    <li style={{...styles.listItem, marginBottom: '5px'}}>Global fields: ERA5-Land (9 km daily Tmax/Tmin, ECMWF)</li>
+                                </ul>
+                            </li>
+                            <li style={styles.listItem}>A data source label is displayed below the GDD chart indicating which dataset(s) were used for the selected date range and field location.</li>
                         </ul>
                     </div>
                 </div>
@@ -527,7 +543,7 @@ const MainDocumentation = () => {
                                 <tr>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                         <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                            Sentinel-2
+                                            Sentinel-2 SR Harmonized
                                         </span>
                                         <code style={{ 
                                             color: '#666',
@@ -537,15 +553,14 @@ const MainDocumentation = () => {
                                             borderRadius: '4px',
                                             display: 'inline-block'
                                         }}>
-                                            "COPERNICUS/S2"
+                                            "COPERNICUS/S2_SR_HARMONIZED"
                                         </code>
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        Sentinel-2 MSI Level-1C data for vegetation monitoring. Provides high-resolution optical imagery 
-                                        for land monitoring, emergency management, and security services.
+                                        Sentinel-2 MSI Level-2A Surface Reflectance (Harmonized) data for vegetation monitoring. Provides high-resolution atmospherically corrected optical imagery for land monitoring, crop health assessment, and vegetation index calculations (NDVI, EVI, etc.).
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2" 
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED" 
                                            target="_blank" 
                                            rel="noopener noreferrer"
                                            style={{ 
@@ -608,11 +623,106 @@ const MainDocumentation = () => {
                                         </code>
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                        Climate Hazards Group InfraRed Precipitation with Station Data. Provides daily 
-                                        precipitation estimates from rain gauge and satellite observations.
+                                        Climate Hazards Group InfraRed Precipitation with Station Data. Provides daily precipitation estimates from rain gauge and satellite observations. Used as the global rainfall fallback for fields outside the USA (5.6 km resolution).
                                     </td>
                                     <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                         <a href="https://developers.google.com/earth-engine/datasets/catalog/UCSB-CHG_CHIRPS_DAILY" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            Daymet V4
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            'NASA/ORNL/DAYMET_V4'
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        NASA ORNL Daymet Version 4 daily surface weather data for North America. Provides 1 km resolution daily minimum/maximum temperature and precipitation for the continental USA (1980–2025). Used for GDD calculation and rainfall analysis for USA fields.
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_ORNL_DAYMET_V4" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            GRIDMET
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            'IDAHO_EPSCOR/GRIDMET'
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        University of Idaho Gridded Surface Meteorological Dataset. Provides 4.6 km daily meteorological data for the continental USA including temperature, precipitation, wind speed, humidity, and evapotranspiration. Used for GDD, rainfall, and climate parameters for recent dates (2026 onward).
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           style={{ 
+                                               color: '#3498db',
+                                               textDecoration: 'none',
+                                               fontWeight: 'bold'
+                                           }}>
+                                            View Dataset →
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                            ERA5-Land
+                                        </span>
+                                        <code style={{ 
+                                            color: '#666',
+                                            fontSize: '12px',
+                                            backgroundColor: '#f1f1f1',
+                                            padding: '4px 6px',
+                                            borderRadius: '4px',
+                                            display: 'inline-block'
+                                        }}>
+                                            'ECMWF/ERA5_LAND/DAILY_AGGR'
+                                        </code>
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                        ECMWF ERA5-Land daily aggregated reanalysis dataset. Provides global 9 km resolution daily temperature (min/max), wind, humidity, and surface energy fluxes. Used for GDD and climate parameters for fields outside the USA (global coverage).
+                                    </td>
+                                    <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                        <a href="https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR" 
                                            target="_blank" 
                                            rel="noopener noreferrer"
                                            style={{ 

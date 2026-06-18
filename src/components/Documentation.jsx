@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import MainDocumentation from './docs/MainDocumentation';
-import NDVIDocumentation from './docs/NDVIDocumentation';
-import SprayDocumentation from './docs/SprayDocumentation';
-import GDDDocumentation from './docs/GDDDocumentation';
-import CropRiskDocumentation from './docs/CropRiskDocumentation';
-import IrrigationSchedulerDocumentation from './docs/IrrigationSchedulerDocumentation';
-import TillagePlantingDocumentation from './docs/TillagePlantingDocumentation';
+import MainDocumentation from './docs/tools/MainDocumentation';
+import NDVIDocumentation from './docs/tools/NDVIDocumentation';
+import SprayDocumentation from './docs/tools/SprayDocumentation';
+import GDDDocumentation from './docs/tools/GDDDocumentation';
+import CropRiskDocumentation from './docs/tools/CropRiskDocumentation';
+import IrrigationSchedulerDocumentation from './docs/tools/IrrigationSchedulerDocumentation';
+import TillagePlantingDocumentation from './docs/tools/TillagePlantingDocumentation';
 
 const Documentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);

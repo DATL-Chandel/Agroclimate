@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MainDocumentation from './MainDocumentation';
-import NDVIDocumentation from './NDVIDocumentation';
-import SprayDocumentation from './SprayDocumentation';
-import GDDDocumentation from './GDDDocumentation';
-import IrrigationSchedulerDocumentation from './IrrigationSchedulerDocumentation';
-import TillagePlantingDocumentation from './TillagePlantingDocumentation';
 
 const CropRiskDocumentation = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
-    const [activeTab, setActiveTab] = useState('cropRisk');
 
     useEffect(() => {
         const handleResize = () => {
@@ -182,41 +175,7 @@ const CropRiskDocumentation = () => {
     );
 
     return (
-        <div style={styles.container}>
-            <div style={styles.contentWrapper}>
-                <div style={styles.tabContainer}>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'main' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('main')}>Main Tool</div>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'ndvi' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('ndvi')}>NDVI & LST Viewer</div>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'spray' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('spray')}>Spray Planner</div>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'gdd' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('gdd')}>Crop Growth Tracker</div>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'cropRisk' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('cropRisk')}>Crop Risk Forecaster</div>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'irrigation' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('irrigation')}>Irrigation Scheduler</div>
-                    <div style={{
-                        ...styles.tab,
-                        ...(activeTab === 'tillage' ? styles.activeTab : styles.inactiveTab)
-                    }} onClick={() => setActiveTab('tillage')}>Tillage &amp; Planting</div>
-                </div>
-
-                {activeTab === 'cropRisk' && (
-                    <>
+        <>
                         <header style={styles.header}>
                             <h1 style={styles.title}>Crop Risk Forecaster Documentation</h1>
                             <p style={{
@@ -2930,32 +2889,6 @@ const CropRiskDocumentation = () => {
                         </div>
                     </div>
                 </div>
-                </>
-                )}
-                
-                {activeTab === 'main' && (
-                    <MainDocumentation />
-                )}
-                
-                {activeTab === 'ndvi' && (
-                    <NDVIDocumentation />
-                )}
-                
-                {activeTab === 'spray' && (
-                    <SprayDocumentation />
-                )}
-                
-                {activeTab === 'gdd' && (
-                    <GDDDocumentation />
-                )}
-                
-                {activeTab === 'irrigation' && (
-                    <IrrigationSchedulerDocumentation />
-                )}
-
-                {activeTab === 'tillage' && (
-                    <TillagePlantingDocumentation />
-                )}
                 
                 <footer style={styles.footer}>
                     <p style={{ fontSize: '14px', fontWeight: '600', color: colors.primary, marginBottom: '6px', textAlign: 'center' }}>
@@ -2984,8 +2917,7 @@ const CropRiskDocumentation = () => {
                         </p>
                     </div>
                 </footer>
-            </div>
-        </div>
+        </>
     );
 };
 
