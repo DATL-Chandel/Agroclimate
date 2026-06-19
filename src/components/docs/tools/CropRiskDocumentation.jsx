@@ -769,14 +769,21 @@ const CropRiskDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '5px',
                                 marginLeft: '15px'
-                            }}>• Day 0: Use SMAP root zone soil moisture (mm → inches: ×0.03937)</p>
+                            }}>• Day 0: Use SMAP root zone soil moisture (<code>sm_rootzone</code> band, volume fraction m³/m³).</p>
+                            <p style={{
+                                fontSize: isMobile ? '12px' : '13px',
+                                lineHeight: '1.5',
+                                color: colors.text,
+                                marginBottom: '5px',
+                                marginLeft: '15px'
+                            }}>• Converted to inches: <code>sm_rootzone × starting_root_depth_inches</code></p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
                                 color: colors.text,
                                 marginBottom: '0',
                                 marginLeft: '15px'
-                            }}>If not available, set to FC × root depth.</p>
+                            }}>• If SMAP data unavailable, initial soil moisture defaults to <strong>0 inches</strong> (conservative assumption).</p>
                         </div>
 
                         <div style={{marginBottom: '15px'}}>
@@ -792,14 +799,14 @@ const CropRiskDocumentation = () => {
                                 padding: '15px',
                                 borderRadius: '8px',
                                 fontFamily: 'monospace',
-                                fontSize: isMobile ? '14px' : '16px',
+                                fontSize: isMobile ? '13px' : '15px',
                                 marginBottom: '10px',
                                 border: '2px solid #34495e',
                                 marginLeft: '15px',
                                 textAlign: 'center',
                                 fontWeight: '500'
                             }}>
-                                SoilMoisture_t = SoilMoisture_t-1 + Precip_t + Irrigation_t - ETc_t
+                                SM_t = SM_t-1 + EffectivePrecip_t + Irrigation_t − ETc_t
                             </div>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
@@ -807,21 +814,56 @@ const CropRiskDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '5px',
                                 marginLeft: '15px'
-                            }}>• Precip: Forecast, inches.</p>
+                            }}><span style={{fontWeight: '500'}}>Effective Precipitation</span> (precip actually absorbed — capped at available pore space):</p>
+                            <div style={{
+                                backgroundColor: '#2c3e50',
+                                color: 'white',
+                                padding: '10px 15px',
+                                borderRadius: '6px',
+                                fontFamily: 'monospace',
+                                fontSize: isMobile ? '12px' : '14px',
+                                marginBottom: '5px',
+                                marginLeft: '30px',
+                                textAlign: 'center',
+                                fontWeight: '500'
+                            }}>
+                                EffectivePrecip_t = min(Precip_t, FC×RootDepth − SM_t-1)
+                            </div>
+                            <p style={{
+                                fontSize: isMobile ? '12px' : '13px',
+                                lineHeight: '1.5',
+                                color: colors.text,
+                                marginBottom: '5px',
+                                marginLeft: '15px'
+                            }}><span style={{fontWeight: '500'}}>Runoff</span> (excess precipitation that cannot be stored):</p>
+                            <div style={{
+                                backgroundColor: '#2c3e50',
+                                color: 'white',
+                                padding: '10px 15px',
+                                borderRadius: '6px',
+                                fontFamily: 'monospace',
+                                fontSize: isMobile ? '12px' : '14px',
+                                marginBottom: '8px',
+                                marginLeft: '30px',
+                                textAlign: 'center',
+                                fontWeight: '500'
+                            }}>
+                                Runoff_t = Precip_t − EffectivePrecip_t
+                            </div>
+                            <p style={{
+                                fontSize: isMobile ? '12px' : '13px',
+                                lineHeight: '1.5',
+                                color: colors.text,
+                                marginBottom: '5px',
+                                marginLeft: '15px'
+                            }}>• <strong>Irrigation:</strong> User entry, inches/day.</p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
                                 color: colors.text,
                                 marginBottom: '8px',
                                 marginLeft: '15px'
-                            }}>• Irrigation: User entry, inches.</p>
-                            <p style={{
-                                fontSize: isMobile ? '12px' : '13px',
-                                lineHeight: '1.5',
-                                color: colors.text,
-                                marginBottom: '8px',
-                                marginLeft: '15px'
-                            }}>• ETc: Calculated below.</p>
+                            }}>• <strong>ETc:</strong> Calculated from ET₀ × Kc (see 5.3 below).</p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
@@ -835,14 +877,14 @@ const CropRiskDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '5px',
                                 marginLeft: '30px'
-                            }}>• If SoilMoisture_t &gt; FC × RootDepth → set to FC × RootDepth (drainage).</p>
+                            }}>• Upper: SM_t = min(SM_t, FC × RootDepth) — soil cannot exceed Field Capacity.</p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
                                 color: colors.text,
                                 marginBottom: '0',
                                 marginLeft: '30px'
-                            }}>• If &lt; WP × RootDepth → set to WP × RootDepth (can't go lower; plants cannot extract).</p>
+                            }}>• Lower: SM_t = max(SM_t, WP × RootDepth) — soil cannot drop below Wilting Point.</p>
                         </div>
 
                         <div style={{marginBottom: '0'}}>
@@ -852,35 +894,75 @@ const CropRiskDocumentation = () => {
                                 color: colors.primary,
                                 marginBottom: '8px'
                             }}>5.3 Daily Crop Evapotranspiration (ETc)</p>
+
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
                                 color: colors.text,
-                                marginBottom: '5px',
+                                marginBottom: '10px',
                                 marginLeft: '15px'
-                            }}>1. Reference ET (ET₀) [Hargreaves Equation]:</p>
+                            }}>1. Reference ET (ET₀) — Dual-Source Approach:</p>
+
                             <div style={{
-                                backgroundColor: '#2c3e50',
-                                color: 'white',
-                                padding: '15px',
-                                borderRadius: '8px',
-                                fontFamily: 'monospace',
-                                fontSize: isMobile ? '14px' : '16px',
-                                marginBottom: '8px',
-                                border: '2px solid #34495e',
+                                backgroundColor: '#e8f5e9',
+                                borderRadius: '6px',
+                                padding: '12px 15px',
+                                marginBottom: '10px',
                                 marginLeft: '15px',
-                                textAlign: 'center',
-                                fontWeight: '500'
+                                border: '1px solid #a5d6a7'
                             }}>
-                                ET₀ = 0.0023 × (T_max,C - T_min,C)^0.5 × (T_mean,C + 17.8)
+                                <p style={{
+                                    fontSize: isMobile ? '12px' : '13px',
+                                    fontWeight: '600',
+                                    color: '#2E7D32',
+                                    marginBottom: '4px'
+                                }}>Primary — GRIDMET (Historical days, USA fields only):</p>
+                                <p style={{
+                                    fontSize: isMobile ? '12px' : '13px',
+                                    lineHeight: '1.5',
+                                    color: colors.text,
+                                    marginBottom: '0'
+                                }}>
+                                    Measured daily grass reference ET₀ from the <code>eto</code> band (mm/day) of the GRIDMET dataset
+                                    (<code>IDAHO_EPSCOR/GRIDMET</code>). Covers contiguous USA, 1979 to ~2 days ago.
+                                </p>
                             </div>
-                            <p style={{
-                                fontSize: isMobile ? '12px' : '13px',
-                                lineHeight: '1.5',
-                                color: colors.text,
-                                marginBottom: '8px',
-                                marginLeft: '15px'
-                            }}>• Temperatures in °C.</p>
+
+                            <div style={{
+                                backgroundColor: '#fff8e1',
+                                borderRadius: '6px',
+                                padding: '12px 15px',
+                                marginBottom: '10px',
+                                marginLeft: '15px',
+                                border: '1px solid #ffe082'
+                            }}>
+                                <p style={{
+                                    fontSize: isMobile ? '12px' : '13px',
+                                    fontWeight: '600',
+                                    color: '#F57F17',
+                                    marginBottom: '6px'
+                                }}>Fallback — Hargreaves Equation (Forecast days or non-USA fields):</p>
+                                <div style={{
+                                    backgroundColor: '#2c3e50',
+                                    color: 'white',
+                                    padding: '12px',
+                                    borderRadius: '6px',
+                                    fontFamily: 'monospace',
+                                    fontSize: isMobile ? '13px' : '15px',
+                                    marginBottom: '6px',
+                                    textAlign: 'center',
+                                    fontWeight: '500'
+                                }}>
+                                    ET₀ = 0.0023 × (T_max,C − T_min,C)^0.5 × (T_mean,C + 17.8)
+                                </div>
+                                <p style={{
+                                    fontSize: isMobile ? '12px' : '13px',
+                                    lineHeight: '1.5',
+                                    color: colors.text,
+                                    marginBottom: '0'
+                                }}>• Temperatures in °C. Used when GRIDMET data is unavailable (forecast period or outside USA).</p>
+                            </div>
+
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
@@ -894,7 +976,7 @@ const CropRiskDocumentation = () => {
                                 color: colors.text,
                                 marginBottom: '8px',
                                 marginLeft: '15px'
-                            }}>• Get Kc from WSU/NRCS table for stage.</p>
+                            }}>• Get Kc from WSU/NRCS table for current growth stage (GDD-based).</p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
@@ -1242,27 +1324,48 @@ const CropRiskDocumentation = () => {
                             color: colors.secondary,
                             marginBottom: '15px'
                         }}>3. Temperature Unit Conversions</h6>
-                        
+
                         <div style={{marginBottom: '15px'}}>
                             <p style={{
                                 fontSize: isMobile ? '13px' : '14px',
                                 fontWeight: '500',
                                 color: colors.primary,
                                 marginBottom: '8px'
-                            }}>Kelvin to Celsius:</p>
+                            }}>ERA5-Land (Historical) — Kelvin → Celsius → Fahrenheit:</p>
+                            <p style={{
+                                fontSize: isMobile ? '12px' : '13px',
+                                lineHeight: '1.5',
+                                color: colors.text,
+                                marginBottom: '6px',
+                                marginLeft: '5px'
+                            }}>ERA5-Land <code>temperature_2m_min/max</code> bands are in <strong>Kelvin</strong>. Two-step conversion:</p>
                             <div style={{
                                 backgroundColor: '#FF9800',
                                 color: 'white',
-                                padding: '15px',
+                                padding: '12px 15px',
                                 borderRadius: '8px',
                                 fontFamily: 'monospace',
-                                fontSize: isMobile ? '14px' : '16px',
-                                marginBottom: '10px',
+                                fontSize: isMobile ? '13px' : '15px',
+                                marginBottom: '6px',
                                 border: '2px solid #F57C00',
                                 textAlign: 'center',
                                 fontWeight: '500'
                             }}>
-                                T_C = T_K - 273.15
+                                T_C = T_K − 273.15
+                            </div>
+                            <div style={{
+                                backgroundColor: '#FF9800',
+                                color: 'white',
+                                padding: '12px 15px',
+                                borderRadius: '8px',
+                                fontFamily: 'monospace',
+                                fontSize: isMobile ? '13px' : '15px',
+                                marginBottom: '0',
+                                border: '2px solid #F57C00',
+                                textAlign: 'center',
+                                fontWeight: '500'
+                            }}>
+                                T_F = (T_C × 9/5) + 32
                             </div>
                         </div>
 
@@ -1272,14 +1375,21 @@ const CropRiskDocumentation = () => {
                                 fontWeight: '500',
                                 color: colors.primary,
                                 marginBottom: '8px'
-                            }}>Celsius to Fahrenheit:</p>
+                            }}>NOAA GFS (Forecast) — Already °C → Fahrenheit:</p>
+                            <p style={{
+                                fontSize: isMobile ? '12px' : '13px',
+                                lineHeight: '1.5',
+                                color: colors.text,
+                                marginBottom: '6px',
+                                marginLeft: '5px'
+                            }}>GFS <code>temperature_2m_above_ground</code> is already in <strong>°C</strong> — no Kelvin conversion needed. Direct conversion:</p>
                             <div style={{
                                 backgroundColor: '#FF9800',
                                 color: 'white',
-                                padding: '15px',
+                                padding: '12px 15px',
                                 borderRadius: '8px',
                                 fontFamily: 'monospace',
-                                fontSize: isMobile ? '14px' : '16px',
+                                fontSize: isMobile ? '13px' : '15px',
                                 marginBottom: '0',
                                 border: '2px solid #F57C00',
                                 textAlign: 'center',
@@ -1556,12 +1666,17 @@ const CropRiskDocumentation = () => {
                                         paddingLeft: '20px'
                                     }}>
                                         <li style={{marginBottom: '8px'}}>
-                                            <span style={{fontWeight: '500'}}>Weather Forecast:</span> NOAA GFS (Tmax, Tmin, mean RH, precipitation), 16-day via GEE
+                                            <span style={{fontWeight: '500'}}>Weather Forecast:</span> NOAA GFS (<code>NOAA/GFS0P25</code>), 16-day forecast via Google Earth Engine. Specific bands used:
+                                            <ul style={{marginTop: '5px', paddingLeft: '20px'}}>
+                                                <li style={{marginBottom: '3px'}}><code>temperature_2m_above_ground</code> — air temperature (°C) → converted to °F for thresholds</li>
+                                                <li style={{marginBottom: '3px'}}><code>relative_humidity_2m_above_ground</code> — mean relative humidity (%) for disease wetness conditions</li>
+                                                <li style={{marginBottom: '3px'}}><code>total_precipitation_surface</code> — cumulative precipitation (kg/m²); daily totals derived by differencing consecutive forecast hours</li>
+                                            </ul>
                                         </li>
                                         <li style={{marginBottom: '0'}}>
                                             <span style={{fontWeight: '500'}}>Crop and Disease Parameters:</span> University extension guides, USDA, FAO
                                         </li>
-                            </ul>
+                                    </ul>
                                 </div>
 
                                 <h6 style={{
@@ -2647,40 +2762,7 @@ const CropRiskDocumentation = () => {
                                                 initialization values for water stress risk assessment and soil moisture monitoring.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP/008" 
-                                                   target="_blank" 
-                                                   rel="noopener noreferrer"
-                                                   style={{ 
-                                                       color: '#3498db',
-                                                       textDecoration: 'none',
-                                                       fontWeight: 'bold'
-                                                   }}>
-                                                    View Dataset →
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                                <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
-                                                    Sentinel-2
-                                                </span>
-                                                <code style={{ 
-                                                    color: '#666',
-                                                    fontSize: '12px',
-                                                    backgroundColor: '#f1f1f1',
-                                                    padding: '4px 6px',
-                                                    borderRadius: '4px',
-                                                    display: 'inline-block'
-                                                }}>
-                                                    "COPERNICUS/S2"
-                                                </code>
-                                            </td>
-                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                                Sentinel-2 satellite imagery for crop monitoring, vegetation indices, and 
-                                                field boundary analysis supporting comprehensive risk assessment.
-                                            </td>
-                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
-                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2" 
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008" 
                                                    target="_blank" 
                                                    rel="noopener noreferrer"
                                                    style={{ 
@@ -2743,11 +2825,47 @@ const CropRiskDocumentation = () => {
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
                                                 High-resolution climate reanalysis data providing daily aggregates of temperature, precipitation, 
-                                                evapotranspiration, soil moisture, and vegetation parameters from 1950 to present for enhanced 
-                                                crop risk assessment and climate analysis.
+                                                evapotranspiration, soil moisture, and vegetation parameters from 1950 to present for historical 
+                                                temperature data used in GDD calculations.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                                 <a href="https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR" 
+                                                   target="_blank" 
+                                                   rel="noopener noreferrer"
+                                                   style={{ 
+                                                       color: '#3498db',
+                                                       textDecoration: 'none',
+                                                       fontWeight: 'bold'
+                                                   }}>
+                                                    View Dataset →
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                                <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                                    GRIDMET
+                                                </span>
+                                                <code style={{ 
+                                                    color: '#666',
+                                                    fontSize: '12px',
+                                                    backgroundColor: '#f1f1f1',
+                                                    padding: '4px 6px',
+                                                    borderRadius: '4px',
+                                                    display: 'inline-block'
+                                                }}>
+                                                    "IDAHO_EPSCOR/GRIDMET"
+                                                </code>
+                                            </td>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                                High-resolution (~4 km) gridded surface meteorological dataset covering the contiguous USA 
+                                                from 1979 to near real-time (~2 day lag). Provides the primary reference 
+                                                evapotranspiration (ET₀) values (<code>eto</code> band, mm/day) used for historical days in 
+                                                water stress calculations. Hargreaves equation is used as fallback for forecast days or 
+                                                non-USA fields.
+                                            </td>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET" 
                                                    target="_blank" 
                                                    rel="noopener noreferrer"
                                                    style={{ 
@@ -2890,33 +3008,6 @@ const CropRiskDocumentation = () => {
                     </div>
                 </div>
                 
-                <footer style={styles.footer}>
-                    <p style={{ fontSize: '14px', fontWeight: '600', color: colors.primary, marginBottom: '6px', textAlign: 'center' }}>
-                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech
-                    </p>
-                    <p style={{ fontSize: '13px', color: colors.secondary, marginBottom: '6px', textAlign: 'center' }}>
-                        PI: Dr. Abhilash Chandel (<a href="mailto:abhilashchandel@vt.edu" style={{ color: colors.link }}>abhilashchandel@vt.edu</a>)
-                    </p>
-                    <p style={{ fontSize: '13px', color: colors.secondary, marginBottom: '20px', textAlign: 'center' }}>
-                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research &amp; Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
-                    </p>
-                    <div style={{
-                        backgroundColor: '#f8f9fa',
-                        border: '1px solid #e9ecef',
-                        borderRadius: '6px',
-                        padding: '14px 20px',
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                    }}>
-                        <p style={{ fontSize: '12px', fontWeight: '600', color: '#555', marginBottom: '6px', textAlign: 'center' }}>Disclaimer</p>
-                        <p style={{ fontSize: '12px', color: '#666', fontStyle: 'italic', lineHeight: '1.6', margin: 0, textAlign: 'center' }}>
-                            This tool is provided for educational and informational purposes only. While we strive to ensure accuracy,
-                            users should independently verify all data and consult qualified agricultural professionals before making
-                            management decisions. Virginia Tech, affiliated organizations, and project sponsors assume no liability
-                            for any decisions or outcomes resulting from the use of this application.
-                        </p>
-                    </div>
-                </footer>
         </>
     );
 };

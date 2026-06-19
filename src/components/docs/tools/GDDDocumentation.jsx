@@ -2540,14 +2540,6 @@ const GDDDocumentation = () => {
                                 </div>
                             </div>
                             
-                <footer style={styles.footer}>
-                    <p style={{...styles.paragraph, fontWeight: 'bold', color: colors.primary}}>
-                        Developed by: Digital Agriculture Technologies Lab, Virginia Tech (PI: Dr.Abhilash Chandel, abhilashchandel@vt.edu)
-                    </p>
-                    <p style={{...styles.paragraph, color: colors.secondary}}>
-                        Supported by: USDA, NIFA, NAPDC, Cotton Incorporated, Virginia Tech Tidewater Agricultural Research & Extension Center (TAREC), College of Agriculture and Life Sciences, and Department of Biological Systems Engineering.
-                    </p>
-                </footer>
         </>
     );
 };
