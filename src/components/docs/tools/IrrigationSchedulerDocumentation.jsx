@@ -165,7 +165,7 @@ const IrrigationSchedulerDocumentation = () => {
             <div style={styles.section}>
                 <h2 style={styles.sectionTitle}>2. Key Features</h2>
                 <ul style={styles.list}>
-                    <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive irrigation scheduling for crops including Corn, Cotton, Soybean, Sorghum, Wheat, Strawberry, and Peanut.</li>
+                    <li style={styles.listItem}><span style={styles.bold}>Multi-Crop Support:</span> Comprehensive irrigation scheduling for 13 crops including Corn, Cotton, Peanut, Soybean, Sorghum, Wheat, Strawberry, Apple, Grapes, Tomatoes, Watermelon, Blueberries, and Sweet Corn.</li>
                     <li style={styles.listItem}><span style={styles.bold}>Precision Water Management:</span> Detailed water balance calculations and irrigation recommendations based on crop-specific water requirements.</li>
                     <li style={styles.listItem}><span style={styles.bold}>16-Day Weather Forecasting:</span> Advanced weather predictions using NOAA GFS data for irrigation planning and scheduling.</li>
                     <li style={styles.listItem}><span style={styles.bold}>Field-Specific Analysis:</span> Customizable field boundaries with detailed water balance charts and deficit calculations.</li>
@@ -289,10 +289,10 @@ const IrrigationSchedulerDocumentation = () => {
                             </h5>
                             
                             <ul style={styles.list}>
-                                <li style={styles.listItem}><span style={styles.bold}>Reference ET (ET₀):</span> Calculated using FAO Penman-Monteith equation with NOAA GFS weather data</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Crop ET (ETc):</span> ET₀ × Crop Coefficient (Kc) for current growth stage</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Daily Water Use:</span> Real-time ET calculations based on forecasted weather conditions</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Stress Factors:</span> Adjustments for water stress, salinity, and disease conditions</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Reference ET (ET₀) — Dual-Source:</span> IDAHO_EPSCOR/GRIDMET <code>eto</code> band for historical days in the contiguous USA (~4 km resolution); Hargreaves equation using NOAA GFS temperature data for forecast days or non-USA fields</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Crop ET (ETc):</span> ET₀ × Crop Coefficient (Kc) for the current GDD-based growth stage</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Daily Water Use:</span> Real-time ET calculations using actual satellite and forecast temperature data</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Dynamic Data Selection:</span> High-resolution source (GRIDMET) prioritized first; Hargreaves used as fallback for global coverage</li>
                             </ul>
                         </div>
                     </div>
@@ -354,22 +354,30 @@ const IrrigationSchedulerDocumentation = () => {
                                     color: colors.primary,
                                     margin: '0 0 10px 0'
                                 }}>
-                                    SW<sub>t</sub> = SW<sub>t-1</sub> + P + I - ETc
+                                    SW<sub>t</sub> = SW<sub>t-1</sub> + P<sub>eff</sub> + I - ETc
                                 </p>
                                 <p style={{
                                     fontSize: isMobile ? '12px' : '14px',
                                     color: colors.secondary,
-                                    margin: '0'
+                                    margin: '0 0 8px 0'
                                 }}>
-                                    Where: SW = Soil Water, P = Precipitation, I = Irrigation, ETc = Crop ET
+                                    Where: SW = Soil Water, P<sub>eff</sub> = Effective Precipitation, I = Irrigation, ETc = Crop ET
+                                </p>
+                                <p style={{
+                                    fontSize: isMobile ? '11px' : '13px',
+                                    color: colors.secondary,
+                                    margin: '0',
+                                    fontStyle: 'italic'
+                                }}>
+                                    P<sub>eff</sub> = min(P, FC − SW<sub>t-1</sub>) — excess rainfall becomes runoff and does not enter the soil
                                 </p>
                             </div>
                             
                             <ul style={styles.list}>
-                                <li style={styles.listItem}><span style={styles.bold}>Soil Water (SW):</span> Current soil moisture content in the root zone</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Precipitation (P):</span> Rainfall from NOAA GFS forecasts</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Irrigation (I):</span> Applied irrigation water (if any)</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Crop ET (ETc):</span> Daily crop water consumption</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Soil Water (SW):</span> Current soil moisture content in the root zone (bounded between PWP and FC)</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Effective Precipitation (P<sub>eff</sub>):</span> Rainfall capped at available soil pore space — soil can only absorb up to (FC − current SW); excess is runoff</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Irrigation (I):</span> Applied irrigation water entered by the user (applied on Day 1)</li>
+                                <li style={styles.listItem}><span style={styles.bold}>Crop ET (ETc):</span> Daily crop water consumption = ET₀ × Kc</li>
                             </ul>
                         </div>
                     </div>
@@ -581,11 +589,17 @@ const IrrigationSchedulerDocumentation = () => {
                     {[
                         { crop: 'Corn', icon: '🌽', color: '#FFA726' },
                         { crop: 'Cotton', icon: '🌾', color: '#F4F4F4' },
+                        { crop: 'Peanut', icon: '🥜', color: '#8D6E63' },
                         { crop: 'Soybean', icon: '🌱', color: '#8BC34A' },
                         { crop: 'Sorghum', icon: '🌾', color: '#D4A574' },
                         { crop: 'Wheat', icon: '🌾', color: '#FFD54F' },
                         { crop: 'Strawberry', icon: '🍓', color: '#F44336' },
-                        { crop: 'Peanut', icon: '🥜', color: '#8D6E63' }
+                        { crop: 'Apple', icon: '🍎', color: '#E53935' },
+                        { crop: 'Grapes', icon: '🍇', color: '#8E24AA' },
+                        { crop: 'Tomatoes', icon: '🍅', color: '#EF5350' },
+                        { crop: 'Watermelon', icon: '🍉', color: '#66BB6A' },
+                        { crop: 'Blueberries', icon: '🫐', color: '#3F51B5' },
+                        { crop: 'Sweet Corn', icon: '🌽', color: '#FDD835' }
                     ].map((item, index) => (
                         <div key={index} style={{
                             backgroundColor: 'white',
@@ -743,6 +757,38 @@ const IrrigationSchedulerDocumentation = () => {
                                 </td>
                                 <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                     <a href="https://www.isric.org/explore/soilgrids" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       style={{ 
+                                           color: '#3498db',
+                                           textDecoration: 'none',
+                                           fontWeight: 'bold'
+                                       }}>
+                                        View Dataset →
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                    <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                        GRIDMET
+                                    </span>
+                                    <code style={{ 
+                                        color: '#666',
+                                        fontSize: '12px',
+                                        backgroundColor: '#f1f1f1',
+                                        padding: '4px 6px',
+                                        borderRadius: '4px',
+                                        display: 'inline-block'
+                                    }}>
+                                        "IDAHO_EPSCOR/GRIDMET"
+                                    </code>
+                                </td>
+                                <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                    Gridded Surface Meteorological dataset providing daily reference evapotranspiration (ET₀, <code>eto</code> band) at ~4 km resolution for the contiguous USA. Used as the primary ET₀ source for historical days; Hargreaves equation is used as fallback for forecast days or fields outside the USA.
+                                </td>
+                                <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                    <a href="https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET" 
                                        target="_blank" 
                                        rel="noopener noreferrer"
                                        style={{ 
