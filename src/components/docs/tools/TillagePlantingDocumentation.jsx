@@ -243,7 +243,10 @@ const TillagePlantingDocumentation = () => {
                             <h5 style={h5s}>Core Formula</h5>
                             <div style={{ backgroundColor: 'white', borderRadius: '8px', padding: '18px', marginBottom: '15px', border: '1px solid #FFE0B2', textAlign: 'center' }}>
                                 <p style={{ fontSize: isMobile ? '15px' : '17px', fontWeight: '600', color: colors.primary, margin: '0 0 8px 0' }}>
-                                    SM(t) = SM(t−1) + Precip(t) − Evap(t)
+                                    SM(t) = SM(t−1) + EffectivePrecip(t) − Evap(t)
+                                </p>
+                                <p style={{ fontSize: isMobile ? '12px' : '13px', color: colors.secondary, margin: '0 0 4px 0' }}>
+                                    EffectivePrecip(t) = min(Precip(t), max(0, FC − SM(t−1)))
                                 </p>
                                 <p style={{ fontSize: isMobile ? '12px' : '13px', color: colors.secondary, margin: 0 }}>
                                     Bounded daily: SM(t) = max(PWP, min(FC, SM(t)))
@@ -252,7 +255,7 @@ const TillagePlantingDocumentation = () => {
                             <ul style={styles.list}>
                                 <li style={styles.listItem}><span style={styles.bold}>SM(t):</span> Soil moisture on day t (inches of water in top 6 inches of soil)</li>
                                 <li style={styles.listItem}><span style={styles.bold}>SM(t−1):</span> Soil moisture from previous day; Day 0 initialized from NASA SMAP</li>
-                                <li style={styles.listItem}><span style={styles.bold}>Precip(t):</span> Daily precipitation from GFS incremental differencing (inches)</li>
+                                <li style={styles.listItem}><span style={styles.bold}>EffectivePrecip(t):</span> Precipitation capped to soil storage capacity — min(Precip, FC − SM(t−1)) — prevents exceeding Field Capacity before bounding (inches)</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Evap(t):</span> Bare soil evaporation = ET₀ × Kc (0.6) × residue factor (inches)</li>
                                 <li style={styles.listItem}><span style={styles.bold}>Bounds:</span> Field Capacity (FC) as upper limit; Permanent Wilting Point (PWP) as lower limit</li>
                             </ul>
@@ -475,7 +478,7 @@ const TillagePlantingDocumentation = () => {
                                         {[
                                             ['🌽 Corn', '50°F (10°C)', 'Mar 15 – Jun 15'],
                                             ['🌿 Cotton', '60°F (15.6°C)', 'Apr 1 – Jun 30'],
-                                            ['🥜 Peanut', '65°F (18.3°C)', 'Apr 15 – Jul 15'],
+                                            ['🥜 Peanut', '56°F (13.3°C)', 'Apr 15 – Jul 15'],
                                             ['🌾 Barley', '34°F (1.1°C)', 'Sep 30 – Oct 15'],
                                             ['🌾 Wheat', '34°F (1.1°C)', 'Oct 10 – Nov 10'],
                                         ].map(([crop, temp, win], i) => (
@@ -688,7 +691,7 @@ const TillagePlantingDocumentation = () => {
                     {[
                         { crop: 'Corn', icon: '🌽', temp: '50°F' },
                         { crop: 'Cotton', icon: '🌿', temp: '60°F' },
-                        { crop: 'Peanut', icon: '🥜', temp: '65°F' },
+                        { crop: 'Peanut', icon: '🥜', temp: '56°F' },
                         { crop: 'Barley', icon: '🌾', temp: '34°F' },
                         { crop: 'Wheat', icon: '🌾', temp: '34°F' },
                     ].map((item, i) => (
