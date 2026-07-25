@@ -50,7 +50,7 @@ const SunflowerContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C)
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> No cap — <a href="https://ndawn.ndsu.nodak.edu/help-sunflower-growing-degree-days.html" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>NDAWN / NDSU Ag Hub</a>
                 </p>
             </div>
             

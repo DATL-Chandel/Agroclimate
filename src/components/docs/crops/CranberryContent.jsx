@@ -36,7 +36,14 @@ const CranberryContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 44°F (6.7°C)
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 41°F (5°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://www.umass.edu/agriculture-food-environment/cranberry/growing-degree-days" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>UMass Cranberry Station</a>
                 </p>
             </div>
             

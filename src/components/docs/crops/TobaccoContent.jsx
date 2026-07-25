@@ -40,6 +40,13 @@ const TobaccoContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://www.ext.vt.edu/" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>NC State / VT tobacco guides (qualitative only)</a>
+                </p>
             </div>
             
             <h4 style={{

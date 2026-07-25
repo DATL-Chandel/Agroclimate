@@ -35,7 +35,14 @@ const AlmondContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 40.1°F (4.5°C)
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 39°F (3.9°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 97°F (36.1°C) — <a href="https://fruitsandnuts.ucdavis.edu/about-growing-degree-hours-and-predicting-harvest-date" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>UC Davis Fruit & Nut Research Center</a>
                 </p>
             </div>
             

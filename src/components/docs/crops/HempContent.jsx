@@ -38,6 +38,13 @@ const HempContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 1°C (34°F)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://climate.umt.edu/mesonet/ag_tools/gdds/" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Montana Climate Office</a>
+                </p>
             </div>
             
             <h4 style={{

@@ -35,7 +35,14 @@ const CherryContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 40°F (4.4°C)
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 39°F (3.9°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 104°F (40°C) — <a href="https://www.researchgate.net/publication/279639928_Phenological_Models_of_Flower_Bud_Stages_and_Fruit_Growth_of_Montmorency%27_Sour_Cherry_Based_on_Growing_Degree-day_Accumulation" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Zavalloni et al. 2006, JASHS</a>
                 </p>
             </div>
             

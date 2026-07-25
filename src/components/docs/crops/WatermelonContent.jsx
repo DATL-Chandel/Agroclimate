@@ -37,6 +37,13 @@ const WatermelonContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 60°F (15.6°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 95°F (35°C) — <a href="https://ishs.org/ishs-article/492_39/" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>ISHS watermelon study</a>
+                </p>
             </div>
             
             <h4 style={{

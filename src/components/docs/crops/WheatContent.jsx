@@ -37,6 +37,13 @@ const WheatContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 32°F (0°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 70°F → 95°F (two-stage; approximated as 95°F, this tool doesn’t track growth stage) — <a href="https://ndawn.ndsu.nodak.edu/help-wheat-growing-degree-days.html" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>NDAWN</a>
+                </p>
             </div>
             
             <h4 style={{

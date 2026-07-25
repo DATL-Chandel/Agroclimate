@@ -38,7 +38,14 @@ const SquashContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C), Cap: 86°F (30°C)
+                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 90°F (32.2°C) — <a href="https://www.researchgate.net/publication/269708696_Estimation_of_Growing_Degree_Days_and_Actual_Evapotranspiration_for_Squash_Crop_Using_Heat_Units_and_Neutron_Scattering_Method" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Squash GDD/ET study</a>
                 </p>
             </div>
             

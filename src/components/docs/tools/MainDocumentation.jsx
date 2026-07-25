@@ -487,7 +487,7 @@ const MainDocumentation = () => {
                             <li style={styles.listItem}>Assists in determining optimal planting and harvesting times.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Crop Selections:</span> Corn, Soybeans, Peanut, Cotton, Rice, Wheat, Barley, Sunflower, Potato, Sorghum, Lettuce.</li>
                             <li style={styles.listItem}>Fahrenheit based on crop-specific base temperature.</li>
-                            <li style={styles.listItem}><span style={styles.bold}>GDD Formula:</span> GDD = MAX(0, ((MIN(Tmax, 86°F) + MAX(Tmin, Tbase)) / 2) − Tbase). Uses daily maximum and minimum temperatures for agronomic accuracy.</li>
+                            <li style={styles.listItem}><span style={styles.bold}>GDD Formula:</span> GDD = MAX(0, ((MIN(Tmax, Tcap) + MAX(Tmin, Tbase)) / 2) − Tbase). Both the base temperature (Tbase) and the upper-threshold cap (Tcap) are crop-specific — see each crop's page for its exact values and sources.</li>
                             <li style={styles.listItem}><span style={styles.bold}>Temperature Data Sources (automatically selected by location &amp; date):</span>
                                 <ul style={{...styles.list, marginLeft: '20px', marginTop: '5px'}}>
                                     <li style={{...styles.listItem, marginBottom: '5px'}}>USA fields (1980–2025): Daymet V4 (1 km daily Tmax/Tmin, NASA ORNL)</li>

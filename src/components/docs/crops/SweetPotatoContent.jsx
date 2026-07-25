@@ -45,7 +45,7 @@ const SweetPotatoContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C)
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 90°F (32.2°C) — <a href="https://journals.ashs.org/horttech/view/journals/horttech/19/1/article-p133.xml" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>HortTechnology 2009</a>
                 </p>
             </div>
             

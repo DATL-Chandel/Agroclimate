@@ -35,7 +35,14 @@ const StrawberryContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 37.4°F (3°C)
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 32°F (0°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://blogs.cornell.edu/berries/2024/03/01/spring-growth-alert-berries-starting-to-wake-up" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Cornell Berry Program</a>
                 </p>
             </div>
             

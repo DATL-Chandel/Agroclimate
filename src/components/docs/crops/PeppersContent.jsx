@@ -37,7 +37,14 @@ const PeppersContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
+                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 52°F (11.1°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 100°F (37.8°C) — <a href="https://extension.oregonstate.edu/catalog/em-9305-vegetable-degree-day-models-introduction-farmers-gardeners" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>OSU EM9305 (Andrews et al. 2021)</a>
                 </p>
             </div>
             

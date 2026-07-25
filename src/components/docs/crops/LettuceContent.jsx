@@ -37,7 +37,14 @@ const LettuceContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
+                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 40°F (4.4°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 82°F (27.8°C) — <a href="https://www.sciencedirect.com/science/article/pii/S037837742500469X" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Peer-reviewed thermal-time review</a>
                 </p>
             </div>
             

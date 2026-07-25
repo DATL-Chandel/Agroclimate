@@ -37,6 +37,13 @@ const DryBeanContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 40°F (4.4°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 90°F (32.2°C) — <a href="https://extension.oregonstate.edu/catalog/em-9305-vegetable-degree-day-models-introduction-farmers-gardeners" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>OSU EM9305 / CROPTIME</a>
+                </p>
             </div>
             
             <h4 style={{

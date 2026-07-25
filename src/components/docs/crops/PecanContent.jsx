@@ -37,6 +37,13 @@ const PecanContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://pubs.nmsu.edu/_h/H618/index.html" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>NMSU H618</a>
+                </p>
             </div>
             
             <h4 style={{

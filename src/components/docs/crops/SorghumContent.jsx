@@ -39,6 +39,13 @@ const SorghumContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 100°F (37.8°C) — <a href="https://secondary.mesonet.k-state.edu/agriculture/degreedays/PUB_Sorghum%20Growth%20and%20Development.pdf" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Texas A&M B-6137</a>
+                </p>
             </div>
             
             <h4 style={{

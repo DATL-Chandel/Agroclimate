@@ -39,6 +39,13 @@ const OatsContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 32°F (0°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378429006001924" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>ScienceDirect (peer-reviewed)</a>
+                </p>
             </div>
             
             <h4 style={{

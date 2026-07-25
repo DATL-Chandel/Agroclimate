@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CanolaContent = ({ isMobile, colors, styles }) => {
+const CottonContent = ({ isMobile, colors, styles }) => {
     return (
         <div style={{
             backgroundColor: colors.background,
@@ -19,11 +19,12 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                 gap: '10px'
             }}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+                    <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
                 </svg>
-                Canola
+                Cotton
             </h3>
-            
+
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -35,17 +36,17 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 41°F (5°C)
+                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 60°F (15.6°C)
                 </p>
                 <p style={{
                     fontSize: isMobile ? '14px' : '16px',
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> No cap — <a href="https://ndawn.ndsu.nodak.edu/help-canola-growing-degree-days.html" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>NDAWN</a>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> No cap — <a href="https://www.cotton.org/beltwide/proceedings/getPDF.cfm?year=2002&paper=I038.pdf" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>Beltwide Cotton Conference 2002</a>
                 </p>
             </div>
-            
+
             <h4 style={{
                 fontSize: isMobile ? '16px' : '18px',
                 color: colors.secondary,
@@ -59,10 +60,10 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#3498db' }}>
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
                 </svg>
-                Growth Stages and GDD Criteria
+                Growth Stages and DD60 Criteria
             </h4>
-            
-            {/* Visual Flow Diagram for Canola */}
+
+            {/* Visual Flow Diagram for Cotton */}
             <div style={{
                 backgroundColor: 'white',
                 borderRadius: '8px',
@@ -76,18 +77,18 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    minWidth: isMobile ? '900px' : '100%',
-                    gap: '8px'
+                    minWidth: isMobile ? '700px' : '100%',
+                    gap: '5px'
                 }}>
                     {[
-                        { stage: 'Germination', gdd: '0-100', color: '#E3F2FD' },
-                        { stage: 'Seedling', gdd: '100-300', color: '#BBDEFB' },
-                        { stage: 'Rosette', gdd: '300-600', color: '#90CAF9' },
-                        { stage: 'Bud Formation', gdd: '600-900', color: '#64B5F6' },
-                        { stage: 'Flowering', gdd: '900-1200', color: '#42A5F5' },
-                        { stage: 'Pod Development', gdd: '1200-1600', color: '#2196F3' },
-                        { stage: 'Ripening', gdd: '1600-2000', color: '#1976D2' }
-                    ].map((item, index, array) => (
+                        { stage: 'Emergence', gdd: '50-60', color: '#E3F2FD' },
+                        { stage: 'First True Leaf', gdd: '140-160', color: '#BBDEFB' },
+                        { stage: 'Squaring', gdd: '400-500', color: '#90CAF9' },
+                        { stage: 'First Bloom', gdd: '850-950', color: '#64B5F6' },
+                        { stage: 'Peak Bloom', gdd: '1350-1450', color: '#42A5F5' },
+                        { stage: 'Open Boll', gdd: '1800-2000', color: '#2196F3' },
+                        { stage: 'Harvest Ready', gdd: '2200-2400', color: '#1976D2' }
+                    ].map((item, index) => (
                         <div key={index} style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -104,29 +105,27 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 fontWeight: '600',
-                                fontSize: '11px',
+                                fontSize: '13px',
                                 color: index > 4 ? 'white' : '#333',
-                                marginBottom: '8px',
-                                padding: '2px',
-                                textAlign: 'center'
+                                marginBottom: '8px'
                             }}>
                                 {item.stage}
                             </div>
                             <div style={{
-                                fontSize: '11px',
+                                fontSize: '12px',
                                 color: colors.text,
                                 textAlign: 'center'
                             }}>
-                                {item.gdd} GDD
+                                {item.gdd} DD60
                             </div>
-                            {index < array.length - 1 && (
+                            {index < 6 && (
                                 <div style={{
                                     position: 'absolute',
-                                    right: '-15px',
+                                    right: '-12px',
                                     top: '15px',
                                     zIndex: '1',
                                     backgroundColor: '#3498db',
-                                    width: '23px',
+                                    width: '24px',
                                     height: '2px',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -135,10 +134,10 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                                     <div style={{
                                         width: 0,
                                         height: 0,
-                                        borderTop: '5px solid transparent',
-                                        borderBottom: '5px solid transparent',
-                                        borderLeft: '6px solid #3498db',
-                                        marginRight: '-6px'
+                                        borderTop: '6px solid transparent',
+                                        borderBottom: '6px solid transparent',
+                                        borderLeft: '8px solid #3498db',
+                                        marginRight: '-8px'
                                     }}></div>
                                 </div>
                             )}
@@ -146,7 +145,7 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                     ))}
                 </div>
             </div>
-            
+
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
@@ -160,71 +159,11 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                         color: colors.primary,
                         marginBottom: '8px'
                     }}>
-                        1. Germination (0-100 GDD)
+                        1. Emergence (50-60 DD60s)
                     </h5>
                     <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>Seeds absorb moisture and swell, leading to the emergence of the radicle (root) and plumule (shoot).</li>
-                        <li style={styles.listItem}>Optimal soil temperatures for germination range between 41°F and 86°F.</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5 style={{
-                        fontSize: isMobile ? '15px' : '16px',
-                        fontWeight: '600',
-                        color: colors.primary,
-                        marginBottom: '8px'
-                    }}>
-                        2. Seedling (100-300 GDD)
-                    </h5>
-                    <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>The young plant develops cotyledons followed by the first true leaves.</li>
-                        <li style={styles.listItem}>During this stage, the seedling establishes its root system and begins photosynthesis.</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5 style={{
-                        fontSize: isMobile ? '15px' : '16px',
-                        fontWeight: '600',
-                        color: colors.primary,
-                        marginBottom: '8px'
-                    }}>
-                        3. Rosette (300-600 GDD)
-                    </h5>
-                    <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>Rapid leaf development occurs, forming a rosette of leaves close to the ground.</li>
-                        <li style={styles.listItem}>This stage is crucial for building energy reserves for subsequent growth.</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5 style={{
-                        fontSize: isMobile ? '15px' : '16px',
-                        fontWeight: '600',
-                        color: colors.primary,
-                        marginBottom: '8px'
-                    }}>
-                        4. Bud Formation (600-900 GDD)
-                    </h5>
-                    <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>Flower buds become visible, and the stem begins to elongate.</li>
-                        <li style={styles.listItem}>This stage marks the transition from vegetative to reproductive growth.</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5 style={{
-                        fontSize: isMobile ? '15px' : '16px',
-                        fontWeight: '600',
-                        color: colors.primary,
-                        marginBottom: '8px'
-                    }}>
-                        5. Flowering (900-1200 GDD)
-                    </h5>
-                    <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>Flowers open, and pollination occurs.</li>
-                        <li style={styles.listItem}>Successful pollination is essential for pod and seed development.</li>
+                        <li style={styles.listItem}>Cotyledons appear above soil surface</li>
+                        <li style={styles.listItem}>Hypocotyl arch visible, cotyledons unfold</li>
                     </ul>
                 </div>
 
@@ -235,11 +174,11 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                         color: colors.primary,
                         marginBottom: '8px'
                     }}>
-                        6. Pod Development (1200-1600 GDD)
+                        2. First True Leaf (140-160 DD60s)
                     </h5>
                     <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>Pods form, and seeds begin to develop inside.</li>
-                        <li style={styles.listItem}>The plant continues to photosynthesize to support seed growth.</li>
+                        <li style={styles.listItem}>First true leaf unfolds</li>
+                        <li style={styles.listItem}>Leaf fully expanded, approximately 1.5-2 inches in diameter</li>
                     </ul>
                 </div>
 
@@ -250,15 +189,75 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                         color: colors.primary,
                         marginBottom: '8px'
                     }}>
-                        7. Ripening (1600-2000 GDD)
+                        3. Squaring Initiation (400-500 DD60s)
                     </h5>
                     <ul style={{...styles.list, marginLeft: '15px'}}>
-                        <li style={styles.listItem}>Seeds mature and dry, and the plant prepares for harvest.</li>
-                        <li style={styles.listItem}>Timely harvesting ensures optimal seed quality and yield.</li>
+                        <li style={styles.listItem}>First flower buds (squares) appear</li>
+                        <li style={styles.listItem}>Pinhead squares visible at terminal, typically 35-45 days after planting</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style={{
+                        fontSize: isMobile ? '15px' : '16px',
+                        fontWeight: '600',
+                        color: colors.primary,
+                        marginBottom: '8px'
+                    }}>
+                        4. First Bloom (850-950 DD60s)
+                    </h5>
+                    <ul style={{...styles.list, marginLeft: '15px'}}>
+                        <li style={styles.listItem}>First white flowers appear</li>
+                        <li style={styles.listItem}>White flowers visible, typically 60-70 days after planting</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style={{
+                        fontSize: isMobile ? '15px' : '16px',
+                        fontWeight: '600',
+                        color: colors.primary,
+                        marginBottom: '8px'
+                    }}>
+                        5. Peak Bloom (1350-1450 DD60s)
+                    </h5>
+                    <ul style={{...styles.list, marginLeft: '15px'}}>
+                        <li style={styles.listItem}>Maximum flowering rate</li>
+                        <li style={styles.listItem}>8-10 white blooms per 25 row feet, maximum node development</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style={{
+                        fontSize: isMobile ? '15px' : '16px',
+                        fontWeight: '600',
+                        color: colors.primary,
+                        marginBottom: '8px'
+                    }}>
+                        6. Open Boll (1800-2000 DD60s)
+                    </h5>
+                    <ul style={{...styles.list, marginLeft: '15px'}}>
+                        <li style={styles.listItem}>First bolls begin to open</li>
+                        <li style={styles.listItem}>Sutures begin to crack, lint visible</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style={{
+                        fontSize: isMobile ? '15px' : '16px',
+                        fontWeight: '600',
+                        color: colors.primary,
+                        marginBottom: '8px'
+                    }}>
+                        7. Harvest Ready (2200-2400 DD60s)
+                    </h5>
+                    <ul style={{...styles.list, marginLeft: '15px'}}>
+                        <li style={styles.listItem}>60-70% of bolls open</li>
+                        <li style={styles.listItem}>Majority of bolls open, seed cotton fluffed</li>
                     </ul>
                 </div>
             </div>
-            
+
             <h4 style={{
                 fontSize: isMobile ? '16px' : '18px',
                 color: colors.secondary,
@@ -273,9 +272,9 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                 </svg>
-                Authoritative Resources
+                References for Cotton Growth Stages
             </h4>
-            
+
             <div style={{
                 backgroundColor: 'white',
                 borderRadius: '8px',
@@ -283,6 +282,14 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                 boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                 marginTop: '15px'
             }}>
+                <h5 style={{
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: colors.primary,
+                    marginBottom: '10px'
+                }}>
+                    Resources
+                </h5>
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
@@ -292,41 +299,67 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                         <ul style={{...styles.list}}>
                             <li style={{...styles.listItem}}>
                                 <a 
-                                    href="https://www.canolacouncil.org/canola-encyclopedia/growth-stages/"
+                                    href="https://www.cotton.org/tech/ace/growth-and-development.cfm" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
                                 >
-                                    Canola Council of Canada
+                                    Cotton Incorporated - Growth and Development
                                 </a>
                                 <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
-                                    Canola Growth Stages
+                                    Primary source for cotton growth stages and DD60 requirements
                                 </span>
                             </li>
                             <li style={{...styles.listItem}}>
                                 <a 
-                                    href="https://nutrien-ekonomics.com/news/canola-development-and-growth-staging/"
+                                    href="https://www.uaex.uada.edu/farm-ranch/crops-commercial-horticulture/cotton/" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
                                 >
-                                    Nutrien eKonomics
+                                    University of Arkansas - Cotton Growth and Development
                                 </a>
                                 <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
-                                    Canola Development and Growth Staging
+                                    Management recommendations by growth stage
                                 </span>
                             </li>
                             <li style={{...styles.listItem}}>
                                 <a 
-                                    href="https://climate.umt.edu/mesonet/ag_tools/gdds/"
+                                    href="https://lubbock.tamu.edu/files/2011/10/cptvol13no22007.pdf" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
                                 >
-                                    Montana Climate Office
+                                    Texas A&M AgriLife - Growth and Development – First 60 Days
                                 </a>
                                 <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
-                                    Growing Degree Days Calculation
+                                    Early-season growth stages and DD60 calculations
+                                </span>
+                            </li>
+                            <li style={{...styles.listItem}}>
+                                <a 
+                                    href="http://extension.msstate.edu/publications/cotton-growth-and-development" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
+                                >
+                                    Mississippi State University Extension
+                                </a>
+                                <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
+                                    Management timing recommendations
+                                </span>
+                            </li>
+                            <li style={{...styles.listItem}}>
+                                <a 
+                                    href="https://www.cropscience.bayer.us/articles/dad/cotton-growth-and-development" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
+                                >
+                                    Bayer Crop Science - Cotton Growth and Development
+                                </a>
+                                <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
+                                    DD60 calculation methodology and practical applications
                                 </span>
                             </li>
                         </ul>
@@ -335,28 +368,54 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
                         <ul style={{...styles.list}}>
                             <li style={{...styles.listItem}}>
                                 <a 
-                                    href="https://www.ndsu.edu/agriculture/extension/publications/canola-production-field-guide"
+                                    href="https://extension.missouri.edu/publications/g4253" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
                                 >
-                                    North Dakota State University Agriculture
+                                    University of Missouri Extension - Cotton Harvest Aids
                                 </a>
                                 <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
-                                    Canola Production Field Guide
+                                    Harvest preparation guidelines
                                 </span>
                             </li>
                             <li style={{...styles.listItem}}>
                                 <a 
-                                    href="https://agresearch.montana.edu/wtarc/producerinfo/agronomy-nutrient-management/Canola/WSUFactSheet.pdf"
+                                    href="https://cottonbugs.tamu.edu/development-and-growth-monitoring-of-the-cotton-plant/" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
                                 >
-                                    Montana State University
+                                    Texas A&M AgriLife - Development and Growth Monitoring
                                 </a>
                                 <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
-                                    Canola Growth, Development, and Fertility
+                                    Detailed growth monitoring protocols
+                                </span>
+                            </li>
+                            <li style={{...styles.listItem}}>
+                                <a 
+                                    href="https://extension.okstate.edu/programs/cotton/site-files/docs/crop_maturity_determination_handout_final_2015.pdf" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
+                                >
+                                    Oklahoma State University Extension - Crop Maturity Determination
+                                </a>
+                                <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
+                                    Guidelines for determining cotton maturity
+                                </span>
+                            </li>
+                            <li style={{...styles.listItem}}>
+                                <a 
+                                    href="https://extension.okstate.edu/fact-sheets/cotton-harvest-aid-considerations.html" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    style={{color: colors.link, textDecoration: 'none', fontWeight: '500'}}
+                                >
+                                    Oklahoma State University - Cotton Harvest Aid Considerations
+                                </a>
+                                <span style={{fontSize: '13px', display: 'block', color: '#666', marginTop: '2px'}}>
+                                    Harvest timing based on boll maturity
                                 </span>
                             </li>
                         </ul>
@@ -367,4 +426,4 @@ const CanolaContent = ({ isMobile, colors, styles }) => {
     );
 };
 
-export default CanolaContent; 
+export default CottonContent;

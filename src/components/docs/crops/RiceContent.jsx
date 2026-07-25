@@ -40,6 +40,13 @@ const RiceContent = ({ isMobile, colors, styles }) => {
                 }}>
                     <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
                 </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 94°F (34.4°C) — <a href="https://www.uaex.uada.edu/publications/pdf/FSA-2124.pdf" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>U. Arkansas FSA-2124</a>
+                </p>
             </div>
             
             <h4 style={{

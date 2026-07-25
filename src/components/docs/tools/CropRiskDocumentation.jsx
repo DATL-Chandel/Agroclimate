@@ -663,7 +663,7 @@ const CropRiskDocumentation = () => {
                                 textAlign: 'center',
                                 fontWeight: '500'
                             }}>
-                                GDD_day = max(0, (min(T_max, 86) + max(T_min, T_base))/2 - T_base)
+                                GDD_day = max(0, (min(T_max, T_cap) + max(T_min, T_base))/2 - T_base)
                             </div>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
@@ -672,6 +672,13 @@ const CropRiskDocumentation = () => {
                                 marginBottom: '5px',
                                 marginLeft: '15px'
                             }}>• Base temp (T_base): Crop-specific (e.g., corn: 50°F, soybean: 50°F).</p>
+                            <p style={{
+                                fontSize: isMobile ? '12px' : '13px',
+                                lineHeight: '1.5',
+                                color: colors.text,
+                                marginBottom: '5px',
+                                marginLeft: '15px'
+                            }}>• Cap temp (T_cap): Crop-specific upper threshold (e.g., corn: 86°F, cotton: no cap) — no longer a single fixed value for every crop.</p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',

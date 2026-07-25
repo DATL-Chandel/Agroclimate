@@ -35,7 +35,14 @@ const CauliflowerContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 45°F (7.2°C)
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Base Temperature (T<sub>base</sub>):</span> 40°F (4.4°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={{ fontWeight: '600', color: colors.primary }}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://hort.extension.wisc.edu/articles/degree-day-calculation/" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>UW-Madison Extension</a>
                 </p>
             </div>
             

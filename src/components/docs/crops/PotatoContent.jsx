@@ -40,7 +40,14 @@ const PotatoContent = ({ isMobile, colors, styles }) => {
                     lineHeight: '1.6',
                     color: colors.text
                 }}>
-                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C), Cap: 86°F (30°C)
+                    <span style={styles.bold}>Base Temperature (T<sub>base</sub>):</span> 50°F (10°C)
+                </p>
+                <p style={{
+                    fontSize: isMobile ? '14px' : '16px',
+                    lineHeight: '1.6',
+                    color: colors.text
+                }}>
+                    <span style={styles.bold}>Temperature Cap (T<sub>cap</sub>):</span> 86°F (30°C) — <a href="https://www.usbr.gov/pn/agrimet/gdd.html" target="_blank" rel="noopener noreferrer" style={{fontSize: '12px', color: colors.link}}>USBR AgriMet</a>
                 </p>
             </div>
             
