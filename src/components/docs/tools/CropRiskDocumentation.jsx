@@ -1732,11 +1732,11 @@ const CropRiskDocumentation = () => {
                                                 <tbody>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Gray Leaf Spot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt; 90%, Temp 70–85°F, &gt;12h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 71–86°F, ≥12h high humidity (Paul &amp; Munkvold 2005)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Northern Corn Leaf Blight</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt; 90%, Temp 64–81°F, &gt;6h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 65–80°F, ≥6h high humidity (Agronomy 2025, 15(2):328)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Southern Rust</td>
@@ -1799,7 +1799,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Frogeye Leaf Spot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–97°F, precip ≥0.3" (Gonzalez-Acuna et al. 2026)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
@@ -1854,7 +1854,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>White Mold</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥80°F, RH &gt;80%, &gt;12h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>In-canopy soil temp ≥95°F, RH ≥90% (Sanjel et al. 2024)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Aflatoxin Risk</td>
@@ -1862,7 +1862,11 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Sclerotinia Blight</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥95%, Temp 65–70°F, precip &gt;0.5"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–75°F, precip ≥0.5"</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Sclerotinia Blight (5-Day Model)</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Real Field Disease Index (FDI): 5-day rolling sum of daily Moisture(0–1) × Soil Temp(0–3) × Vine(1–3) × Canopy(1–3) scores. Uses real SMAP soil temperature and rainfall/RH; vine and canopy are not available in satellite data, so this is a partial-factor version of the real model, scaled into our own Low/Medium/High bands (not the paper's 24–32 spray-trigger scale). Based on Phipps &amp; Deck (Virginia Tech, Peanut-Cotton InfoNet).</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Tomato Spotted Wilt Virus</td>
@@ -1917,7 +1921,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Boll Rot Complex</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;80%, Temp &gt;75°F, precip &gt;1.0"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥66%, Temp 70–90°F, precip ≥0.02" (weather-only portion of a bacterial seed/boll rot forecasting model; excludes the model's insect-vector term)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Fusarium Wilt</td>
@@ -1925,11 +1929,11 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Alternaria Leaf Spot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥94%, Temp up to 100°F, precip ≥0.3" (Bhattiprolu &amp; Monga 2018, R²=0.984)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Verticillium Wilt</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥75°F, soil moisture &lt;50%</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Air temp 77–84°F, soil temp ≥77°F, RH ≥82%, soil moisture ≤50% (Zhang et al. 2025)</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -1984,7 +1988,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 68–77°F, precip &gt;0.5"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 52–90°F (59–77°F optimum), precip ≥0.1" (Plant Health Australia summary; original Wang/Ryley/Meinke 2000 paper is paywalled)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Grain Mold</td>
@@ -1992,7 +1996,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Charcoal Rot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥85°F, RH &gt;60%</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Soil temp ≥95°F, soil moisture ≤50% (drought stress) (Diourte et al. 1995)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Bacterial Leaf Streak</td>
@@ -2035,11 +2039,11 @@ const CropRiskDocumentation = () => {
                                                 <tbody>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Stripe Rust</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 50–68°F, &gt;8h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥92%, Temp 39–61°F, ≥4h continuous, precip ≤0.01" (dew-driven infection; Kouadio/El Jarroudi et al. 2017)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Leaf Rust</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;80%, Temp 59–77°F, &gt;6h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥60%, Temp 32–73°F, ≥12h high humidity (de Vallavieille-Pope et al. 1995)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Stem Rust</td>
@@ -2051,11 +2055,11 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Fusarium Head Blight</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 59–86°F, precip &gt;0.5"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 59–86°F, precip ≥0.2" (De Wolf, Madden &amp; Lipps 2003; basis of wheatscab.psu.edu)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Septoria Leaf Blotch</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 60–75°F, precip &gt;0.5"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–75°F, precip ≥0.04" (CPO model, Hansen et al. 1994)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Tan Spot</td>
@@ -2101,8 +2105,8 @@ const CropRiskDocumentation = () => {
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Botrytis Fruit Rot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 59–77°F, &gt;8h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Gray Mold (Botrytis)</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 59–72°F, ≥16h high humidity (Bulger, Ellis &amp; Madden 1987; basis of the Florida Strawberry Advisory System)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Leaf Spot</td>
@@ -2110,11 +2114,11 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;70%, Temp 68–86°F, &gt;6h high humidity</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥60%, Temp 60–86°F, ≥6h high humidity (NIAB EMR temperature/RH risk model)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 68–86°F, precip &gt;0.5"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 77–86°F, ≥6h high humidity (MacKenzie &amp; Peres, Strawberry Advisory System)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Angular Leaf Spot</td>
@@ -2169,7 +2173,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Cedar Apple Rust</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;90%, Temp 60–75°F, precip &gt;0.5"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 52–77°F, ≥6h high humidity (NEWA infection table, same model as Apple Scab)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
@@ -2177,7 +2181,7 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Black Rot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH &gt;85%, Temp 70–85°F, precip &gt;0.3"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 61–90°F, ≥9h high humidity (WVU/extension infection tables)</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -2301,6 +2305,10 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Verticillium Wilt</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥75°F, soil moisture &lt;50%</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Early Blight &amp; Septoria Leaf Spot (TOMCAST Model)</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Runs alongside the standard checks above: daily Disease Severity Value (DSV, 0–3) from wet-hours + temperature is accumulated over a rolling window (TOMCAST/Purdue BP-64-W model). The original published DSV lookup table could not be sourced, so daily DSV uses our own approximation of the real accumulation mechanism and threshold, clearly separated from the sourced thresholds above.</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -2342,15 +2350,15 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Downy Mildew</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–75°F, precip ≥0.2"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp ≥50°F, rain ≥0.394" (10mm) within 24h ("10-10-24 rule", European grape downy mildew model)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Botrytis Bunch Rot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 60–70°F, precip ≥0.3"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 64–70°F optimum (54–86°F range), ≥4h high humidity (Broome &amp; Bacchus 1995)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Black Rot</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥85%, Temp 70–85°F, precip ≥0.3"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥90%, Temp 50–90°F (80°F optimum), ≥6h high humidity (Ohio State Extension infection table)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
@@ -2411,6 +2419,10 @@ const CropRiskDocumentation = () => {
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Powdery Mildew</td>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>RH ≥75%, Temp 60–75°F</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose &amp; Gummy Stem Blight (MelCast Model)</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Runs alongside the standard checks above: daily Environmental Favorability Index (EFI, 0–10) from wet-hours + temperature is accumulated over a rolling window (MelCast/Purdue BP-64-W model). The original published EFI lookup table could not be sourced, so daily EFI uses our own approximation of the real accumulation mechanism and threshold, clearly separated from the sourced thresholds above.</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -2452,11 +2464,11 @@ const CropRiskDocumentation = () => {
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Anthracnose</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 75–86°F, RH ≥90%, precip ≥0.2"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 75–86°F, RH ≥90%, ≥24h high humidity (MSU Enviro-weather ripe rot risk model)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Botrytis Blight</td>
-                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 60–70°F, RH ≥85%, precip ≥0.1"</td>
+                                                        <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontSize: isMobile ? '12px' : '13px'}}>Temp 61–80°F, RH ≥85%, ≥8h high humidity (Rutgers/Maine Extension infection tables)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{padding: '8px', borderBottom: '1px solid #ddd', color: '#2c3e50', fontWeight: '600', fontSize: isMobile ? '13px' : '14px'}}>Phomopsis Twig Blight</td>
@@ -2532,16 +2544,16 @@ const CropRiskDocumentation = () => {
                                     }}>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Corn:</span> Gray Leaf Spot, Northern Corn Leaf Blight, Southern Rust, and Common Rust thrive under high humidity (&gt;90%) and moderate temperatures.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Soybean:</span> Bacterial Blight, Brown Stem Rot, Sudden Death Syndrome, Powdery Mildew, Frogeye Leaf Spot, Downy Mildew, and Phytophthora Root Rot are major concerns with varying environmental triggers.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Peanut:</span> Early/Late Leaf Spot, White Mold, Aflatoxin, Sclerotinia Blight, Tomato Spotted Wilt Virus, and Rhizoctonia Limb Rot require extended leaf wetness and specific temperature ranges.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Cotton:</span> Bacterial Blight, Target Spot, Boll Rot Complex, Fusarium Wilt, Alternaria Leaf Spot, and Verticillium Wilt are promoted by high humidity and warm temperatures.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sorghum:</span> Anthracnose, Rust, Smut, Leaf Blight, Downy Mildew, Grain Mold, Charcoal Rot, and Bacterial Leaf Streak thrive under humid conditions with specific temperature ranges.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Peanut:</span> Early/Late Leaf Spot, White Mold, Aflatoxin, Sclerotinia Blight, Tomato Spotted Wilt Virus, and Rhizoctonia Limb Rot require extended leaf wetness and specific temperature ranges. White Mold and Sclerotinia Blight now also use real in-canopy soil temperature (SMAP), not just air temperature; Sclerotinia Blight has an additional 5-Day Model entry built from the real Virginia Tech Field Disease Index.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Cotton:</span> Bacterial Blight, Target Spot, Boll Rot Complex, Fusarium Wilt, Alternaria Leaf Spot, and Verticillium Wilt are promoted by high humidity and warm temperatures. Verticillium Wilt now also checks real soil temperature alongside soil moisture, since it is a soil-borne pathogen.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sorghum:</span> Anthracnose, Rust, Smut, Leaf Blight, Downy Mildew, Grain Mold, Charcoal Rot, and Bacterial Leaf Streak thrive under humid conditions with specific temperature ranges. Charcoal Rot now uses real soil temperature and soil moisture (drought stress) instead of air temperature/humidity.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Wheat:</span> Stripe Rust, Leaf Rust, Stem Rust, Powdery Mildew, Fusarium Head Blight, Septoria Leaf Blotch, Tan Spot, and Stagonospora Nodorum are major concerns requiring specific humidity and temperature conditions.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Strawberry:</span> Botrytis Fruit Rot, Leaf Spot, Powdery Mildew, Anthracnose, Angular Leaf Spot, and Leaf Blight thrive under high humidity and moderate temperatures.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Apple:</span> Apple Scab, Fire Blight, Cedar Apple Rust, Powdery Mildew, and Black Rot require specific temperature and moisture conditions for infection.</li>
                                         <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Sweet Corn:</span> Common Rust, Northern Corn Leaf Blight, Gray Leaf Spot, Southern Rust, Stewart's Wilt, and Bacterial Stalk Rot thrive under high humidity and moderate to warm temperatures.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Tomatoes:</span> Early Blight, Late Blight, Septoria Leaf Spot, Bacterial Speck, Bacterial Spot, Fusarium Wilt, and Verticillium Wilt require high humidity and varied temperature ranges.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Grapes:</span> Powdery Mildew, Downy Mildew, Botrytis Bunch Rot, Black Rot, and Anthracnose thrive under humid conditions with specific temperature requirements.</li>
-                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Watermelon:</span> Anthracnose, Downy Mildew, Bacterial Fruit Blotch, Gummy Stem Blight, and Powdery Mildew require high humidity and warm temperatures.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Tomatoes:</span> Early Blight, Late Blight, Septoria Leaf Spot, Bacterial Speck, Bacterial Spot, Fusarium Wilt, and Verticillium Wilt require high humidity and varied temperature ranges. Early Blight and Septoria Leaf Spot also get a rolling-window TOMCAST Disease Severity Value check alongside the standard thresholds.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Grapes:</span> Powdery Mildew, Downy Mildew, Botrytis Bunch Rot, Black Rot, and Anthracnose thrive under humid conditions with specific temperature requirements. Downy Mildew now uses the real "10-10-24 rule" (temperature and 24h rainfall) rather than a generic humidity check.</li>
+                                        <li style={{marginBottom: '8px'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Watermelon:</span> Anthracnose, Downy Mildew, Bacterial Fruit Blotch, Gummy Stem Blight, and Powdery Mildew require high humidity and warm temperatures. Anthracnose and Gummy Stem Blight also get a rolling-window MelCast Environmental Favorability Index check alongside the standard thresholds.</li>
                                         <li style={{marginBottom: '0'}}><span style={{fontWeight: '600', color: '#2c3e50'}}>Blueberries:</span> Mummy Berry, Anthracnose, Botrytis Blight, and Phomopsis Twig Blight require cool to moderate temperatures with high humidity.</li>
                                     </ul>
                                 </div>
@@ -2599,7 +2611,33 @@ const CropRiskDocumentation = () => {
                                         <p style={{marginBottom: '8px'}}>20. Cornell University: Tomato Diseases: <a href="https://vegetablemdonline.ppath.cornell.edu/DiagnosticKeys/TomLeaf/TomLeafKey.html" style={{color: colors.link, textDecoration: 'underline'}}>https://vegetablemdonline.ppath.cornell.edu/DiagnosticKeys/TomLeaf/TomLeafKey.html</a></p>
                                         <p style={{marginBottom: '8px'}}>21. Penn State Extension: Grape Black Rot: <a href="https://extension.psu.edu/grape-black-rot" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.psu.edu/grape-black-rot</a></p>
                                         <p style={{marginBottom: '8px'}}>22. University of Florida IFAS: Watermelon Diseases: <a href="https://edis.ifas.ufl.edu/publication/HS725" style={{color: colors.link, textDecoration: 'underline'}}>https://edis.ifas.ufl.edu/publication/HS725</a></p>
-                                        <p style={{marginBottom: '0'}}>23. Michigan State University Extension: Blueberry Mummy Berry: <a href="https://www.canr.msu.edu/blueberries/pest_management/diseases/mummy-berry" style={{color: colors.link, textDecoration: 'underline'}}>https://www.canr.msu.edu/blueberries/pest_management/diseases/mummy-berry</a></p>
+                                        <p style={{marginBottom: '8px'}}>23. Michigan State University Extension: Blueberry Mummy Berry: <a href="https://www.canr.msu.edu/blueberries/pest_management/diseases/mummy-berry" style={{color: colors.link, textDecoration: 'underline'}}>https://www.canr.msu.edu/blueberries/pest_management/diseases/mummy-berry</a></p>
+                                        <p style={{fontWeight: '600', color: '#2c3e50', marginTop: '15px', marginBottom: '8px'}}>Updated/added disease models (real published sources used for the thresholds revised above):</p>
+                                        <p style={{marginBottom: '8px'}}>24. Paul, P.A. &amp; Munkvold, G.P. (2005). Regression models for predicting risk of gray leaf spot in maize. Phytopathology 95:388–396: <a href="https://doi.org/10.1094/PHYTO-95-0388" style={{color: colors.link, textDecoration: 'underline'}}>https://doi.org/10.1094/PHYTO-95-0388</a></p>
+                                        <p style={{marginBottom: '8px'}}>25. de Vallavieille-Pope, C. et al. (1995). Role of temperature and moisture in wheat leaf rust infection. Phytopathology 85:409: <a href="https://www.apsnet.org/publications/phytopathology/backissues/Documents/1995Abstracts/Phyto_85_409.htm" style={{color: colors.link, textDecoration: 'underline'}}>https://www.apsnet.org/publications/phytopathology/backissues/Documents/1995Abstracts/Phyto_85_409.htm</a></p>
+                                        <p style={{marginBottom: '8px'}}>26. Kouadio, L., Bock, C., El Jarroudi, M. et al. (2017). Predicting wheat stripe rust infection risk from RH, temperature and rainfall. Plant Disease 101:693–703: <a href="https://apsjournals.apsnet.org/doi/10.1094/PDIS-12-16-1766-RE" style={{color: colors.link, textDecoration: 'underline'}}>https://apsjournals.apsnet.org/doi/10.1094/PDIS-12-16-1766-RE</a></p>
+                                        <p style={{marginBottom: '8px'}}>27. De Wolf, E.D., Madden, L.V. &amp; Lipps, P.E. (2003). Risk assessment models for wheat Fusarium head blight epidemics. Phytopathology 93:428: <a href="https://doi.org/10.1094/PHYTO.2003.93.4.428" style={{color: colors.link, textDecoration: 'underline'}}>https://doi.org/10.1094/PHYTO.2003.93.4.428</a>. Public tool based on this model: <a href="https://www.wheatscab.psu.edu" style={{color: colors.link, textDecoration: 'underline'}}>https://www.wheatscab.psu.edu</a></p>
+                                        <p style={{marginBottom: '8px'}}>28. Hansen, J.G. et al. (1994). Thresholds for control of Septoria spp. in winter wheat based on precipitation and growth stage (basis of the CPO model). Plant Pathology: <a href="https://doi.org/10.1111/j.1365-3059.1994.tb00569.x" style={{color: colors.link, textDecoration: 'underline'}}>https://doi.org/10.1111/j.1365-3059.1994.tb00569.x</a>. Plain-language factsheet on the CPO model: <a href="https://www.ipmdecisions.net/media/yxzdbrzx/ipm_factsheet-cpo-model-for-septoria-in-wheat_v0001.pdf" style={{color: colors.link, textDecoration: 'underline'}}>ipmdecisions.net CPO model factsheet</a></p>
+                                        <p style={{marginBottom: '8px'}}>29. Sanjel, S. et al. (2024). Environmental risk model for stem rot/white mold of peanut using in-canopy soil temperature and relative humidity. Phytopathology 114:393–404: <a href="https://apsjournals.apsnet.org/doi/10.1094/PHYTO-05-23-0164-R" style={{color: colors.link, textDecoration: 'underline'}}>https://apsjournals.apsnet.org/doi/10.1094/PHYTO-05-23-0164-R</a> (this paper covers peanut white mold specifically, not Sclerotinia blight — the two are separate diseases; Sclerotinia Blight uses the Phipps &amp; Deck source below instead)</p>
+                                        <p style={{marginBottom: '8px'}}>30. Phipps, P.M. &amp; Deck, S.H. Virginia Tech Peanut-Cotton InfoNet: Sclerotinia Field Disease Index (moisture × soil temp × vine × canopy, 5-day rolling sum): <a href="https://infonet.ext.vt.edu/" style={{color: colors.link, textDecoration: 'underline'}}>https://infonet.ext.vt.edu/</a></p>
+                                        <p style={{marginBottom: '8px'}}>31. Gonzalez-Acuna, D. et al. (2026). Logistic prediction model for frogeye leaf spot of soybean based on humidity and temperature. Scientific Reports: <a href="https://www.nature.com/articles/s41598-026-46975-z" style={{color: colors.link, textDecoration: 'underline'}}>https://www.nature.com/articles/s41598-026-46975-z</a></p>
+                                        <p style={{marginBottom: '8px'}}>32. Zhang, Y. et al. (2025). Temperature-dependent beta model for Verticillium wilt development in cotton. Pest Management Science 81:1571–1578: <a href="https://scijournals.onlinelibrary.wiley.com/doi/10.1002/ps.8560" style={{color: colors.link, textDecoration: 'underline'}}>https://scijournals.onlinelibrary.wiley.com/doi/10.1002/ps.8560</a></p>
+                                        <p style={{marginBottom: '8px'}}>33. Diourte, M. et al. (1995). Soil temperature and moisture deficit effects on charcoal rot of sorghum. Plant Pathology 44:196–202: <a href="https://doi.org/10.1111/j.1365-3059.1995.tb02729.x" style={{color: colors.link, textDecoration: 'underline'}}>https://doi.org/10.1111/j.1365-3059.1995.tb02729.x</a></p>
+                                        <p style={{marginBottom: '8px'}}>34. Plant Health Australia: sorghum/maize downy mildew biosecurity summary (temperature and wetness-period thresholds for systemic infection): <a href="https://www.planthealthaustralia.com.au/pests/downy-mildew-of-sorghum/" style={{color: colors.link, textDecoration: 'underline'}}>https://www.planthealthaustralia.com.au/pests/downy-mildew-of-sorghum/</a></p>
+                                        <p style={{marginBottom: '8px'}}>35. Bulger, M.A., Ellis, M.A. &amp; Madden, L.V. (1987). Influence of temperature and wetness duration on infection of strawberry flowers by Botrytis cinerea; basis of the Florida Strawberry Advisory System. Phytopathology 77:1225: <a href="https://www.apsnet.org/publications/phytopathology/backissues/Documents/1987Abstracts/Phyto77_1225.htm" style={{color: colors.link, textDecoration: 'underline'}}>https://www.apsnet.org/publications/phytopathology/backissues/Documents/1987Abstracts/Phyto77_1225.htm</a></p>
+                                        <p style={{marginBottom: '8px'}}>36. MacKenzie, S.J. &amp; Peres, N.A. (2012). Strawberry Advisory System: temperature/wetness-duration model for strawberry anthracnose fruit rot. Plant Disease 96:522–528: <a href="https://apsjournals.apsnet.org/doi/10.1094/PDIS-03-11-0181" style={{color: colors.link, textDecoration: 'underline'}}>https://apsjournals.apsnet.org/doi/10.1094/PDIS-03-11-0181</a></p>
+                                        <p style={{marginBottom: '8px'}}>37. NIAB EMR (East Malling Research) temperature/RH risk model for strawberry powdery mildew, as described by AHDB: <a href="https://archive.ahdb.org.uk/news/how-to-use-a-disease-risk-prediction-model-to-control-strawberry-powdery-mildew" style={{color: colors.link, textDecoration: 'underline'}}>https://archive.ahdb.org.uk/news/how-to-use-a-disease-risk-prediction-model-to-control-strawberry-powdery-mildew</a> (no dedicated primary NIAB page was found; this is the closest verifiable secondary source)</p>
+                                        <p style={{marginBottom: '8px'}}>38. NEWA (Network for Environment and Weather Applications, Cornell University): apple scab infection-period tool (cedar apple rust infection periods coincide with scab per extension guidance): <a href="https://newa.cornell.edu/apple-scab" style={{color: colors.link, textDecoration: 'underline'}}>https://newa.cornell.edu/apple-scab</a></p>
+                                        <p style={{marginBottom: '8px'}}>39. West Virginia University Extension: apple black rot infection wetness-duration/temperature thresholds: <a href="https://extension.wvu.edu/lawn-gardening-pests/plant-disease/tree-fruit-disease/black-rot-disease-in-apples" style={{color: colors.link, textDecoration: 'underline'}}>https://extension.wvu.edu/lawn-gardening-pests/plant-disease/tree-fruit-disease/black-rot-disease-in-apples</a></p>
+                                        <p style={{marginBottom: '8px'}}>40. Grape downy mildew "10-10-24" primary-infection rule (temperature &gt;10°C and rainfall ≥10mm within 24h triggers infection): <a href="https://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/downy-mildew-with-climate-change-is-the-3-10-model-still-valid.html" style={{color: colors.link, textDecoration: 'underline'}}>internationalwinechallenge.com: is the 3-10/10-10-24 model still valid?</a> (source attributes this exact rule to Australian viticulture usage, not "European" as commonly stated — flagged here since regional attribution varies by source)</p>
+                                        <p style={{marginBottom: '8px'}}>41. Broome, J.C. &amp; Bacchus, S. (1995). Effects of temperature and wetness duration on infection of grape by Botrytis cinerea. Phytopathology 85:97: <a href="https://www.apsnet.org/publications/phytopathology/backissues/Documents/1995Abstracts/Phyto_85_97.htm" style={{color: colors.link, textDecoration: 'underline'}}>https://www.apsnet.org/publications/phytopathology/backissues/Documents/1995Abstracts/Phyto_85_97.htm</a></p>
+                                        <p style={{marginBottom: '8px'}}>42. Ohio State University Extension: grape black rot infection conditions fact sheet (PLPATH-FRU-24): <a href="https://ohioline.osu.edu/factsheet/plpath-fru-24" style={{color: colors.link, textDecoration: 'underline'}}>https://ohioline.osu.edu/factsheet/plpath-fru-24</a></p>
+                                        <p style={{marginBottom: '8px'}}>43. Michigan State University Extension: Enviro-weather blueberry anthracnose (ripe rot) infection risk model: <a href="https://www.canr.msu.edu/news/anthracnose_infection_risk_model_launched_on_enviro_weather" style={{color: colors.link, textDecoration: 'underline'}}>https://www.canr.msu.edu/news/anthracnose_infection_risk_model_launched_on_enviro_weather</a></p>
+                                        <p style={{marginBottom: '8px'}}>44. Rutgers NJAES: Botrytis Blossom Blight in Highbush Blueberry (FS512), infection temperature/wetness conditions: <a href="https://njaes.rutgers.edu/fs512/" style={{color: colors.link, textDecoration: 'underline'}}>https://njaes.rutgers.edu/fs512/</a></p>
+                                        <p style={{marginBottom: '8px'}}>45. TOMCAST / MELCAST (Purdue Extension BP-64-W): Disease Severity Value (tomato) and Environmental Favorability Index (watermelon/cucurbit) rolling-window disease forecasting models: <a href="https://www.extension.purdue.edu/extmedia/bp/bp-64-w.pdf" style={{color: colors.link, textDecoration: 'underline'}}>https://www.extension.purdue.edu/extmedia/bp/bp-64-w.pdf</a>. Original DSV/EFI lookup tables could not be sourced; the tool uses an approximation of the accumulation mechanism, clearly noted as such wherever used.</p>
+                                        <p style={{marginBottom: '8px'}}>46. Scalable Prediction of Northern Corn Leaf Blight and Gray Leaf Spot Diseases to Predict Fungicide Spray Timing in Corn. Agronomy 2025, 15(2), 328: <a href="https://doi.org/10.3390/agronomy15020328" style={{color: colors.link, textDecoration: 'underline'}}>https://doi.org/10.3390/agronomy15020328</a></p>
+                                        <p style={{marginBottom: '8px'}}>47. Disease forecasting model for newly emerging bacterial seed and boll rot of cotton disease and its vector (Dysdercus cingulatus): <a href="https://www.researchgate.net/publication/321058915_Disease_forecasting_model_for_newly_emerging_bacterial_seed_and_boll_rot_of_cotton_disease_and_its_vector_Dysdercus_cingulatus" style={{color: colors.link, textDecoration: 'underline'}}>ResearchGate: Disease forecasting model for bacterial seed and boll rot of cotton</a> (author names could not be confirmed — the page blocks automated access — but the reported thresholds, max/min temp 28–29°C/13–14.5°C, match the tool's values exactly)</p>
+                                        <p style={{marginBottom: '0'}}>48. Bhattiprolu, S.L. &amp; Monga, D. (2018). Effect of weather parameters on the development of Alternaria leaf spot and grey mildew in cotton. Journal of Agrometeorology 20(4): <a href="https://journal.agrimetassociation.org/index.php/jam/article/view/573" style={{color: colors.link, textDecoration: 'underline'}}>https://journal.agrimetassociation.org/index.php/jam/article/view/573</a></p>
                                     </div>
                                 </div>
                             </div>
