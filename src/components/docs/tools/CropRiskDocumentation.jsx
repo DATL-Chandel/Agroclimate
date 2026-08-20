@@ -1312,8 +1312,17 @@ const CropRiskDocumentation = () => {
                             <li style={{marginBottom: '5px'}}>
                                 <span style={{fontWeight: '500'}}>Temperature Data:</span> Daily maximum air temperature (T_max) at 2-meter height, 16-day forecast horizon
                             </li>
-                            <li style={{marginBottom: '0'}}>
+                            <li style={{marginBottom: '5px'}}>
                                 <span style={{fontWeight: '500'}}>Spatial Resolution:</span> 0.25° × 0.25° grid cells (~25km spatial resolution)
+                            </li>
+                            <li style={{marginBottom: '5px'}}>
+                                <span style={{fontWeight: '500'}}>Real historical temperature (US fields):</span> Daymet V4 (season-start through its real latest release) + GRIDMET (real latest release through today, ~4km). No ERA5-Land used for US fields at all.
+                            </li>
+                            <li style={{marginBottom: '5px'}}>
+                                <span style={{fontWeight: '500'}}>Real historical temperature (non-US fields):</span> ECMWF ERA5-Land, up to its real latest available date.
+                            </li>
+                            <li style={{marginBottom: '0'}}>
+                                <span style={{fontWeight: '500'}}>No hardcoded cutoff dates:</span> every historical source's real latest available date is detected by checking what data actually exists at run time, not assumed. Any short residual gap right before today (rare, usually 0-2 days) is filled by GFS's own hour-0 real analysis, never a forward forecast hour.
                             </li>
                             </ul>
                         </div>
@@ -1338,14 +1347,14 @@ const CropRiskDocumentation = () => {
                                 fontWeight: '500',
                                 color: colors.primary,
                                 marginBottom: '8px'
-                            }}>ERA5-Land (Historical) — Kelvin → Celsius → Fahrenheit:</p>
+                            }}>Historical (Daymet US / GRIDMET US / ERA5-Land non-US) → Fahrenheit:</p>
                             <p style={{
                                 fontSize: isMobile ? '12px' : '13px',
                                 lineHeight: '1.5',
                                 color: colors.text,
                                 marginBottom: '6px',
                                 marginLeft: '5px'
-                            }}>ERA5-Land <code>temperature_2m_min/max</code> bands are in <strong>Kelvin</strong>. Two-step conversion:</p>
+                            }}>Daymet V4 <code>tmax/tmin</code> are already in <strong>°C</strong> (no conversion). GRIDMET <code>tmmx/tmmn</code> and ERA5-Land <code>temperature_2m_min/max</code> are in <strong>Kelvin</strong> and need the Kelvin step below. All three then convert Celsius → Fahrenheit the same way. Which source is used depends on the field's real-time detected data availability (US: Daymet then GRIDMET, no hardcoded cutoff; non-US: ERA5-Land) — see Data Sources above.</p>
                             <div style={{
                                 backgroundColor: '#FF9800',
                                 color: 'white',
@@ -2869,9 +2878,11 @@ const CropRiskDocumentation = () => {
                                                 </code>
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                                High-resolution climate reanalysis data providing daily aggregates of temperature, precipitation, 
-                                                evapotranspiration, soil moisture, and vegetation parameters from 1950 to present for historical 
-                                                temperature data used in GDD calculations.
+                                                High-resolution climate reanalysis data, daily aggregates of temperature, precipitation,
+                                                evapotranspiration, soil moisture, and vegetation parameters from 1950 onward. Used for GDD
+                                                historical temperature on <strong>non-US fields only</strong> — US fields use Daymet V4 + GRIDMET instead
+                                                (see below), since ERA5-Land's own real latency runs up to ~3 months behind today, not the ~9
+                                                days once assumed here. The real latest available date is detected at run time (no hardcoded cutoff).
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
                                                 <a href="https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR" 
@@ -2903,17 +2914,54 @@ const CropRiskDocumentation = () => {
                                                 </code>
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
-                                                High-resolution (~4 km) gridded surface meteorological dataset covering the contiguous USA 
-                                                from 1979 to near real-time (~2 day lag). Provides the primary reference 
-                                                evapotranspiration (ET₀) values (<code>eto</code> band, mm/day) used for historical days in 
-                                                water stress calculations. Hargreaves equation is used as fallback for forecast days or 
-                                                non-USA fields.
+                                                High-resolution (~4 km) gridded surface meteorological dataset covering the contiguous USA
+                                                from 1979 to near real-time (real "early" status data typically lands within ~1-2 days,
+                                                detected at run time, not assumed). Provides the primary reference evapotranspiration (ET₀)
+                                                values (<code>eto</code> band, mm/day) used for historical days in water stress calculations,
+                                                and — together with Daymet V4 below — the real historical temperature for GDD/disease-risk
+                                                calculations on US fields (hands off from Daymet's real latest release through today).
+                                                Hargreaves equation is used as fallback for forecast days or non-USA fields.
                                             </td>
                                             <td style={{ padding: '15px', borderBottom: '1px solid #ddd' }}>
-                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET" 
-                                                   target="_blank" 
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET"
+                                                   target="_blank"
                                                    rel="noopener noreferrer"
-                                                   style={{ 
+                                                   style={{
+                                                       color: '#3498db',
+                                                       textDecoration: 'none',
+                                                       fontWeight: 'bold'
+                                                   }}>
+                                                    View Dataset →
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                                <span style={{ fontWeight: 'bold', color: '#2c3e50', display: 'block', marginBottom: '5px' }}>
+                                                    Daymet V4
+                                                </span>
+                                                <code style={{
+                                                    color: '#666',
+                                                    fontSize: '12px',
+                                                    backgroundColor: '#f1f1f1',
+                                                    padding: '4px 6px',
+                                                    borderRadius: '4px',
+                                                    display: 'inline-block'
+                                                }}>
+                                                    "NASA/ORNL/DAYMET_V4"
+                                                </code>
+                                            </td>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', color: '#333' }}>
+                                                Gridded daily surface weather, 1km resolution, covering North America, Hawaii and Puerto Rico,
+                                                released roughly once a year. Used as the primary source for real historical temperature
+                                                (season-start through its real latest release, detected at run time — no hardcoded end date)
+                                                on US fields, handing off to GRIDMET above for the remaining days up to today.
+                                            </td>
+                                            <td style={{ padding: '15px', borderBottom: '1px solid #ddd', backgroundColor: '#f8f9fa' }}>
+                                                <a href="https://developers.google.com/earth-engine/datasets/catalog/NASA_ORNL_DAYMET_V4"
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"
+                                                   style={{
                                                        color: '#3498db',
                                                        textDecoration: 'none',
                                                        fontWeight: 'bold'
